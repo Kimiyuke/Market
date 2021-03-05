@@ -19,12 +19,13 @@ public class Controller {
 
     //DAOS
     AcquistoDAO acquistodao;
-    ConfenzionatiDAO confenzionatidao;
+    ConfezionatiDAO confenzionatidao;
     FarinaceiDAO farinaceidao;
     LatticiniDAO latticinidao;
     MagazzinoDAO magazzinodao;
     TesseraPuntiDAO tesserapuntidao;
     UovaDAO uovadao;
+    FruttaDAO fruttadao;
     VerduraDAO verduradao;
     ClienteDAO clientidao;
     public ClienteDAO getClientidao() {
@@ -39,7 +40,7 @@ public AcquistoDAO getAcquistodao() {
 	return acquistodao;
 }
 
-public ConfenzionatiDAO getConfenzionatidao() {
+public ConfezionatiDAO getConfezionatidao() {
 	return confenzionatidao;
 }
 
@@ -65,6 +66,9 @@ public UovaDAO getUovadao() {
 
 public VerduraDAO getVerduradao() {
 	return verduradao;
+}
+public FruttaDAO getFruttadao() {
+	return fruttadao;
 }
 
 

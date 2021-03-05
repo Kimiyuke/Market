@@ -119,6 +119,7 @@ public class PanelMagazzino extends JPanel {
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Farinacei")) {
       			lbl1.setText("Peso");
+      			lbl1.setVisible(true);
       		    txt1.setVisible(true);
       		    
       			lbl2.setVisible(true);
@@ -136,6 +137,7 @@ public class PanelMagazzino extends JPanel {
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Confezionati")) {
                 lbl1.setText("Peso");
+                lbl1.setVisible(true);
                 txt1.setVisible(true);
                 
       			lbl2.setVisible(true);
@@ -154,30 +156,35 @@ public class PanelMagazzino extends JPanel {
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Latticini")) {
       			lbl1.setText("Data di Mungitura");
+      			lbl1.setVisible(true);
       			data1.setVisible(true);
       			lbl2.setVisible(true);
       			lbl2.setText("Data di Produzione");
       			data2.setVisible(true);
+      			lbl3.setVisible(true);
+      			lbl3.setText("Peso");
+      			txt3.setVisible(true);
       			
       			data3.setVisible(false);
-      			lbl3.setVisible(false);
       			txt1.setVisible(false);
       			txt2.setVisible(false);
-      			txt3.setVisible(false);
+      			
       			
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Uova")) {
       			lbl1.setText("Data di deposizione");
       			data1.setVisible(true);
-      			
+      			lbl1.setVisible(true);
       			lbl2.setVisible(true);
       			lbl2.setText("Provenienza Allevamento");
       			txt2.setVisible(true);
+      			lbl3.setVisible(true);
+      			lbl3.setText("Quantità");
+      			txt3.setVisible(true);
       			
       			data3.setVisible(false);
       			data2.setVisible(false);
-      			lbl3.setVisible(false);
-      			txt3.setVisible(false);
+      			
       			
       		}
       		
@@ -287,7 +294,7 @@ public class PanelMagazzino extends JPanel {
       		if(comboBox.getSelectedItem().toString().equals("Frutta")){
       			try {
       				
-					DAOS.FruttaDAO.InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+					TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 											datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
 											Integer.valueOf(txtdisponibilitatotale.getText().toString()));
 					 
@@ -298,7 +305,7 @@ public class PanelMagazzino extends JPanel {
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Verdura")) {
       			try {
-					DAOS.VerduraDAO.InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+					TheController.getVerduradao().InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
 				} catch (Exception e1) {
@@ -307,12 +314,46 @@ public class PanelMagazzino extends JPanel {
 				}
       	}
       		else if(comboBox.getSelectedItem().toString().equals("Farinacei")) {
+      			try {
+					TheController.getFarinaceidao().InsertFarinacei(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Confezionati")) {
+      			try {
+					TheController.getConfezionatidao().InsertConfezionati(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+				}  catch (Throwable e1) {
+					
+					e1.printStackTrace();
+				}
+      			
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Latticini")) {
+      			try {
+					TheController.getLatticinidao().InsertLatticini(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), data1.getText().toString(),   data2.getText().toString(),txtidprodotto.getText().toString(),
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+				}  catch (Throwable e1) {
+					
+					e1.printStackTrace();
+				}
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Uova")) {
+      			try {
+					TheController.getUovadao().InsertUova(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+							datachooser.getText().toString() ,Integer.valueOf( txt3.getText().toString()), data1.getText().toString(),txt2.getText().toString(), txtidprodotto.getText().toString(),
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+				}  catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
+      			
           	}
       }
       	});
