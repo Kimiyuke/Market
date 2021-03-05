@@ -35,7 +35,7 @@ public class FruttaDAO {
           
               }
               catch (SQLException x) {
-          System.out.println("Inserimento frutta panel magazzinooo: " +x);
+          System.out.println("Inserimento frutta panel magazzinoooo: " +x);
       
                }
 		
