@@ -30,18 +30,25 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
-import com.toedter.calendar.JDateChooser; 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JTabbedPane;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JTextArea;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants; 
 public class PanelAggiuntaAcquisto extends JPanel {
 	private JTextField txtidprodotto;
-	private JTextField txtnome;
+	private JTextField txtquantita;
 	private JTextField txtcodicetessera;
     Controller TheController;
+    private JTextField txtdata;
     
 	/**
 	 * Create the panel.
 	 */
 	public PanelAggiuntaAcquisto (Controller c) {
-		TheController=c;
+			TheController=c;
 		setBackground(new Color(47, 79, 79));
       setSize(643,501);
       setLayout(null);
@@ -67,6 +74,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
       add(lblidprodotto);
       
       txtidprodotto = new JTextField();
+     
       txtidprodotto.setBounds(83, 117, 86, 20);
       add(txtidprodotto);
       txtidprodotto.setColumns(10);
@@ -77,10 +85,10 @@ public class PanelAggiuntaAcquisto extends JPanel {
       lblquantita.setBounds(197, 120, 63, 14);
       add(lblquantita);
       
-      txtnome = new JTextField();
-      txtnome.setBounds(257, 117, 86, 22);
-      add(txtnome);
-      txtnome.setColumns(10);
+      txtquantita = new JTextField();
+      txtquantita.setBounds(257, 117, 86, 22);
+      add(txtquantita);
+      txtquantita.setColumns(10);
       
       JLabel lblmarca = new JLabel("Codice Tessera\r\n");
       lblmarca.setFont(new Font("Dialog", Font.ITALIC, 11));
@@ -94,47 +102,137 @@ public class PanelAggiuntaAcquisto extends JPanel {
       txtcodicetessera.setColumns(10);
       
       JLabel lblhelp = new JLabel("?");
+      lblhelp.setToolTipText("Ricorda i primi due caratteri, degli otto, variano a seconda della categoria:\r\nFrutta FR  Verdura VE  Confezionati CO  Latticini LA  Farinacei FA  Uova UO");
+     
       lblhelp.setBounds(72, 120, 23, 41);
       add(lblhelp);
       lblhelp.setFont(new Font("Tahoma", Font.PLAIN, 19));
       lblhelp.setForeground(new Color(255, 255, 255));
       
-      JPanel panel_1 = new JPanel();
-      panel_1.setBounds(345, 37, 104, 20);
-      add(panel_1);
+      JButton btnterminaacquisto = new JButton("Termina Acquisto\r\n");
+     
+      btnterminaacquisto.setBounds(502, 249, 141, 32);
+      add(btnterminaacquisto);
       
-      JLabel lblNewLabel_1 = new JLabel("Id acquisto\r\n");
-      lblNewLabel_1.setForeground(new Color(255, 255, 255));
-      lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblNewLabel_1.setBounds(281, 37, 76, 14);
-      add(lblNewLabel_1);
+      JPanel paneltotale = new JPanel();
+      paneltotale.setBounds(502, 312, 131, 32);
+      add(paneltotale);
+      paneltotale.setLayout(null);
       
-      JButton btnNewButton = new JButton("Termina Acquisto\r\n");
-      btnNewButton.setBounds(502, 249, 141, 32);
-      add(btnNewButton);
+      JLabel lbltotale1 = new JLabel("New label");
+      lbltotale1.setHorizontalAlignment(SwingConstants.CENTER);
+      lbltotale1.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lbltotale1.setBounds(0, 5, 121, 27);
+      paneltotale.add(lbltotale1);
       
-      JPanel panel_2 = new JPanel();
-      panel_2.setBounds(502, 312, 131, 32);
-      add(panel_2);
+      JLabel lbltotale = new JLabel("Totale:");
+      lbltotale.setForeground(new Color(255, 255, 255));
+      lbltotale.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lbltotale.setBounds(427, 312, 76, 32);
+      add(lbltotale);
       
-      JLabel lblNewLabel_2 = new JLabel("Totale:");
-      lblNewLabel_2.setForeground(new Color(255, 255, 255));
-      lblNewLabel_2.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblNewLabel_2.setBounds(427, 312, 76, 32);
-      add(lblNewLabel_2);
+      JPanel panelpunti = new JPanel();
+      panelpunti.setBounds(502, 355, 131, 32);
+      add(panelpunti);
+      panelpunti.setLayout(null);
       
-      JPanel panel_3 = new JPanel();
-      panel_3.setBounds(502, 355, 131, 32);
-      add(panel_3);
+      JLabel lblpunti1 = new JLabel("New label");
+      lblpunti1.setHorizontalAlignment(SwingConstants.CENTER);
+      lblpunti1.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lblpunti1.setBounds(-10, 0, 131, 32);
+      panelpunti.add(lblpunti1);
       
-      JLabel lblNewLabel_3 = new JLabel("Punti Acquisiti:");
-      lblNewLabel_3.setForeground(new Color(255, 255, 255));
-      lblNewLabel_3.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblNewLabel_3.setBounds(402, 355, 119, 32);
-      add(lblNewLabel_3);
+      JLabel lblpunti = new JLabel("Punti Acquisiti:");
+      lblpunti.setForeground(new Color(255, 255, 255));
+      lblpunti.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lblpunti.setBounds(402, 355, 119, 32);
+      add(lblpunti);
       
-      JButton btnNewButton_1 = new JButton("Aggiungi prodotto\r\n");
-      btnNewButton_1.setBounds(0, 188, 119, 22);
-      add(btnNewButton_1);
+      JButton btnaggiungiprodotto = new JButton("Aggiungi prodotto\r\n");
+      
+      btnaggiungiprodotto.setBounds(0, 254, 119, 22);
+      add(btnaggiungiprodotto);
+      
+      JLabel lbldata = new JLabel("Data di acquisto\r\n");
+      lbldata.setForeground(new Color(255, 255, 255));
+      lbldata.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lbldata.setBounds(10, 174, 109, 14);
+      add(lbldata);
+      
+      txtdata = new JTextField();
+      txtdata.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      txtdata.setText("dd-mm-yyyy");
+      txtdata.setBounds(96, 172, 86, 20);
+      add(txtdata);
+      txtdata.setColumns(10);
+      
+      JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
+      chckbxNewCheckBox.setBounds(208, 207, 97, 23);
+      add(chckbxNewCheckBox);
+      //setting iniziale prezzo totale a falso
+      lbltotale1.setVisible(false);
+      paneltotale.setVisible(false);
+      lbltotale.setVisible(false);
+      
+      //setting punti acquisiti a falso
+      lblpunti1.setVisible(false);
+      panelpunti.setVisible(false);
+      lblpunti.setVisible(false);
+      
+      
+      //FUNZIONE PER AGGIUNGERE UN ACQUISTO DI UN SINGOLO PRODOTTO
+      btnaggiungiprodotto.addMouseListener(new MouseAdapter() {
+        	
+        	public void mouseClicked(MouseEvent e) {
+        	
+        		try {
+					TheController.getAcquistodao().acquistosingolo(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
+							txtcodicetessera.getText().toString(), txtdata.getText().toString());
+					
+					txtidprodotto.setText("");
+					txtquantita.setText("");
+					txtdata.setText("");
+				
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
+        		
+        	}
+        });
+      
+      
+      
+      btnterminaacquisto.addMouseListener(new MouseAdapter() {
+        	
+        	public void mouseClicked(MouseEvent e) {
+        		try {
+					TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
+							txtcodicetessera.getText().toString(), txtdata.getText().toString());
+					
+					txtidprodotto.setText("");
+					txtquantita.setText("");
+					txtdata.setText("");
+					txtcodicetessera.setText("");
+					
+				}catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
+        		
+        		
+        		lbltotale1.setVisible(true);
+        	      paneltotale.setVisible(true);
+        	      lbltotale.setVisible(true);
+        	      String prezzototale;
+        	      lbltotale1.setText("interrogazione per dare il prezzototale");
+        	      
+        	      lblpunti1.setVisible(true);
+        	      panelpunti.setVisible(true);
+        	      lblpunti.setVisible(true);
+        	      String puntitotale;
+        	      lblpunti1.setText("interrogazione per dare i punti totale");
+        	}
+        });
 	}
 }

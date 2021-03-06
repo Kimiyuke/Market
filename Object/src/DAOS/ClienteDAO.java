@@ -24,7 +24,7 @@ public class ClienteDAO {
                       + "WHERE\n"
                       + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                       + "ORDER BY PUNTI_FRUTTA\n"
-                      + " ASC");
+                      + " DESC");
 
               System.out.println("connession");
 
@@ -67,7 +67,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -110,7 +110,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -152,7 +152,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -195,7 +195,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -238,7 +238,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -281,7 +281,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -323,7 +323,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -366,7 +366,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -409,7 +409,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -452,7 +452,7 @@ public class ClienteDAO {
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 
@@ -485,17 +485,17 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
                  + "ORDER BY PUNTI_FRUTTA\n"
-                 + " ASC");
+                 + " DESC");
 
          System.out.println("connession");
 

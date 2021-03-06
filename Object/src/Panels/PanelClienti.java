@@ -122,8 +122,7 @@ public class PanelClienti extends JPanel {
       			ArrayList<Cliente> cliente = new ArrayList<Cliente>();
       			
       			if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
-      				
-      				cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
+                    cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
                 }
 
 
