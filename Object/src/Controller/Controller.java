@@ -7,7 +7,7 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelClienti;
 import Panels.PanelMagazzino;
 import DAOS.*;
-
+import Dialogs.AggiuntaProdottiSuccesful;
 public class Controller {
     //FRAMES
     LogInFrame LogInFrame;
@@ -28,6 +28,9 @@ public class Controller {
     FruttaDAO fruttadao;
     VerduraDAO verduradao;
     ClienteDAO clientidao;
+    
+    //Dialogs
+    AggiuntaProdottiSuccesful aggiuntaprodottisuccesful;
     public ClienteDAO getClientidao() {
         return clientidao;
     }
@@ -111,6 +114,9 @@ public FruttaDAO getFruttadao() {
     }
     public void Controllo_Credenziali(String username, String password) {
 
+    	
+
+
 
         if(username.equals(" a") && password.equals("la") ) {
             LogInFrame.setVisible(false);
@@ -128,10 +134,21 @@ public FruttaDAO getFruttadao() {
                 }
 
     }
+    
+    
+
+	public void prodottisuccesful() {
+		
+		aggiuntaprodottisuccesful= new AggiuntaProdottiSuccesful(this);
+		aggiuntaprodottisuccesful.setVisible(true);
+
+		aggiuntaprodottisuccesful.setLocationRelativeTo(panelmagazzino);
+		
+	}
 
 	
 
-
+ 
 
 
 }

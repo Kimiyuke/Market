@@ -308,6 +308,7 @@ public class PanelMagazzino extends JPanel {
 				 data2.setText("");
 				 data3.setText("");
 				 
+				 TheController.prodottisuccesful();
 				 
 				 
 				 
@@ -333,6 +334,8 @@ public class PanelMagazzino extends JPanel {
 					 data1.setText("");
 					 data2.setText("");
 					 data3.setText("");
+					 
+					 TheController.prodottisuccesful();
 					
 				} catch (Exception e1) {
 					
@@ -356,6 +359,8 @@ public class PanelMagazzino extends JPanel {
 					 data1.setText("");
 					 data2.setText("");
 					 data3.setText("");
+					 
+					 TheController.prodottisuccesful();
 					
 				} catch (Exception e1) {
 					
@@ -378,6 +383,8 @@ public class PanelMagazzino extends JPanel {
 					 data1.setText("");
 					 data2.setText("");
 					 data3.setText("");
+					 
+					 TheController.prodottisuccesful();
 					 
 				}  catch (Throwable e1) {
 					
@@ -402,6 +409,8 @@ public class PanelMagazzino extends JPanel {
 					 data2.setText("");
 					 data3.setText("");
 					 
+					 TheController.prodottisuccesful();
+					 
 				}  catch (Throwable e1) {
 					
 					e1.printStackTrace();
@@ -424,6 +433,8 @@ public class PanelMagazzino extends JPanel {
 					 data1.setText("");
 					 data2.setText("");
 					 data3.setText("");
+					 
+					 TheController.prodottisuccesful();
 					 
 				}  catch (Exception e1) {
 					
