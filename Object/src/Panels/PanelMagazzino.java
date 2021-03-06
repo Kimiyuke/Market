@@ -303,6 +303,7 @@ public class PanelMagazzino extends JPanel {
 				 txtprezzo.setText("");
 				 txt1.setText("");
 				 txt2.setText("");
+				 datachooser.setText("");
 				 data1.setText("");
 				 data2.setText("");
 				 data3.setText("");
@@ -320,6 +321,19 @@ public class PanelMagazzino extends JPanel {
 					TheController.getVerduradao().InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+					
+					 txtidprodotto.setText("");
+					 txtnome.setText("");
+					 txtmarca.setText("");
+					 txtdisponibilitatotale.setText("");
+					 txtprezzo.setText("");
+					 txt1.setText("");
+					 txt2.setText("");
+					 datachooser.setText("");
+					 data1.setText("");
+					 data2.setText("");
+					 data3.setText("");
+					
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();
@@ -330,6 +344,19 @@ public class PanelMagazzino extends JPanel {
 					TheController.getFarinaceidao().InsertFarinacei(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+					
+					txtidprodotto.setText("");
+					 txtnome.setText("");
+					 txtmarca.setText("");
+					 txtdisponibilitatotale.setText("");
+					 txtprezzo.setText("");
+					 txt1.setText("");
+					 txt2.setText("");
+					 datachooser.setText("");
+					 data1.setText("");
+					 data2.setText("");
+					 data3.setText("");
+					
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();
@@ -340,6 +367,18 @@ public class PanelMagazzino extends JPanel {
 					TheController.getConfezionatidao().InsertConfezionati(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+					txtidprodotto.setText("");
+					 txtnome.setText("");
+					 txtmarca.setText("");
+					 txtdisponibilitatotale.setText("");
+					 txtprezzo.setText("");
+					 txt1.setText("");
+					 txt2.setText("");
+					 datachooser.setText("");
+					 data1.setText("");
+					 data2.setText("");
+					 data3.setText("");
+					 
 				}  catch (Throwable e1) {
 					
 					e1.printStackTrace();
@@ -351,6 +390,18 @@ public class PanelMagazzino extends JPanel {
 					TheController.getLatticinidao().InsertLatticini(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), data1.getText().toString(),   data2.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+					txtidprodotto.setText("");
+					 txtnome.setText("");
+					 txtmarca.setText("");
+					 txtdisponibilitatotale.setText("");
+					 txtprezzo.setText("");
+					 txt1.setText("");
+					 txt2.setText("");
+					 datachooser.setText("");
+					 data1.setText("");
+					 data2.setText("");
+					 data3.setText("");
+					 
 				}  catch (Throwable e1) {
 					
 					e1.printStackTrace();
@@ -361,6 +412,19 @@ public class PanelMagazzino extends JPanel {
 					TheController.getUovadao().InsertUova(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt3.getText().toString()), data1.getText().toString(),txt2.getText().toString(), txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+					
+					txtidprodotto.setText("");
+					 txtnome.setText("");
+					 txtmarca.setText("");
+					 txtdisponibilitatotale.setText("");
+					 txtprezzo.setText("");
+					 txt1.setText("");
+					 txt2.setText("");
+					 datachooser.setText("");
+					 data1.setText("");
+					 data2.setText("");
+					 data3.setText("");
+					 
 				}  catch (Exception e1) {
 					
 					e1.printStackTrace();
@@ -385,6 +449,22 @@ public class PanelMagazzino extends JPanel {
       add(lblprezzo);
       
       datachooser = new JTextField();
+      datachooser.addFocusListener(new FocusAdapter() {
+      	@Override
+      	public void focusLost(FocusEvent e) {
+      		if (datachooser.getText().equals("") ) {
+      			datachooser.setText("dd-mm-yyyy");
+      		}
+      	}});
+      datachooser.addMouseListener(new MouseAdapter() {
+      	@Override
+     	public void mouseClicked(MouseEvent e) {
+      		if (datachooser.getText().equals("dd-mm-yyyy") ) {
+      		datachooser.setText("");
+      	}
+      	}});
+      datachooser.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      datachooser.setText("dd-mm-yyyy");
       datachooser.setBounds(108, 185, 86, 20);
       add(datachooser);
       datachooser.setColumns(10);
