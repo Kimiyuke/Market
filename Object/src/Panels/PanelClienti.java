@@ -122,7 +122,8 @@ public class PanelClienti extends JPanel {
       			ArrayList<Cliente> cliente = new ArrayList<Cliente>();
       			
       			if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
-                    cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
+      				
+      				cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
                 }
 
 
@@ -130,10 +131,12 @@ public class PanelClienti extends JPanel {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiVerdura();
                 }
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Confenzionati")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPuntiConfenzionati();
+      				TheController.getClientidao();
+					cliente= ClienteDAO.SelectClientiPerPuntiConfenzionati();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPuntiUova();
+      				TheController.getClientidao();
+					cliente= ClienteDAO.SelectClientiPerPuntiUova();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPuntiLatticini();

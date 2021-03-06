@@ -8,7 +8,7 @@ import Classi.Cliente;
 
 public class ClienteDAO {
 //
-    public  ArrayList<Cliente> SelectClientiPerPuntiFrutta() {
+    public static ArrayList<Cliente> SelectClientiPerPuntiFrutta() {
          ArrayList<Cliente> cliente = new ArrayList<Cliente>();
              Cliente C;
         

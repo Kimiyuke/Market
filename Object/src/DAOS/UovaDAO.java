@@ -18,7 +18,7 @@ public class UovaDAO {
 	
 
 
-	public void InsertUova(String nome, String marca, Float prezzo, String datadiscadenza, Integer quantita,
+	public static void InsertUova(String nome, String marca, Float prezzo, String datadiscadenza, Integer quantita,
 			String datadideposizione, String provenienzaallevamento, String idprodotto, Integer disponibilitatotale) throws Exception {
 		try {
             Class.forName("org.postgresql.Driver");//load il driver            

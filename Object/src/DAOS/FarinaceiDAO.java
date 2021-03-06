@@ -16,7 +16,7 @@ public class FarinaceiDAO {
 
 	
 
-	public void InsertFarinacei(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+	public static void InsertFarinacei(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
 			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale) throws Exception {
 		try {
             Class.forName("org.postgresql.Driver");//         

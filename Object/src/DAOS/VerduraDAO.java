@@ -15,7 +15,7 @@ public class VerduraDAO {
 
 	
 
-	public void InsertVerdura(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
+	public static void InsertVerdura(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
 			String idprodotto, int disponibilitatotale) throws Exception {
 		 try {
              Class.forName("org.postgresql.Driver");//         

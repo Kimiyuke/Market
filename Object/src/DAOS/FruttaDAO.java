@@ -15,7 +15,7 @@ public class FruttaDAO {
 
 	
 
-	public void InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
+	public static void InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
 			String idprodotto, int disponibilitatotale) throws Exception {
 		 try {
              Class.forName("org.postgresql.Driver");//load il driver            
@@ -29,8 +29,9 @@ public class FruttaDAO {
                  pst.setString(5, datadiraccolta);
                  pst.setString(6, idprodotto);
                  pst.setInt(7, disponibilitatotale);
+                 System.out.println(prezzo);
                  pst.executeUpdate();
-             
+             System.out.println(prezzo);
             
           
               }

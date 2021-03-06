@@ -292,12 +292,24 @@ public class PanelMagazzino extends JPanel {
       	public void mouseClicked(MouseEvent e) {
       		
       		if(comboBox.getSelectedItem().toString().equals("Frutta")){
-      			try {
-      				
-					TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+      			try {	
+					TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText()), 
 											datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
 											Integer.valueOf(txtdisponibilitatotale.getText().toString()));
-					 
+				 txtidprodotto.setText("");
+				 txtnome.setText("");
+				 txtmarca.setText("");
+				 txtdisponibilitatotale.setText("");
+				 txtprezzo.setText("");
+				 txt1.setText("");
+				 txt2.setText("");
+				 data1.setText("");
+				 data2.setText("");
+				 data3.setText("");
+				 
+				 
+				 
+				 
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();

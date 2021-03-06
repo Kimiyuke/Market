@@ -16,7 +16,7 @@ public class LatticiniDAO {
 	
 
 
-	public void InsertLatticini(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+	public static void InsertLatticini(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
 			String datadimungitura, String datadiproduzione, String idprodotto, Integer disponibilitatotale) {
 		try {
             try {
