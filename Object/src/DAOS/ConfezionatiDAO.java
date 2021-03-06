@@ -36,7 +36,7 @@ public class ConfezionatiDAO {
 
              }
              catch (SQLException x) {
-         System.out.println("Inserimento confezionati panel magazzinYoo: " +x);
+         System.out.println("Inserimento confezionati panel magazzinYoyo: " +x);
 
               }
 		
