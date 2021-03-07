@@ -3,9 +3,10 @@ import Frames.HomeDashboard;
 
 import Frames.LogInFrame;
 
-import Panels.PanelAggiuntaAcquisto;
-import Panels.PanelClienti;
-import Panels.PanelMagazzino;
+import Panels.*;
+
+import java.awt.event.MouseAdapter;
+
 import DAOS.*;
 import Dialogs.AggiuntaProdottiSuccesful;
 public class Controller {
@@ -16,6 +17,8 @@ public class Controller {
     //PANELs
      PanelClienti panelclienti;
      PanelMagazzino panelmagazzino;
+     PanelAggiuntaAcquisto panelaggiuntaacquisto;
+     PanelMagazzinoRicerca panelmagazzinoricerca;
 
     //DAOS
     AcquistoDAO acquistodao;
@@ -75,9 +78,8 @@ public FruttaDAO getFruttadao() {
 }
 
 
-    private  PanelMagazzino Magazzino;
-    private  PanelAggiuntaAcquisto AddAcquisto;
-
+ 
+    
 
     public static void main(String[] args) {
         Controller c=Controller.getInstance();
@@ -95,12 +97,12 @@ public FruttaDAO getFruttadao() {
     public void Init() {
         LogInFrame= new LogInFrame(this);
         LogInFrame.setVisible(true);
+        
     }
 
     private Controller() {
 
-
-
+    
     }
     //singleton
     public static Controller getInstance( ) {
@@ -143,6 +145,23 @@ public FruttaDAO getFruttadao() {
 		aggiuntaprodottisuccesful.setVisible(true);
 
 		aggiuntaprodottisuccesful.setLocationRelativeTo(panelmagazzino);
+		
+	}
+
+	public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
+		
+		
+		panelmagazzino.setVisible(false);
+		
+		panelmagazzinoricerca= new PanelMagazzinoRicerca(this);
+	Home.add(panelmagazzinoricerca);
+		
+		panelmagazzinoricerca.setLocation(237, 11);
+		
+		
+		
+      
+		
 		
 	}
 

@@ -7,6 +7,7 @@ import Panels.PanelAggiuntaAcquisto;
 
 import Panels.PanelClienti;
 import Panels.PanelMagazzino;
+import Panels.PanelMagazzinoRicerca;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -43,6 +44,7 @@ public class HomeDashboard extends JFrame {
 	 PanelMagazzino panelmagazzino;
 	private PanelClienti panelclienti;
 	private PanelAggiuntaAcquisto panelaggiuntaacquisto;
+	private PanelMagazzinoRicerca panelmagazzinoricerca;
 	 // Launch the application.
 	  
 	/*
@@ -177,19 +179,28 @@ public class HomeDashboard extends JFrame {
 		
 		panelclienti = new PanelClienti(TheController);
 		panelclienti.setLocation(237, 11);
-		panelmagazzino.setBounds(237, 11, 643, 501);
+		panelclienti.setBounds(237, 11, 643, 501);
 		contentPane.add(panelclienti);
-		panelmagazzino.setLayout(null);
+		panelclienti.setLayout(null);
 		
 		panelclienti.setVisible(false);
 		
 		panelaggiuntaacquisto = new PanelAggiuntaAcquisto(TheController);
 		panelaggiuntaacquisto.setLocation(237, 11);
-		panelmagazzino.setBounds(237, 11, 643, 501);
+		panelaggiuntaacquisto.setBounds(237, 11, 643, 501);
 		contentPane.add(panelaggiuntaacquisto);
-		panelmagazzino.setLayout(null);
+		panelaggiuntaacquisto.setLayout(null);
 		
 		panelaggiuntaacquisto.setVisible(false);
+		
+//		panelmagazzinoricerca = new PanelMagazzinoRicerca(TheController);
+//		panelmagazzinoricerca.setLocation(237, 11);
+//		panelmagazzinoricerca.setBounds(237, 11, 643, 501);
+//		contentPane.add(panelaggiuntaacquisto);
+//		panelmagazzinoricerca.setLayout(null);
+//		
+//		panelmagazzinoricerca.setVisible(false);
+		
 		
 		
 		 panelMagazzino.addMouseListener(new MouseAdapter() {

@@ -49,6 +49,8 @@ public class PanelMagazzino extends JPanel {
 	private JLabel lbl3;
     Controller TheController;
     FruttaDAO FruttaDAO;
+    PanelClienti panelclienti;
+    PanelMagazzinoRicerca panelmagazzinoricerca;
     private JTextField datachooser;
     private JTextField data1;
     private JTextField data2;
@@ -545,6 +547,19 @@ public class PanelMagazzino extends JPanel {
       data3.setColumns(10);
       data3.setBounds(302, 427, 86, 20);
       add(data3);
+      
+      JButton btnNewButton = new JButton("New button");
+      btnNewButton.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		TheController.gotomagazzinoricerca(PanelMagazzino.this);
+      		
+      		
+      	
+      	}
+      });
+      btnNewButton.setBounds(532, 452, 89, 23);
+      add(btnNewButton);
       
       
       
