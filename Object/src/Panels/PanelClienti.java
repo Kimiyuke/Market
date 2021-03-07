@@ -88,7 +88,7 @@ public class PanelClienti extends JPanel {
       add(lblNewLabel_3);
       
       JComboBox ComboBox1 = new JComboBox();
-      ComboBox1.setModel(new DefaultComboBoxModel(new String[] {"Punti", "Pezzi acquistati"}));
+      ComboBox1.setModel(new DefaultComboBoxModel(new String[] {"Punti", "Pezzi"}));
       ComboBox1.setBounds(433, 23, 51, 22);
       add(ComboBox1);
       
@@ -132,12 +132,12 @@ public class PanelClienti extends JPanel {
       			else if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Verdura")))) {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiVerdura();
                 }
-      			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Confenzionati")))) {
-      				TheController.getClientidao();
-					cliente= TheController.getClientidao().SelectClientiPerPuntiConfenzionati();
+      			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Confezionati")))) {
+      				
+					cliente= TheController.getClientidao().SelectClientiPerPuntiConfezionati();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
-      				TheController.getClientidao();
+      				
 					cliente= TheController.getClientidao().SelectClientiPerPuntiUova();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
@@ -158,8 +158,8 @@ public class PanelClienti extends JPanel {
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziLatticini();
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Confenzionati")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziConfenzionati();
+      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Confezionati")))) {
+      				cliente= TheController.getClientidao().SelectClientiPerPezziConfezionati();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Farinacei")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziFarinacei();

@@ -95,7 +95,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPuntiConfenzionati() {
+	public static ArrayList<Cliente> SelectClientiPerPuntiConfezionati() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -110,7 +110,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY PUNTI_CONFEZIONATI\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -152,7 +152,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY PUNTI_UOVA\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -195,7 +195,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY PUNTI_LATTICINI\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -281,7 +281,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY N_PEZZI_FRUTTA\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -323,7 +323,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY N_PEZZI_VERDURA\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -366,7 +366,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY N_PEZZI_UOVA\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -409,7 +409,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY N_PEZZI_LATTICINI\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -437,7 +437,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPezziConfenzionati() {
+	public static ArrayList<Cliente> SelectClientiPerPezziConfezionati() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -452,7 +452,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY N_PEZZI_CONFEZIONATI\n"
                  + " DESC");
 
          System.out.println("connession");
@@ -495,7 +495,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY N_PEZZI_FARINACEI\n"
                  + " DESC");
 
          System.out.println("connession");
