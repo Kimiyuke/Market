@@ -67,7 +67,7 @@ public class ClienteDAO {
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
                  + " CLIENTE.CODICE_TESSERA=TESSERA_PUNTI.CODICE_TESSERA \n"
-                 + "ORDER BY PUNTI_FRUTTA\n"
+                 + "ORDER BY PUNTI_VERDURA\n"
                  + " DESC");
 
          System.out.println("connession");
