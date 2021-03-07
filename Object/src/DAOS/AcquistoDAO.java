@@ -18,8 +18,8 @@ public class AcquistoDAO {
 	
 	
 	
-	public static void acquistosingolo(String idprodotto, Integer quantita, String codicetessera, String data ) throws Exception {
-		int nid= nidcurrent(); //STORE IN NID IL MAX+1 
+public static void acquistosingolo(String idprodotto, int quantita, String codicetessera, String data, int idacquisto ) throws Exception {
+//		int nid= nidcurrent(); //STORE IN NID IL MAX+1 
 		
 		
 		 
@@ -34,8 +34,8 @@ public class AcquistoDAO {
                  pst.setInt(2, quantita);
                  pst.setString(3, idprodotto);
                  pst.setString(4, data);
-                 pst.setInt(5, nid);
-                 
+//                 pst.setInt(5, nid);
+                 pst.setInt(5, idacquisto);
                  
                  pst.executeUpdate();
             
@@ -50,33 +50,33 @@ public class AcquistoDAO {
 		
 	}
 //FUNZIONE CHE SI UTILIZZA PER INSERIMENTO AUTOMATICO DEL CODICE DI ACQUISTO COME SE FOSSE UN'ENUMERAZIONE
-	public static int nidcurrent() throws Exception {
-		int nid = 0;
-		
-		try {
-			Class.forName("org.postgresql.Driver");//load il driver
-			
-			Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-			
-			Statement st= con.createStatement();//creo object di statement 
-			ResultSet rs = null;
-			
-			rs = st.executeQuery("SELECT MAX(n_id)+1 FROM ACQUISTO ");
-			 rs.next();
-			 nid = rs.getInt(1);
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
+//	public static int nidcurrent() throws Exception {
+//		int nid = 0;
+//		
+//		try {
+//			Class.forName("org.postgresql.Driver");//load il driver
+//			
+//			Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
+//			
+//			Statement st= con.createStatement();//creo object di statement 
+//			ResultSet rs = null;
+//			
+//			rs = st.executeQuery("SELECT MAX(n_id)+1 FROM ACQUISTO ");
+//			 rs.next();
+//			 nid = rs.getInt(1);
+//		} catch (SQLException e) {
+//			
+//			e.printStackTrace();
+//		}
+//
+//		
+//		
+//		
+//		return  nid;
+//	}
 
-		
-		
-		
-		return  nid;
-	}
-
-	public static void acquistototale(String idprodotto, Integer quantita, String codicetessera, String data) throws Exception {
-			int nid= nidcurrent();
+	public static void acquistototale(String idprodotto, int quantita, String codicetessera, String data, int idacquisto) throws Exception {
+//			int nid= nidcurrent();
 		 
 		 try {
              Class.forName("org.postgresql.Driver");//load il driver            
@@ -89,8 +89,8 @@ public class AcquistoDAO {
                  pst.setInt(2, quantita);
                  pst.setString(3, idprodotto);
                  pst.setString(4, data);
-                 pst.setInt(5, nid);
-                 
+//                 pst.setInt(5, nid);
+                 pst.setInt(5, idacquisto);
                  
                  pst.executeUpdate();
             

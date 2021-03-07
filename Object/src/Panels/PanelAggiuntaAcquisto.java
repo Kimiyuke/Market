@@ -43,6 +43,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
 	private JTextField txtcodicetessera;
     Controller TheController;
     private JTextField txtdata;
+    private JTextField txtidacquisto;
     
 	/**
 	 * Create the panel.
@@ -109,11 +110,6 @@ public class PanelAggiuntaAcquisto extends JPanel {
       lblhelp.setFont(new Font("Tahoma", Font.PLAIN, 19));
       lblhelp.setForeground(new Color(255, 255, 255));
       
-      JButton btnterminaacquisto = new JButton("Termina Acquisto\r\n");
-     
-      btnterminaacquisto.setBounds(502, 249, 141, 32);
-      add(btnterminaacquisto);
-      
       JPanel paneltotale = new JPanel();
       paneltotale.setBounds(502, 312, 131, 32);
       add(paneltotale);
@@ -166,9 +162,20 @@ public class PanelAggiuntaAcquisto extends JPanel {
       add(txtdata);
       txtdata.setColumns(10);
       
-      JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
-      chckbxNewCheckBox.setBounds(208, 207, 97, 23);
-      add(chckbxNewCheckBox);
+      JCheckBox cbx = new JCheckBox("Fine Acquisto?");
+      cbx.setBounds(524, 207, 109, 23);
+      add(cbx);
+      
+      JLabel lblidacquisto = new JLabel("Id Acquisto");
+      lblidacquisto.setForeground(Color.WHITE);
+      lblidacquisto.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lblidacquisto.setBounds(270, 37, 63, 20);
+      add(lblidacquisto);
+      
+      txtidacquisto = new JTextField();
+      txtidacquisto.setBounds(356, 38, 86, 20);
+      add(txtidacquisto);
+      txtidacquisto.setColumns(10);
       //setting iniziale prezzo totale a falso
       lbltotale1.setVisible(false);
       paneltotale.setVisible(false);
@@ -184,55 +191,52 @@ public class PanelAggiuntaAcquisto extends JPanel {
       btnaggiungiprodotto.addMouseListener(new MouseAdapter() {
         	
         	public void mouseClicked(MouseEvent e) {
-        	
+        	if(cbx.isSelected()) { try {
+				TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
+						txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()));
+				
+				txtidprodotto.setText("");
+				txtquantita.setText("");
+				txtdata.setText("");
+				txtcodicetessera.setText("");
+				
+				lbltotale1.setVisible(true);
+        	      paneltotale.setVisible(true);
+        	      lbltotale.setVisible(true);
+        	      int prezzototale= TheController.getAcquistototaledao().getprezzototale(Integer.valueOf(txtidacquisto.getText().toString()));
+        	      lbltotale1.setText(String.valueOf(prezzototale));
+        	      
+        	      lblpunti1.setVisible(true);
+        	      panelpunti.setVisible(true);
+        	      lblpunti.setVisible(true);
+        	      int puntitotale=TheController.getAcquistototaledao().getpuntitotale(Integer.valueOf(txtidacquisto.getText().toString()));
+        	      lblpunti1.setText(String.valueOf(puntitotale));
+				
+			}
+        			catch (Exception e1) {
+				
+        					e1.printStackTrace();
+        			}
+        		
+        		
+        	}
+        	else {
         		try {
 					TheController.getAcquistodao().acquistosingolo(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
-							txtcodicetessera.getText().toString(), txtdata.getText().toString());
+							txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()));
 					
 					txtidprodotto.setText("");
 					txtquantita.setText("");
 					txtdata.setText("");
 				
-				} catch (Exception e1) {
+					} 
+        				catch (Exception e1) {
 					
-					e1.printStackTrace();
-				}
+        						e1.printStackTrace();
+        				}
         		
-        	}
-        });
-      
-      
-      
-      btnterminaacquisto.addMouseListener(new MouseAdapter() {
-        	
-        	public void mouseClicked(MouseEvent e) {
-        		try {
-					TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
-							txtcodicetessera.getText().toString(), txtdata.getText().toString());
-					
-					txtidprodotto.setText("");
-					txtquantita.setText("");
-					txtdata.setText("");
-					txtcodicetessera.setText("");
-					
-				}catch (Exception e1) {
-					
-					e1.printStackTrace();
-				}
-        		
-        		
-        		lbltotale1.setVisible(true);
-        	      paneltotale.setVisible(true);
-        	      lbltotale.setVisible(true);
-        	      String prezzototale;
-        	      lbltotale1.setText("interrogazione per dare il prezzototale");
-        	      
-        	      lblpunti1.setVisible(true);
-        	      panelpunti.setVisible(true);
-        	      lblpunti.setVisible(true);
-        	      String puntitotale;
-        	      lblpunti1.setText("interrogazione per dare i punti totale");
-        	}
-        });
+        		}
+        }
+        	});
 	}
 }
