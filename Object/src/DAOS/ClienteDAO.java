@@ -7,12 +7,13 @@ import javax.swing.table.DefaultTableModel;
 import Classi.Cliente;
 
 public class ClienteDAO {
-//
+
     public static ArrayList<Cliente> SelectClientiPerPuntiFrutta() {
          ArrayList<Cliente> cliente = new ArrayList<Cliente>();
              Cliente C;
         
         try {
+        	  System.out.println("connession1");
               Class.forName("org.postgresql.Driver");//load il driver
               System.out.println("connession1");
               Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione

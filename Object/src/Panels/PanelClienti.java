@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Classi.Cliente;
+import Classi.*;
 import net.proteanit.sql.DbUtils;
 import Controller.Controller;
 import DAOS.ClienteDAO;
@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
+import java.util.*;
 import net.proteanit.sql.DbUtils;
 import net.proteanit.sql.*;
 import java.sql.*;
@@ -65,7 +65,7 @@ public class PanelClienti extends JPanel {
       lblNewLabel_1.setBounds(251, 22, 193, 23);
       add(lblNewLabel_1);
       
-      JLabel lblcategoria = new JLabel("Selezionare categoria richiesta");
+      JLabel lblcategoria = new JLabel("Selezionare categoria richiestay");
       lblcategoria.setForeground(new Color(255, 255, 255));
       lblcategoria.setFont(new Font("Dialog", Font.ITALIC, 11));
       lblcategoria.setBounds(251, 64, 215, 14);
@@ -95,7 +95,8 @@ public class PanelClienti extends JPanel {
       JScrollPane scrollPane = new JScrollPane();
       scrollPane.setBounds(0, 215, 643, 286);
       add(scrollPane);
-      
+      btncerca.setBounds(544, 119, 89, 23);
+      add(btncerca);
       tabella = new JTable();
       tabella.setModel(new DefaultTableModel(
       	new Object[][] {
@@ -108,7 +109,7 @@ public class PanelClienti extends JPanel {
       tabella.getColumnModel().getColumn(0).setResizable(false);
       scrollPane.setViewportView(tabella);
       btncerca.addMouseListener(new MouseAdapter() {
-      	@Override
+      	
       	public void mouseClicked(MouseEvent e) {
       		
       		{
@@ -123,6 +124,8 @@ public class PanelClienti extends JPanel {
       			
       			if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
+                    
+                    
                 }
 
 
@@ -131,11 +134,11 @@ public class PanelClienti extends JPanel {
                 }
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Confenzionati")))) {
       				TheController.getClientidao();
-					cliente= ClienteDAO.SelectClientiPerPuntiConfenzionati();
+					cliente= TheController.getClientidao().SelectClientiPerPuntiConfenzionati();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
       				TheController.getClientidao();
-					cliente= ClienteDAO.SelectClientiPerPuntiUova();
+					cliente= TheController.getClientidao().SelectClientiPerPuntiUova();
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPuntiLatticini();
@@ -161,18 +164,17 @@ public class PanelClienti extends JPanel {
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Farinacei")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziFarinacei();
       			}
-      			for(int i = 0; i < cliente.size();  i++){
-                 
-      		        	 Object[] rowdata = new Object[]{cliente.get(i).getNome(),cliente.get(i).getCognome(),cliente.get(i).getCodiceTessera(), cliente.get(i).getCF()};
-      		        	 model.addRow(rowdata);
-      			}
-              
+      			
+      			for(int i = 0; i <cliente.size();  i++){
+                    
+		        	 Object[] rowdata = new Object[]{cliente.get(i).getNome(),cliente.get(i).getCognome(),cliente.get(i).getCodiceTessera(), cliente.get(i).getCF()};
+		        	 model.addRow(rowdata);
+			}
       	   
       		}
       		
       	} });
-      btncerca.setBounds(544, 119, 89, 23);
-      add(btncerca);
+     
       
      
       
