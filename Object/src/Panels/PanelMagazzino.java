@@ -8,6 +8,8 @@ import net.proteanit.sql.DbUtils;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -29,6 +31,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
@@ -55,6 +58,8 @@ public class PanelMagazzino extends JPanel {
     private JTextField data1;
     private JTextField data2;
     private JTextField data3;
+    private JLabel lblNewLabel_2;
+    private JPanel panel_2;
 	/**
 	 * Create the panel.
 	 */
@@ -289,6 +294,7 @@ public class PanelMagazzino extends JPanel {
       txt3.setColumns(10);
       
       JPanel panel_1 = new JPanel();
+      panel_1.setBackground(new Color(47, 79, 79));
       panel_1.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
@@ -450,10 +456,12 @@ public class PanelMagazzino extends JPanel {
       add(panel_1);
       panel_1.setLayout(null);
       
-      JLabel lblNewLabel_8 = new JLabel("Aggiungi");
-      lblNewLabel_8.setFont(new Font("Dialog", Font.PLAIN, 11));
-      lblNewLabel_8.setBounds(10, 11, 47, 19);
-      panel_1.add(lblNewLabel_8);
+      JLabel lblaggiungi = new JLabel("\r\n");
+      lblaggiungi.setFont(new Font("Dialog", Font.PLAIN, 11));
+      lblaggiungi.setBounds(10, 0, 67, 41);
+      panel_1.add(lblaggiungi);
+      Image iconn= new ImageIcon(this.getClass().getResource("/add.png")).getImage();
+		lblaggiungi.setIcon(new ImageIcon(iconn));
       
       JLabel lblprezzo = new JLabel("Prezzo");
       lblprezzo.setFont(new Font("Dialog", Font.ITALIC, 11));
@@ -548,18 +556,16 @@ public class PanelMagazzino extends JPanel {
       data3.setBounds(302, 427, 86, 20);
       add(data3);
       
-      JButton btnNewButton = new JButton("New button");
-      btnNewButton.addMouseListener(new MouseAdapter() {
-      	@Override
-      	public void mouseClicked(MouseEvent e) {
-      		TheController.gotomagazzinoricerca(PanelMagazzino.this);
-      		
-      		
-      	
-      	}
-      });
-      btnNewButton.setBounds(532, 452, 89, 23);
-      add(btnNewButton);
+      lblNewLabel_2 = new JLabel("Ricerca Prodotti\r\n");
+      lblNewLabel_2.setForeground(new Color(255, 255, 255));
+      lblNewLabel_2.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lblNewLabel_2.setBounds(532, 430, 125, 17);
+      add(lblNewLabel_2);
+      
+      panel_2 = new JPanel();
+      panel_2.setBackground(new Color(47, 79, 79));
+      panel_2.setBounds(542, 458, 101, 43);
+      add(panel_2);
       
       
       

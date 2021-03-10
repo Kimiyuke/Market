@@ -1,7 +1,7 @@
 package Panels;
 
 import Controller.Controller;
-
+import DAOS.MagazzinoDAO;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -74,7 +74,7 @@ private JTable table;
 				{null, null, null, null},
 			},
 			new String[] {
-				 "Id Prodotto", "Nome","Marca","Disponibilità Totale"
+				 "Id Prodotto", "Disponibilità Totale","Nome","Marca","Prezzo"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -92,12 +92,28 @@ private JTable table;
       			
       			ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
       			if ((comboBox.getSelectedItem().toString().equals("Frutta")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiFrutta();
+					magazzino= MagazzinoDAO.SelectProdottiFrutta();
                 }
+      			else if ((comboBox.getSelectedItem().toString().equals("Farinacei")) ) {
+                    magazzino= TheController.getMagazzinodao().SelectProdottiFarinacei();
+                }
+      			else if ((comboBox.getSelectedItem().toString().equals("Verdura")) ) {
+                    magazzino= TheController.getMagazzinodao().SelectProdottiVerduraS();
+                }
+      			else if ((comboBox.getSelectedItem().toString().equals("Confezioanti")) ) {
+                    magazzino= TheController.getMagazzinodao().SelectProdottiConfezionati();
+                }
+      			else if ((comboBox.getSelectedItem().toString().equals("Latticini")) ) {
+                    magazzino= TheController.getMagazzinodao().SelectProdottiLatticini();
+                }
+      			else if ((comboBox.getSelectedItem().toString().equals("Uova")) ) {
+                    magazzino= TheController.getMagazzinodao().SelectProdottiUova();
+                }
+      			
       			
       			for(int i = 0; i <magazzino.size();  i++){
                     
-		        	 Object[] rowdata = new Object[]{magazzino.get(i).getIdProdotto(),magazzino.get(i).getDisponibilitaTotale(),magazzino.get(i).getNome(), magazzino.get(i).getMarca()};
+		        	 Object[] rowdata = new Object[]{magazzino.get(i).getIdProdotto(),magazzino.get(i).getDisponibilitaTotale(),magazzino.get(i).getNome(), magazzino.get(i).getMarca(), magazzino.get(i).getPrezzo()};
 		        	 model.addRow(rowdata);
 			}
 			}

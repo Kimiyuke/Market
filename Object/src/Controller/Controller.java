@@ -58,7 +58,7 @@ public LatticiniDAO getLatticinidao() {
 	return latticinidao;
 }
 
-public MagazzinoDAO getMagazzinodao() {
+public  MagazzinoDAO getMagazzinodao() {
 	return magazzinodao;
 }
 
