@@ -65,7 +65,7 @@ public class PanelClienti extends JPanel {
       lblNewLabel_1.setBounds(251, 22, 193, 23);
       add(lblNewLabel_1);
       
-      JLabel lblcategoria = new JLabel("Selezionare categoria richiestay");
+      JLabel lblcategoria = new JLabel("Selezionare categoria richiesta");
       lblcategoria.setForeground(new Color(255, 255, 255));
       lblcategoria.setFont(new Font("Dialog", Font.ITALIC, 11));
       lblcategoria.setBounds(251, 64, 215, 14);

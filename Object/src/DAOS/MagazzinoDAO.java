@@ -95,7 +95,7 @@ public class MagazzinoDAO {
 	
 	}
 
-	public ArrayList<Magazzino> SelectProdottiVerduraS() {
+	public ArrayList<Magazzino> SelectProdottiVerdura() {
 		ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
         Magazzino m;
    
@@ -145,7 +145,7 @@ public class MagazzinoDAO {
          System.out.println("connession2");
          Statement st= con.createStatement();//creo object di statement 
          System.out.println("connession3");
-         ResultSet rs= st.executeQuery("SELECT MAGAZZINO.ID_PRODOTTO, MAGAZZINO.DISPONIBILITA_TOTALE, MAGAZZINO.NOME, MAGAZZINO.MARCA, MAGAZZINO.PREZZO FROM MAGAZZINO NATURAL JOIN CONFEZIONATI");
+         ResultSet rs= st.executeQuery("SELECT CONFEZIONATI.ID_PRODOTTO, CONFEZIONATI.DISPONIBILITA_TOTALE, CONFEZIONATI.NOME, CONFEZIONATI.MARCA, CONFEZIONATI.PREZZO FROM CONFEZIONATI");
 
          System.out.println("connession");
 

@@ -19,63 +19,71 @@ public class Controller {
      PanelMagazzino panelmagazzino;
      PanelAggiuntaAcquisto panelaggiuntaacquisto;
      PanelMagazzinoRicerca panelmagazzinoricerca;
-
-    //DAOS
-    AcquistoDAO acquistodao;
-    ConfezionatiDAO confenzionatidao;
-    FarinaceiDAO farinaceidao;
-    LatticiniDAO latticinidao;
-    MagazzinoDAO magazzinodao;
-    TesseraPuntiDAO tesserapuntidao;
-    UovaDAO uovadao;
-    FruttaDAO fruttadao;
-    VerduraDAO verduradao;
-    ClienteDAO clientidao;
-    
+     PanelAcquisti panelacquisti;
+//    //DAOS
+//   AcquistoDAO acquistodao;
+//    ConfezionatiDAO confenzionatidao;
+//    FarinaceiDAO farinaceidao;
+//    LatticiniDAO latticinidao;
+//    MagazzinoDAO magazzinodao;
+//    TesseraPuntiDAO tesserapuntidao;
+//    UovaDAO uovadao;
+//    FruttaDAO fruttadao;
+//    VerduraDAO verduradao;
+//    ClienteDAO clientidao;
+//     AcquistoTotaleDAO acquistototaledao;
+     
+     
+     
     //Dialogs
     AggiuntaProdottiSuccesful aggiuntaprodottisuccesful;
+    
+    
+    
+    
     public ClienteDAO getClientidao() {
-        return clientidao;
+        return new ClienteDAO();
     }
-   AcquistoTotaleDAO acquistototaledao;
+  
    public AcquistoTotaleDAO getAcquistototaledao() {
-	return acquistototaledao;
+	return new AcquistoTotaleDAO();
 }
 
 public AcquistoDAO getAcquistodao() {
-	return acquistodao;
+	return new AcquistoDAO();
 }
 
 public ConfezionatiDAO getConfezionatidao() {
-	return confenzionatidao;
+	return new ConfezionatiDAO();
 }
 
 public FarinaceiDAO getFarinaceidao() {
-	return farinaceidao;
+	return new FarinaceiDAO();
 }
 
 public LatticiniDAO getLatticinidao() {
-	return latticinidao;
+	return new LatticiniDAO();
 }
 
 public  MagazzinoDAO getMagazzinodao() {
-	return magazzinodao;
+	return new MagazzinoDAO();
 }
 
 public TesseraPuntiDAO getTesserapuntidao() {
-	return tesserapuntidao;
+	return new TesseraPuntiDAO();
 }
 
 public UovaDAO getUovadao() {
-	return uovadao;
+	return new UovaDAO();
 }
 
 public VerduraDAO getVerduradao() {
-	return verduradao;
+	return new VerduraDAO();
 }
 public FruttaDAO getFruttadao() {
-	return fruttadao;
+	return new FruttaDAO();
 }
+
 
 
  
@@ -83,11 +91,12 @@ public FruttaDAO getFruttadao() {
 
     public static void main(String[] args) {
         Controller c=Controller.getInstance();
-
+       
+        
 
     }
-
-
+  
+    
 
 
 
@@ -97,6 +106,7 @@ public FruttaDAO getFruttadao() {
     public void Init() {
         LogInFrame= new LogInFrame(this);
         LogInFrame.setVisible(true);
+        
         
     }
 
@@ -154,8 +164,8 @@ public FruttaDAO getFruttadao() {
 		panelmagazzino.setVisible(false);
 		
 		panelmagazzinoricerca= new PanelMagazzinoRicerca(this);
-	Home.add(panelmagazzinoricerca);
-		
+         Home.add(panelmagazzinoricerca);
+		panelmagazzinoricerca.setVisible(true);
 		panelmagazzinoricerca.setLocation(237, 11);
 		
 		

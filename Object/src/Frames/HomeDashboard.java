@@ -221,6 +221,11 @@ public class HomeDashboard extends JFrame {
 		panelmagazzino.setVisible(false);
 		
 		panelclienti = new PanelClienti(TheController);
+		panelclienti.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		panelclienti.setLocation(237, 11);
 		panelclienti.setBounds(237, 11, 643, 501);
 		contentPane.add(panelclienti);
@@ -236,17 +241,17 @@ public class HomeDashboard extends JFrame {
 		
 		panelaggiuntaacquisto.setVisible(false);
 		
-//		panelmagazzinoricerca = new PanelMagazzinoRicerca(TheController);
-//		panelmagazzinoricerca.setLocation(237, 11);
-//		panelmagazzinoricerca.setBounds(237, 11, 643, 501);
-//		contentPane.add(panelaggiuntaacquisto);
-//		panelmagazzinoricerca.setLayout(null);
-//		
-//		panelmagazzinoricerca.setVisible(false);
+		
+	panelmagazzinoricerca = new PanelMagazzinoRicerca(TheController);
+		panelmagazzinoricerca.setLocation(237, 11);
+		panelmagazzinoricerca.setBounds(237, 11, 643, 501);
+		contentPane.add(panelaggiuntaacquisto);
+		panelmagazzinoricerca.setLayout(null);	
+
 		
 		
 		
-		 panelMagazzino.addMouseListener(new MouseAdapter() {
+		 panelMagazzino.addMouseListener(new MouseAdapter() {     //action per il panel magazzino
 			
 			public void mouseClicked(MouseEvent e) {
 				
@@ -261,6 +266,9 @@ public class HomeDashboard extends JFrame {
 				panelmagazzino.getTxt1().setVisible(false);
 				panelmagazzino.getTxt2().setVisible(false);
 				panelmagazzino.getTxt3().setVisible(false);
+				
+				//pannelli
+				panelmagazzinoricerca.setVisible(false);
 				
 				panelaggiuntaacquisto.setVisible(false);
 				panelclienti.setVisible(false);
@@ -287,11 +295,14 @@ public class HomeDashboard extends JFrame {
 		 	}
 });
 		
-		 panelClienti.addMouseListener(new MouseAdapter() {
+		 panelClienti.addMouseListener(new MouseAdapter() {                   //action per il panel clienti
 				
 				public void mouseClicked(MouseEvent e) {
+					
 					panelmagazzino.setVisible(false);
 					panelaggiuntaacquisto.setVisible(false);
+					panelmagazzinoricerca.setVisible(false);
+			
 					panelclienti.setVisible(true);
 					
 					
@@ -315,11 +326,14 @@ public class HomeDashboard extends JFrame {
 		 	}
 			});
 		
-		 panelacquisti.addMouseListener(new MouseAdapter() {
+		 panelacquisti.addMouseListener(new MouseAdapter() {                  //action per il panel acquisti
 				
 				public void mouseClicked(MouseEvent e) {
+					
 					panelmagazzino.setVisible(false);
 					panelclienti.setVisible(false);
+					panelmagazzinoricerca.setVisible(false);
+					
 					panelaggiuntaacquisto.setVisible(true);
 				}
 		 	

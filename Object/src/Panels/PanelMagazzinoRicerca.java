@@ -59,10 +59,10 @@ private JTable table;
 		lblselezionecategoria.setBounds(400, 29, 103, 20);
 		add(lblselezionecategoria);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(530, 21, 79, 37);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Uova", "Confenzionati", "Latticini"}));
-		add(comboBox);
+		JComboBox Combobox = new JComboBox();
+		Combobox.setBounds(530, 21, 79, 37);
+		Combobox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Uova", "Confezionati", "Latticini"}));
+		add(Combobox);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 162, 643, 339);
@@ -91,22 +91,22 @@ private JTable table;
       			}
       			
       			ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
-      			if ((comboBox.getSelectedItem().toString().equals("Frutta")) ) {
-					magazzino= MagazzinoDAO.SelectProdottiFrutta();
+      			if ((Combobox.getSelectedItem().toString().equals("Frutta")) ) {
+					magazzino= TheController.getMagazzinodao().SelectProdottiFrutta();
                 }
-      			else if ((comboBox.getSelectedItem().toString().equals("Farinacei")) ) {
+      			else if ((Combobox.getSelectedItem().toString().equals("Farinacei")) ) {
                     magazzino= TheController.getMagazzinodao().SelectProdottiFarinacei();
                 }
-      			else if ((comboBox.getSelectedItem().toString().equals("Verdura")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiVerduraS();
+      			else if ((Combobox.getSelectedItem().toString().equals("Verdura")) ) {
+                    magazzino= TheController.getMagazzinodao().SelectProdottiVerdura();
                 }
-      			else if ((comboBox.getSelectedItem().toString().equals("Confezioanti")) ) {
+      			else if ((Combobox.getSelectedItem().toString().equals("Confezionati")) ) {
                     magazzino= TheController.getMagazzinodao().SelectProdottiConfezionati();
                 }
-      			else if ((comboBox.getSelectedItem().toString().equals("Latticini")) ) {
+      			else if ((Combobox.getSelectedItem().toString().equals("Latticini")) ) {
                     magazzino= TheController.getMagazzinodao().SelectProdottiLatticini();
                 }
-      			else if ((comboBox.getSelectedItem().toString().equals("Uova")) ) {
+      			else if ((Combobox.getSelectedItem().toString().equals("Uova")) ) {
                     magazzino= TheController.getMagazzinodao().SelectProdottiUova();
                 }
       			
@@ -126,4 +126,7 @@ private JTable table;
 		add(btncerca);
 
 	}
+	
+	
+	
 }
