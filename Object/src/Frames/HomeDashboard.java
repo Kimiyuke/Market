@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.border.LineBorder;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -71,7 +73,7 @@ public class HomeDashboard extends JFrame {
 		TheController=controller;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 906, 562);
+		setBounds(100, 100, 906, 634);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 0));
@@ -80,7 +82,7 @@ public class HomeDashboard extends JFrame {
 		
 		JPanel panelMenu = new JPanel();
 		panelMenu.setBackground(new Color(47, 79, 79));
-		panelMenu.setBounds(0, 11, 227, 501);
+		panelMenu.setBounds(0, 11, 227, 573);
 		contentPane.add(panelMenu);
 		
 		JPanel panelClienti = new JPanel();	
@@ -111,7 +113,7 @@ public class HomeDashboard extends JFrame {
 		iconclienti.setIcon(new ImageIcon(icons));
 		
 		JPanel panelMagazzino = new JPanel();
-		panelMagazzino.setBounds(0, 225, 217, 49);
+		panelMagazzino.setBounds(0, 286, 217, 49);
 		panelMagazzino.setBorder(new MatteBorder(2, 2, 2, 2, (Color) Color.WHITE));
 		panelMagazzino.setBackground(new Color(47, 79, 79));
 		panelMenu.add(panelMagazzino);
@@ -131,7 +133,7 @@ public class HomeDashboard extends JFrame {
 		iconmagazzino.setIcon(new ImageIcon(iconss));
 		
 		JPanel panelacquisti = new JPanel();
-		panelacquisti.setBounds(0, 285, 217, 49);
+		panelacquisti.setBounds(0, 407, 217, 49);
 		panelacquisti.setBorder(new LineBorder(new Color(255, 255, 255), 2));
 		panelacquisti.setBackground(new Color(47, 79, 79));
 		panelMenu.add(panelacquisti);
@@ -151,14 +153,22 @@ public class HomeDashboard extends JFrame {
 		iconacquisti.setIcon(new ImageIcon(iconn));
 		
 		JPanel panelLogout = new JPanel();
-		panelLogout.setBounds(0, 449, 207, 41);
+		panelLogout.setBounds(10, 521, 207, 41);
 	
 		panelLogout.setBorder(new LineBorder(new Color(255, 0, 0)));
 		panelLogout.setBackground(new Color(47, 79, 79));
 		panelMenu.add(panelLogout);
 		panelLogout.setLayout(null);
 		
+		JLabel iconlogout = new JLabel("\r\n");
+		iconlogout.setBounds(0, 0, 101, 41);
+		panelLogout.add(iconlogout);
+		Image iconz= new ImageIcon(this.getClass().getResource("/logout.png")).getImage();
+		iconlogout.setIcon(new ImageIcon(iconz));
+		
 		JLabel lbllogout = new JLabel("LOG OUT");
+		lbllogout.setBounds(10, -1, 197, 41);
+		panelLogout.add(lbllogout);
 		lbllogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -166,7 +176,7 @@ public class HomeDashboard extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panelLogout.setBackground(new Color(112, 128, 144));
-
+     
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -184,14 +194,6 @@ public class HomeDashboard extends JFrame {
 		lbllogout.setForeground(new Color(255, 255, 255));
 		lbllogout.setFont(new Font("Dubai", Font.BOLD | Font.ITALIC, 17));
 		lbllogout.setHorizontalAlignment(SwingConstants.CENTER);
-		lbllogout.setBounds(45, 0, 197, 41);
-		panelLogout.add(lbllogout);
-		
-		JLabel iconlogout = new JLabel("\r\n");
-		iconlogout.setBounds(0, 0, 101, 41);
-		panelLogout.add(iconlogout);
-		Image iconz= new ImageIcon(this.getClass().getResource("/logout.png")).getImage();
-		iconlogout.setIcon(new ImageIcon(iconz));
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 207, 143);
@@ -206,6 +208,54 @@ public class HomeDashboard extends JFrame {
 		Image iconsss= new ImageIcon(this.getClass().getResource("/homeicon.png")).getImage();
 		lblicon.setIcon(new ImageIcon(iconsss));
 		
+		JPanel panelprodotti = new JPanel();                             //ACTION LISTENER PANEL PRODOTTI
+		panelprodotti.setVisible(false);
+		panelprodotti.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				panelmagazzino.setVisible(false);
+				panelaggiuntaacquisto.setVisible(false);
+				panelclienti.setVisible(false);
+				panelmagazzinoricerca.setVisible(true);
+				
+				
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panelprodotti.setBackground(new Color(112, 128, 144));
+				panelprodotti.setVisible(true);
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panelprodotti.setBackground(new Color(47, 79, 79));
+				panelprodotti.setVisible(false);
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				panelprodotti.setBackground(new Color(60, 179, 113));
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				panelprodotti.setBackground(new Color(112, 128, 144));
+			}
+		});
+	
+		panelprodotti.setBorder(new MatteBorder(2, 2, 2, 1, (Color) new Color(255, 255, 255)));
+		panelprodotti.setBackground(new Color(47, 79, 79));
+		panelprodotti.setBounds(0, 335, 217, 49);
+		panelMenu.add(panelprodotti);
+		panelprodotti.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("PRODOTTI\r\n");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 17));
+		lblNewLabel_3.setBounds(40, 11, 197, 38);
+		panelprodotti.add(lblNewLabel_3);
+		
 		
 		
 		
@@ -214,7 +264,7 @@ public class HomeDashboard extends JFrame {
 		
 		
 		 panelmagazzino = new PanelMagazzino(TheController);
-		panelmagazzino.setBounds(237, 11, 643, 501);
+		panelmagazzino.setBounds(237, 11, 653, 501);
 		contentPane.add(panelmagazzino);
 		panelmagazzino.setLayout(null);
 		
@@ -242,11 +292,12 @@ public class HomeDashboard extends JFrame {
 		panelaggiuntaacquisto.setVisible(false);
 		
 		
-	panelmagazzinoricerca = new PanelMagazzinoRicerca(TheController);
+ 	    panelmagazzinoricerca = new PanelMagazzinoRicerca(TheController);
 		panelmagazzinoricerca.setLocation(237, 11);
 		panelmagazzinoricerca.setBounds(237, 11, 643, 501);
-		contentPane.add(panelaggiuntaacquisto);
-		panelmagazzinoricerca.setLayout(null);	
+		contentPane.add(panelmagazzinoricerca);
+		panelmagazzinoricerca.setLayout(null);
+		panelmagazzinoricerca.setVisible(false);
 
 		
 		
@@ -268,8 +319,13 @@ public class HomeDashboard extends JFrame {
 				panelmagazzino.getTxt3().setVisible(false);
 				
 				//pannelli
-				panelmagazzinoricerca.setVisible(false);
+			
 				
+//				panelmagazzinoricerca.remove(panelmagazzinoricerca.getCombobox());
+//				for (Component cp : panelmagazzinoricerca.getComponents() ){  //FOR PER SETTARE VISIBLE FALSE TUTTE LE COMPONENTI DEL PANELMAGAZZINORICERCA 
+//			        cp.setEnabled(false);
+//			 }
+				panelmagazzinoricerca.setVisible(false);
 				panelaggiuntaacquisto.setVisible(false);
 				panelclienti.setVisible(false);
 				panelmagazzino.setVisible(true);
@@ -279,11 +335,12 @@ public class HomeDashboard extends JFrame {
 			}		 	@Override
 		 	public void mouseEntered(MouseEvent e) {
 				panelMagazzino.setBackground(new Color(112, 128, 144));
-
+                panelprodotti.setVisible(true);
 		 	}
 		 	@Override
 		 	public void mouseExited(MouseEvent e) {
 		 		panelMagazzino.setBackground(new Color(47, 79, 79));
+		 		 panelprodotti.setVisible(false);
 		 	}
 		 	@Override
 		 	public void mousePressed(MouseEvent e) {
@@ -304,6 +361,7 @@ public class HomeDashboard extends JFrame {
 					panelmagazzinoricerca.setVisible(false);
 			
 					panelclienti.setVisible(true);
+					
 					
 					
 				}

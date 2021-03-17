@@ -8,7 +8,7 @@ import Classi.Cliente;
 
 public class ClienteDAO {
 
-    public static ArrayList<Cliente> SelectClientiPerPuntiFrutta() {
+    public  ArrayList<Cliente> SelectClientiPerPuntiFrutta() {
          ArrayList<Cliente> cliente = new ArrayList<Cliente>();
              Cliente C;
         
@@ -52,7 +52,7 @@ public class ClienteDAO {
 
     }
 
-	public static ArrayList<Cliente> SelectClientiPerPuntiVerdura() {
+	public  ArrayList<Cliente> SelectClientiPerPuntiVerdura() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -95,7 +95,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPuntiConfezionati() {
+	public ArrayList<Cliente> SelectClientiPerPuntiConfezionati() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -137,7 +137,7 @@ public class ClienteDAO {
    return cliente;
 
 }
-	public static ArrayList<Cliente> SelectClientiPerPuntiUova() {
+	public  ArrayList<Cliente> SelectClientiPerPuntiUova() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -180,7 +180,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPuntiLatticini() {
+	public  ArrayList<Cliente> SelectClientiPerPuntiLatticini() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -223,7 +223,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPuntiFarinacei() {
+	public  ArrayList<Cliente> SelectClientiPerPuntiFarinacei() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -266,7 +266,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPezziFrutta() {
+	public  ArrayList<Cliente> SelectClientiPerPezziFrutta() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -308,7 +308,7 @@ public class ClienteDAO {
    return cliente;
 
 }
-	public static ArrayList<Cliente> SelectClientiPerPezziVerdura() {
+	public ArrayList<Cliente> SelectClientiPerPezziVerdura() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -351,7 +351,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPezziUova() {
+	public  ArrayList<Cliente> SelectClientiPerPezziUova() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -394,7 +394,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPezziLatticini() {
+	public  ArrayList<Cliente> SelectClientiPerPezziLatticini() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -437,7 +437,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPezziConfezionati() {
+	public  ArrayList<Cliente> SelectClientiPerPezziConfezionati() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    
@@ -480,7 +480,7 @@ public class ClienteDAO {
 
 }
 
-	public static ArrayList<Cliente> SelectClientiPerPezziFarinacei() {
+	public  ArrayList<Cliente> SelectClientiPerPezziFarinacei() {
 		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
         Cliente C;
    

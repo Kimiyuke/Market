@@ -58,9 +58,6 @@ public class PanelMagazzino extends JPanel {
     private JTextField data1;
     private JTextField data2;
     private JTextField data3;
-    private JLabel lblNewLabel_2;
-    private JPanel panel_2;
-    private JLabel iconricerca;
 	/**
 	 * Create the panel.
 	 */
@@ -181,6 +178,7 @@ public class PanelMagazzino extends JPanel {
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Uova")) {
       			lbl1.setText("Data di deposizione");
+      			
       			data1.setVisible(true);
       			lbl1.setVisible(true);
       			lbl2.setVisible(true);
@@ -192,6 +190,7 @@ public class PanelMagazzino extends JPanel {
       			
       			data3.setVisible(false);
       			data2.setVisible(false);
+      			txt1.setVisible(false);
       			
       			
       		}
@@ -556,30 +555,7 @@ public class PanelMagazzino extends JPanel {
       data3.setColumns(10);
       data3.setBounds(302, 427, 86, 20);
       add(data3);
-      
-      lblNewLabel_2 = new JLabel("Ricerca Prodotti\r\n");
-      lblNewLabel_2.setForeground(new Color(255, 255, 255));
-      lblNewLabel_2.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblNewLabel_2.setBounds(536, 428, 125, 17);
-      add(lblNewLabel_2);
-      
-      panel_2 = new JPanel();
-      panel_2.addMouseListener(new MouseAdapter() {
-      	@Override
-      	public void mouseClicked(MouseEvent e) {
-      		TheController.gotomagazzinoricerca(PanelMagazzino.this);
-      	}
-      });
-      panel_2.setBackground(new Color(47, 79, 79));
-      panel_2.setBounds(542, 458, 101, 43);
-      add(panel_2);
-      panel_2.setLayout(null);
-      
-      iconricerca = new JLabel("\r\n");
-      iconricerca.setBounds(0, 0, 101, 43);
-      panel_2.add(iconricerca);
       Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
-		iconricerca.setIcon(new ImageIcon(iconz));
       
       
       

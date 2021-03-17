@@ -11,6 +11,9 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JYearChooser;
+import com.toedter.calendar.JMonthChooser;
 public class PanelAcquisti extends JPanel {
 Controller TheController;
 	
@@ -33,11 +36,16 @@ Controller TheController;
 		lblNewLabel.setBounds(0, 8, 192, 73);
 		panel.add(lblNewLabel);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerDateModel(new Date(1615330800000L), null, null, Calendar.DAY_OF_YEAR));
-		spinner.setBounds(281, 43, 115, 20);
-		add(spinner);
+		JYearChooser anno = new JYearChooser();
+		anno.setBounds(320, 61, 60, 20);
+		add(anno);
+		
+		JMonthChooser mese = new JMonthChooser();
+		mese.setBounds(223, 61, 96, 20);
+		add(mese);
 		TheController=c;
+		
+		
 
 	}
 }

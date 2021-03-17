@@ -80,16 +80,12 @@ public class PanelClienti extends JPanel {
       
       JComboBox ComboBox2 = new JComboBox();
       ComboBox2.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Confezionati", "Latticini", "Uova"}));
-      ComboBox2.setBounds(433, 61, 51, 22);
+      ComboBox2.setBounds(433, 61, 64, 22);
       add(ComboBox2);
-      
-      JLabel lblNewLabel_3 = new JLabel("ICON\r\n");
-      lblNewLabel_3.setBounds(511, 110, 51, 41);
-      add(lblNewLabel_3);
       
       JComboBox ComboBox1 = new JComboBox();
       ComboBox1.setModel(new DefaultComboBoxModel(new String[] {"Punti", "Pezzi"}));
-      ComboBox1.setBounds(433, 23, 51, 22);
+      ComboBox1.setBounds(433, 23, 64, 22);
       add(ComboBox1);
       
       JScrollPane scrollPane = new JScrollPane();
@@ -108,6 +104,7 @@ public class PanelClienti extends JPanel {
       ));
       tabella.getColumnModel().getColumn(0).setResizable(false);
       scrollPane.setViewportView(tabella);
+      String nome="pizza";
       btncerca.addMouseListener(new MouseAdapter() {
       	
       	public void mouseClicked(MouseEvent e) {

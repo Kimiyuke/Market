@@ -20,6 +20,7 @@ public class Controller {
      PanelAggiuntaAcquisto panelaggiuntaacquisto;
      PanelMagazzinoRicerca panelmagazzinoricerca;
      PanelAcquisti panelacquisti;
+    
 //    //DAOS
 //   AcquistoDAO acquistodao;
 //    ConfezionatiDAO confenzionatidao;
@@ -160,23 +161,21 @@ public FruttaDAO getFruttadao() {
 
 	public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
 		
-		
 		panelmagazzino.setVisible(false);
 		
+		
 		panelmagazzinoricerca= new PanelMagazzinoRicerca(this);
-         Home.add(panelmagazzinoricerca);
+        
 		panelmagazzinoricerca.setVisible(true);
 		panelmagazzinoricerca.setLocation(237, 11);
 		
-		
-		
-      
-		
-		
+
 	}
 
 	
-
+	public void setnullcomponent() {
+		panelmagazzinoricerca.remove(panelmagazzinoricerca.getCombobox());
+	}
  
 
 

@@ -29,7 +29,8 @@ public class PanelMagazzinoRicerca extends JPanel {
 
 Controller TheController;
 private JTable table;
-	 
+private JComboBox Combobox;
+private JButton btncerca;
 	 
 	public PanelMagazzinoRicerca(Controller c) {
 		TheController=c;
@@ -59,11 +60,6 @@ private JTable table;
 		lblselezionecategoria.setBounds(400, 29, 103, 20);
 		add(lblselezionecategoria);
 		
-		JComboBox Combobox = new JComboBox();
-		Combobox.setBounds(530, 21, 79, 37);
-		Combobox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Uova", "Confezionati", "Latticini"}));
-		add(Combobox);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 162, 643, 339);
 		add(scrollPane);
@@ -79,54 +75,66 @@ private JTable table;
 		));
 		scrollPane.setViewportView(table);
 		
-		JButton btncerca = new JButton("Cerca");
+		 Combobox = new JComboBox();
+		Combobox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Confezionati", "Latticini", "Farinacei", "Uova"}));
+		Combobox.setBounds(517, 21, 92, 38);
+		add(Combobox);
+		
+		 btncerca = new JButton("Cerca");
 		btncerca.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-      			
-      			int rowCount = model.getRowCount(); //Si tiene conto di quante righe ci fossero prima e poi le cancella tutte tramite il for
-      			for (int i = rowCount - 1; i >= 0; i--) {
-      			    model.removeRow(i);
-      			}
-      			
-      			ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
-      			if ((Combobox.getSelectedItem().toString().equals("Frutta")) ) {
-					magazzino= TheController.getMagazzinodao().SelectProdottiFrutta();
-                }
-      			else if ((Combobox.getSelectedItem().toString().equals("Farinacei")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiFarinacei();
-                }
-      			else if ((Combobox.getSelectedItem().toString().equals("Verdura")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiVerdura();
-                }
-      			else if ((Combobox.getSelectedItem().toString().equals("Confezionati")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiConfezionati();
-                }
-      			else if ((Combobox.getSelectedItem().toString().equals("Latticini")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiLatticini();
-                }
-      			else if ((Combobox.getSelectedItem().toString().equals("Uova")) ) {
-                    magazzino= TheController.getMagazzinodao().SelectProdottiUova();
-                }
-      			
-      			
-      			for(int i = 0; i <magazzino.size();  i++){
-                    
-		        	 Object[] rowdata = new Object[]{magazzino.get(i).getIdProdotto(),magazzino.get(i).getDisponibilitaTotale(),magazzino.get(i).getNome(), magazzino.get(i).getMarca(), magazzino.get(i).getPrezzo()};
-		        	 model.addRow(rowdata);
+				
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+	      			
+	      			int rowCount = model.getRowCount(); //Si tiene conto di quante righe ci fossero prima e poi le cancella tutte tramite il for
+	      			for (int i = rowCount - 1; i >= 0; i--) {
+	      			    model.removeRow(i);
+	      			}
+	      			
+	      			ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
+	      			if ((Combobox.getSelectedItem().toString().equals("Frutta")) ) {
+						magazzino= TheController.getMagazzinodao().SelectProdottiFrutta();
+	                }
+	      			else if ((Combobox.getSelectedItem().toString().equals("Farinacei")) ) {
+	                    magazzino= TheController.getMagazzinodao().SelectProdottiFarinacei();
+	                }
+	      			else if ((Combobox.getSelectedItem().toString().equals("Verdura")) ) {
+	                    magazzino= TheController.getMagazzinodao().SelectProdottiVerdura();
+	                }
+	      			else if ((Combobox.getSelectedItem().toString().equals("Confezionati")) ) {
+	                    magazzino= TheController.getMagazzinodao().SelectProdottiConfezionati();
+	                }
+	      			else if ((Combobox.getSelectedItem().toString().equals("Latticini")) ) {
+	                    magazzino= TheController.getMagazzinodao().SelectProdottiLatticini();
+	                }
+	      			else if ((Combobox.getSelectedItem().toString().equals("Uova")) ) {
+	                    magazzino= TheController.getMagazzinodao().SelectProdottiUova();
+	                }
+	      			
+	      			
+	      			for(int i = 0; i <magazzino.size();  i++){
+	                    
+			        	 Object[] rowdata = new Object[]{magazzino.get(i).getIdProdotto(),magazzino.get(i).getDisponibilitaTotale(),magazzino.get(i).getNome(), magazzino.get(i).getMarca(), magazzino.get(i).getPrezzo()};
+			        	 model.addRow(rowdata);
+	    			}
 			}
-			}
-		});
-		btncerca.setBounds(524, 79, 85, 21);
-		btncerca.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+	
+		
+	});
+
+		btncerca.setBounds(517, 82, 89, 23);
 		add(btncerca);
 
+		
 	}
 	
+	public JComboBox getCombobox() {
+		return this.Combobox;
+		
+	}
 	
-	
+	public JButton getButton() {
+		return this.btncerca;
+	}
 }
