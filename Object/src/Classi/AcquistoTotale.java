@@ -1,8 +1,8 @@
 package Classi;
 
 import java.util.Date;
-public class AquistoTotale {
-private	String NId;
+public class AcquistoTotale {
+private  int NId;
 private String CodiceTessera;
 private int TotalePunti;
 private float PrezzoTotale;
@@ -18,13 +18,13 @@ private Date DataAcquisto;
 
 
 
-public String getNId() {
+public int getNId() {
 	return NId;
 }
 
 
 
-public void setNId(String nId) {
+public void setNId(int nId) {
 	NId = nId;
 }
 
@@ -175,7 +175,7 @@ public void setDataAcquisto(Date dataAcquisto) {
 
 
 
-public AquistoTotale(String nId, String codiceTessera, int totalePunti, float prezzoTotale, int numProdotti,
+public AcquistoTotale(int nId, String codiceTessera, int totalePunti, float prezzoTotale, int numProdotti,
 		int numProdottiFarinacei, int numProdottiFrutta, int numProdottiVerdura, int numProdottiUova,
 		int numProdottiConfenzionati, int numProdottiLatticini, boolean completato, Date dataAcquisto) {
 	super();

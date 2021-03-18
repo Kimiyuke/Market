@@ -63,7 +63,7 @@ public class PanelMagazzino extends JPanel {
 	 */
 	public PanelMagazzino(Controller c) {
 		TheController=c;
-		setBackground(new Color(47, 79, 79));
+		setBackground(new Color(45, 106, 79));
       setSize(643,501);
       setLayout(null);
       
@@ -71,7 +71,7 @@ public class PanelMagazzino extends JPanel {
       JPanel panel = new JPanel();
       panel.setBorder(new MatteBorder(4, 1, 4, 1, (Color) new Color(255, 255, 255)));
       panel.setToolTipText("");
-      panel.setBackground(new Color(47, 79, 79));
+      panel.setBackground(new Color(27, 67, 50));
       panel.setBounds(0, 0, 206, 78);
       add(panel);
       panel.setLayout(null);
@@ -294,7 +294,7 @@ public class PanelMagazzino extends JPanel {
       txt3.setColumns(10);
       
       JPanel panel_1 = new JPanel();
-      panel_1.setBackground(new Color(47, 79, 79));
+      panel_1.setBackground(new Color(27, 67, 50));
       panel_1.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {

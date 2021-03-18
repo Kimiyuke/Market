@@ -28,13 +28,13 @@ import java.util.ArrayList;
 public class PanelMagazzinoRicerca extends JPanel {
 
 Controller TheController;
-private JTable table;
+private JTable tabella;
 private JComboBox Combobox;
 private JButton btncerca;
 	 
 	public PanelMagazzinoRicerca(Controller c) {
 		TheController=c;
-		setBackground(new Color(47, 79, 79));
+		setBackground(new Color(45, 106, 79));
 		
 		
 		setSize(643,501);
@@ -42,7 +42,7 @@ private JButton btncerca;
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new MatteBorder(4, 1, 4, 1, (Color) new Color(255, 255, 255)));
-		panel.setBackground(new Color(47, 79, 79));
+		panel.setBackground(new Color(27, 67, 50));
 		panel.setBounds(0, 0, 219, 67);
 		add(panel);
 		panel.setLayout(null);
@@ -64,8 +64,8 @@ private JButton btncerca;
 		scrollPane.setBounds(0, 162, 643, 339);
 		add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		tabella = new JTable();
+		tabella.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null},
 			},
@@ -73,7 +73,10 @@ private JButton btncerca;
 				 "Id Prodotto", "Disponibilità Totale","Nome","Marca","Prezzo"
 			}
 		));
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(tabella);
+		tabella.setSelectionBackground(new Color(144, 238, 144));
+	      tabella.getTableHeader().setOpaque(false);
+	      tabella.getTableHeader().setBackground(new Color (116, 198, 157));
 		
 		 Combobox = new JComboBox();
 		Combobox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Confezionati", "Latticini", "Farinacei", "Uova"}));
@@ -85,7 +88,7 @@ private JButton btncerca;
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					DefaultTableModel model = (DefaultTableModel) tabella.getModel();
 	      			
 	      			int rowCount = model.getRowCount(); //Si tiene conto di quante righe ci fossero prima e poi le cancella tutte tramite il for
 	      			for (int i = rowCount - 1; i >= 0; i--) {

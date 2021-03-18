@@ -2,6 +2,7 @@ package Frames;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
@@ -54,13 +56,13 @@ public class LogInFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBackground(new Color(149, 213, 178));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(176, 130, 181, 30);
+		panel.setBounds(176, 155, 181, 30);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -99,7 +101,7 @@ public class LogInFrame extends JFrame {
 		panel.add(pwdPassword);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(176, 89, 181, 30);
+		panel_1.setBounds(176, 114, 181, 30);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -138,8 +140,8 @@ public class LogInFrame extends JFrame {
 		TextUsername.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(47, 79, 79));
-		panel_2.setBounds(173, 195, 184, 30);
+		panel_2.setBackground(new Color(27, 67, 50));
+		panel_2.setBounds(173, 206, 184, 30);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -155,6 +157,11 @@ public class LogInFrame extends JFrame {
 		lblErrore.setBounds(130, 171, 273, 14);
 		contentPane.add(lblErrore);
 		
+		JLabel lblicon = new JLabel("");
+		lblicon.setBounds(199, 0, 163, 109);
+		contentPane.add(lblicon);
+		Image icons= new ImageIcon(this.getClass().getResource("/home.png")).getImage();
+		lblicon.setIcon(new ImageIcon(icons));
 		
 		
 		panel_2.addMouseListener(new MouseAdapter() {

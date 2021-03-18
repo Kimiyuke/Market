@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
+import Classi.AcquistoTotale;
 import Classi.Cliente;
 import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
@@ -56,5 +58,65 @@ public class AcquistoTotaleDAO {
              }
 		return punti;
 	}
+
+	public  ArrayList<AcquistoTotale> AcquistiPerData(int mese, int anno) throws Exception  {
+		ArrayList<AcquistoTotale> acquisto = new ArrayList<AcquistoTotale>();
+        AcquistoTotale A;
+		
+		 try { 
+			
+	            Class.forName("org.postgresql.Driver");//load il driver            
+	            Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione           
+	            PreparedStatement pst= con.prepareStatement("Select * from acquisto_totale  WHERE EXTRACT(MONTH FROM data_acquisto)=? AND EXTRACT(year FROM data_acquisto)=?");
+	            
+	            pst.setInt(1, mese);
+	            pst.setInt(2, anno);
+	            
+	            ResultSet rs=pst.executeQuery();
+	            rs.next();
+	            System.out.println("ciao");
+	            System.out.println(mese);
+	            System.out.println(anno);
+			 while (rs.next()) {//FETCHA RISULTATO IN ARRAYLIST CREANDO UN CLIENTE PER OGNI ISTANZA TROVATA
+                 A= new AcquistoTotale(
+                		 rs.getInt("n_id"),
+                         rs.getString("codice_tessera"),
+                        rs.getInt("totale_punti"),
+                        rs.getFloat("prezzo_totale"),
+                        
+                        rs.getInt("num_prodotti"),
+                        rs.getInt("num_prodotti_farinacei"),
+                        rs.getInt("num_prodotti_frutta"),
+                        rs.getInt("num_prodotti_verdura"),
+                        rs.getInt("num_prodotti_uova"),
+                        rs.getInt("num_prodotti_confezionati"),
+                        rs.getInt("num_prodotti_latticini"),
+                        rs.getBoolean("completato"),
+                        rs.getDate("data_acquisto")
+                        
+                        
+                         );
+                 System.out.println("ciao");
+                 acquisto.add(A);
+                 System.out.println("ciao");
+                 
+             }
+
+
+
+             }
+		 catch (SQLException x) {
+	          System.out.println("Review acquisti: " +x);
+        return null;
+              }
+      return acquisto;
+
+  }
+		
+		
+		
+		
+		
+	
 
 }

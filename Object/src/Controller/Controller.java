@@ -19,7 +19,7 @@ public class Controller {
      PanelMagazzino panelmagazzino;
      PanelAggiuntaAcquisto panelaggiuntaacquisto;
      PanelMagazzinoRicerca panelmagazzinoricerca;
-     PanelAcquisti panelacquisti;
+     PanelReviewAcquisti panelacquisti;
     
 //    //DAOS
 //   AcquistoDAO acquistodao;
@@ -176,6 +176,8 @@ public FruttaDAO getFruttadao() {
 	public void setnullcomponent() {
 		panelmagazzinoricerca.remove(panelmagazzinoricerca.getCombobox());
 	}
+
+	
  
 
 
