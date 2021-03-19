@@ -28,7 +28,8 @@ public class FruttaDAO {
                  pst.setString(4, datadiscadenza);
                  pst.setString(5, datadiraccolta);
                  pst.setString(6, idprodotto);
-                 pst.setInt(7, disponibilitatotale);
+                 pst.setInt(7, disponibilitatotale)
+                 ;
                  System.out.println(prezzo);
                  pst.executeUpdate();
              System.out.println(prezzo);

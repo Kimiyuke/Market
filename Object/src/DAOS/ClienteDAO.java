@@ -485,6 +485,7 @@ public class ClienteDAO {
         Cliente C;
    
    try {
+	   
          Class.forName("org.postgresql.Driver");//load il driver
          
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione

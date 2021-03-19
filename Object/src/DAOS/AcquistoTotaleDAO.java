@@ -62,7 +62,7 @@ public class AcquistoTotaleDAO {
 	public  ArrayList<AcquistoTotale> AcquistiPerData(int mese, int anno) throws Exception  {
 		ArrayList<AcquistoTotale> acquisto = new ArrayList<AcquistoTotale>();
         AcquistoTotale A;
-		
+		mese=mese+1;  //PER EGUAGLIARE IL MESETE GETTATO DALLA COMPONENTE
 		 try { 
 			
 	            Class.forName("org.postgresql.Driver");//load il driver            

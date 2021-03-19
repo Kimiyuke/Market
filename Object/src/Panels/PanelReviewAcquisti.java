@@ -26,10 +26,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 public class PanelReviewAcquisti extends JPanel {
 Controller TheController;
 private JTable tabella;
+private JTextField txtguadagno;
 	
+
 	public PanelReviewAcquisti(Controller c) {
 		TheController=c;
 		setBackground(new Color(45, 106, 79));
@@ -51,11 +54,11 @@ private JTable tabella;
 		panel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Cerca");
+		btnNewButton.setBounds(474, 146, 89, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(474, 146, 89, 23);
 		
 		add(btnNewButton);
 		
@@ -80,7 +83,7 @@ private JTable tabella;
 		add(anno);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 191, 639, 226);
+		scrollPane.setBounds(0, 191, 644, 233);
 		add(scrollPane);
 		
 		tabella = new JTable();
@@ -89,19 +92,32 @@ private JTable tabella;
 				{null, null, null, null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"ID", "Tess", "Punti", "Totale", "N.pzz", "N.FA", "N.FR", "N.VE", "N.UO", "N.CO", "N.LA", "Compl", "Data"
+				"ID", "Codice Tessera", "Punti", "Totale", "Numero pezzi", "Data"
 			}
 		));
 		scrollPane.setViewportView(tabella);
 		tabella.setSelectionBackground(new Color(144, 238, 144));
 	      tabella.getTableHeader().setOpaque(false);
 	      tabella.getTableHeader().setBackground(new Color (116, 198, 157));
-		
-		
+	      tabella.setFont(new Font("Dialog", Font.ITALIC, 12));
+	      
+	      JLabel lblguadagno = new JLabel("Guadagno Mensile:");
+	      lblguadagno.setBounds(329, 435, 192, 67);
+	      lblguadagno.setForeground(Color.WHITE);
+	      lblguadagno.setFont(new Font("Dialog", Font.BOLD, 20));
+	      add(lblguadagno);
+	      
+	      txtguadagno = new JTextField();
+	      txtguadagno.setBounds(543, 435, 101, 67);
+	      add(txtguadagno);
+	      txtguadagno.setColumns(10);
+	      lblguadagno.setVisible(false);
+			txtguadagno.setVisible(false);
 		
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
           DefaultTableModel model = (DefaultTableModel) tabella.getModel();
       			
       			int rowCount = model.getRowCount(); //Si tiene conto di quante righe ci fossero prima e poi le cancella tutte tramite il for
@@ -112,12 +128,16 @@ private JTable tabella;
       			ArrayList<AcquistoTotale> acquisto = new ArrayList<AcquistoTotale>();
 				try {
 					acquisto=TheController.getAcquistototaledao().AcquistiPerData(mese.getMonth(), anno.getYear());
+					
+					
+					lblguadagno.setVisible(true);
+					txtguadagno.setVisible(true);
 				} catch (Exception e1) {
 					
 				}
 				for(int i = 0; i <acquisto.size();  i++){      //STAMPA DEI VALORI FETCHATI DALL'INTERROGAZIONE
 					System.out.println("print");
-		        	 Object[] rowdata = new Object[]{acquisto.get(i).getNId(),acquisto.get(i).getCodiceTessera(),acquisto.get(i).getTotalePunti(),acquisto.get(i).getPrezzoTotale(),acquisto.get(i).getNumProdotti(),acquisto.get(i).getNumProdottiFarinacei(),acquisto.get(i).getNumProdottiFrutta(),acquisto.get(i).getNumProdottiVerdura(),acquisto.get(i).getNumProdottiUova(),acquisto.get(i).getNumProdottiConfenzionati(),acquisto.get(i).getNumProdottiLatticini(),acquisto.get(i).isCompletato(),acquisto.get(i).getDataAcquisto()     };
+		        	 Object[] rowdata = new Object[]{acquisto.get(i).getNId(),acquisto.get(i).getCodiceTessera(),acquisto.get(i).getTotalePunti(),acquisto.get(i).getPrezzoTotale(),acquisto.get(i).getNumProdotti(),acquisto.get(i).getDataAcquisto()     };
 		        	 model.addRow(rowdata);
 			}
 				

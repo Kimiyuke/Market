@@ -16,8 +16,13 @@ private int NPezziVerdura;
 private int NPezziConfenzionati;
 private int NPezziLatticini;
 private int NPezziUova;
+private int NPezziFarinacei;
 public String getCodiceTessera() {
 	return CodiceTessera;
+}
+public int getNPezziFarinacei() {
+	return NPezziFarinacei;
+
 }
 public void setCodiceTessera(String codiceTessera) {
 	CodiceTessera = codiceTessera;
@@ -102,7 +107,7 @@ public void setNPezziUova(int nPezziUova) {
 }
 public TesseraPunti(String codiceTessera, Date dataDiScadenza, int totalePunti, int puntiFarinacei, int puntiUova,
 		int puntiFrutta, int puntiVerdura, int puntiConfenzionati, int puntiLatticini, int nPezziFrutta,
-		int nPezziVerdura, int nPezziConfenzionati, int nPezziLatticini, int nPezziUova) {
+		int nPezziVerdura, int nPezziConfenzionati, int nPezziLatticini, int nPezziUova, int nPezziFarinacei) {
 	super();
 	CodiceTessera = codiceTessera;
 	DataDiScadenza = dataDiScadenza;
@@ -119,6 +124,7 @@ public TesseraPunti(String codiceTessera, Date dataDiScadenza, int totalePunti, 
 	NPezziLatticini = nPezziLatticini;
 	NPezziUova = nPezziUova;
 }
+
 
 
 

@@ -77,6 +77,7 @@ private JButton btncerca;
 		tabella.setSelectionBackground(new Color(144, 238, 144));
 	      tabella.getTableHeader().setOpaque(false);
 	      tabella.getTableHeader().setBackground(new Color (116, 198, 157));
+	      tabella.setFont(new Font("Dialog", Font.ITALIC, 12));
 		
 		 Combobox = new JComboBox();
 		Combobox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Confezionati", "Latticini", "Farinacei", "Uova"}));

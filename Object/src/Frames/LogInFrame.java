@@ -15,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
@@ -52,9 +53,10 @@ public class LogInFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public LogInFrame(Controller c) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Andrea SSD\\git\\Market\\Object\\icons\\home.png"));
 		TheController=c;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 300);
+		setBounds(100, 100, 566, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(149, 213, 178));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,6 +64,7 @@ public class LogInFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(149, 213, 178));
 		panel.setBounds(176, 155, 181, 30);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -101,6 +104,7 @@ public class LogInFrame extends JFrame {
 		panel.add(pwdPassword);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(149, 213, 178));
 		panel_1.setBounds(176, 114, 181, 30);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -163,6 +167,8 @@ public class LogInFrame extends JFrame {
 		Image icons= new ImageIcon(this.getClass().getResource("/home.png")).getImage();
 		lblicon.setIcon(new ImageIcon(icons));
 		
+		
+
 		
 		panel_2.addMouseListener(new MouseAdapter() {
 			

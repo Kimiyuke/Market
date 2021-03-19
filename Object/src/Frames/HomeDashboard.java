@@ -71,6 +71,7 @@ public class HomeDashboard extends JFrame {
 	/*
 	 * Create the frame.
 	 */
+	
 	public HomeDashboard(Controller controller) {
 		TheController=controller;
 		
@@ -198,14 +199,14 @@ public class HomeDashboard extends JFrame {
 		lbllogout.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 207, 143);
+		panel.setBounds(10, 11, 207, 147);
 		panel.setBackground(new Color(27, 67, 50));
 		panelMenu.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblicon = new JLabel("");
 		lblicon.setForeground(new Color(255, 255, 255));
-		lblicon.setBounds(36, 0, 187, 160);
+		lblicon.setBounds(42, 11, 165, 132);
 		panel.add(lblicon);
 		Image iconsss= new ImageIcon(this.getClass().getResource("/homeicon.png")).getImage();
 		lblicon.setIcon(new ImageIcon(iconsss));
@@ -307,6 +308,16 @@ public class HomeDashboard extends JFrame {
 		lblNewLabel_4.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		
 		JPanel Panelaggiuntaclienti = new JPanel();
+		Panelaggiuntaclienti.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				Panelaggiuntaclienti.setBackground(new Color(112, 128, 144));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				Panelaggiuntaclienti.setBackground(new Color(27, 67, 50));
+			}
+		});
 		Panelaggiuntaclienti.addMouseListener(new MouseAdapter() {        //ACTIONLISTENER PER IL PANELAGGIUNTACLIENTI
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -320,6 +331,7 @@ public class HomeDashboard extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
                 Panelaggiuntaclienti.setVisible(false);
+                Panelaggiuntaclienti.setBackground(new Color(27, 67, 50));
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {

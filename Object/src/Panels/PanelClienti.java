@@ -35,6 +35,7 @@ import javax.swing.DefaultComboBoxModel;
 public class PanelClienti extends JPanel {
 	public static JTable tabella;
 	Controller TheController;
+	public static JTable tabellapunti;
 	
 	/**
 	 * Create the panel.
@@ -72,7 +73,7 @@ public class PanelClienti extends JPanel {
       add(lblcategoria);
       
       JButton btncerca = new JButton("Cerca");
-      btncerca.setBackground(new Color(165, 42, 42));
+      btncerca.setBackground(new Color(240, 240, 240));
       btncerca.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent arg0) {
       	}
@@ -89,7 +90,7 @@ public class PanelClienti extends JPanel {
       add(ComboBox1);
       
       JScrollPane scrollPane = new JScrollPane();
-      scrollPane.setBounds(0, 215, 643, 286);
+      scrollPane.setBounds(0, 215, 504, 286);
       add(scrollPane);
       btncerca.setBounds(544, 119, 89, 23);
       add(btncerca);
@@ -102,7 +103,7 @@ public class PanelClienti extends JPanel {
       tabella.setSelectionBackground(new Color(144, 238, 144));
       tabella.getTableHeader().setOpaque(false);
       tabella.getTableHeader().setBackground(new Color (116, 198, 157));
-      
+      tabella.setFont(new Font("Dialog", Font.ITALIC, 12));
      
       tabella.setRowSelectionAllowed(true);
       tabella.setModel(new DefaultTableModel(
@@ -115,65 +116,237 @@ public class PanelClienti extends JPanel {
       ));
       tabella.getColumnModel().getColumn(0).setResizable(false);
       scrollPane.setViewportView(tabella);
-      String nome="pizza";
+      
+      JScrollPane scrollPane_1 = new JScrollPane();
+      scrollPane_1.setBounds(518, 215, 125, 286);
+      add(scrollPane_1);
+      
+      tabellapunti = new JTable();
+      tabellapunti.getTableHeader().setOpaque(false);
+      tabellapunti.getTableHeader().setBackground(new Color (116, 198, 157));
+      tabellapunti.setFont(new Font("Dialog", Font.ITALIC, 12));
+     
+      tabellapunti.setModel(new DefaultTableModel(
+      	new Object[][] {
+      		{null, null},
+      	},
+      	new String[] {
+      		"Punti", "N.pezzi"
+      	}
+      ));
+      scrollPane_1.setViewportView(tabellapunti);
+      
       btncerca.addMouseListener(new MouseAdapter() {
       	
       	public void mouseClicked(MouseEvent e) {
       		
       		{
       			DefaultTableModel model = (DefaultTableModel) tabella.getModel();
+      			DefaultTableModel modell = (DefaultTableModel) tabellapunti.getModel();
       			
       			int rowCount = model.getRowCount(); //Si tiene conto di quante righe ci fossero prima e poi le cancella tutte tramite il for
       			for (int i = rowCount - 1; i >= 0; i--) {
       			    model.removeRow(i);
       			}
       			
+      			int rowCountt = modell.getRowCount(); //Cancella righe per la tabella dei punti
+      			for (int i = rowCount - 1; i >= 0; i--) {
+      			    modell.removeRow(i);
+      			}
+      			
+      			
+      			ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
       			ArrayList<Cliente> cliente = new ArrayList<Cliente>();
       			
       			if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
-                    
-                    
-                }
+                
+                    try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPuntiFrutta();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiFrutta(), tessera.get(i).getNPezziFrutta()};
+                    				modell.addRow(rowdata);
+                    		}
+      			}
 
 
       			else if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Verdura")))) {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiVerdura();
+                    
+                    try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPuntiVerdura();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiVerdura(), tessera.get(i).getNPezziVerdura()};
+                    				modell.addRow(rowdata);
+                    		}
                 }
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Confezionati")))) {
       				
 					cliente= TheController.getClientidao().SelectClientiPerPuntiConfezionati();
+					
+					 try {                                                  
+							tessera=TheController.getTesserapuntidao().SelectPuntiConfezionati();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						} 	catch (Exception e1) {
+							
+								e1.printStackTrace();
+							}
+	                    		for(int i = 0; i <tessera.size();  i++){
+	                        
+	                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiConfenzionati(), tessera.get(i).getNPezziConfenzionati()};
+	                    				modell.addRow(rowdata);
+	                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
       				
 					cliente= TheController.getClientidao().SelectClientiPerPuntiUova();
-      			}
+					
+					 try {                                                  
+							tessera=TheController.getTesserapuntidao().SelectPuntiUova();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						} 	catch (Exception e1) {
+							
+								e1.printStackTrace();
+							}
+	                    		for(int i = 0; i <tessera.size();  i++){
+	                        
+	                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiUova(), tessera.get(i).getNPezziUova()};
+	                    				modell.addRow(rowdata);
+	                    		}
+      			  }
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPuntiLatticini();
+      				
+      				 try {                                                  
+							tessera=TheController.getTesserapuntidao().SelectPuntiLatticini();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						} 	catch (Exception e1) {
+							
+								e1.printStackTrace();
+							}
+	                    		for(int i = 0; i <tessera.size();  i++){
+	                        
+	                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiLatticini(), tessera.get(i).getNPezziLatticini()};
+	                    				modell.addRow(rowdata);
+	                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Farinacei")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPuntiFarinacei();
+      				
+      				 try {                                                  
+							tessera=TheController.getTesserapuntidao().SelectPuntiFarinacei();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						} 	catch (Exception e1) {
+							
+								e1.printStackTrace();
+							}
+	                    		for(int i = 0; i <tessera.size();  i++){
+	                        
+	                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiFarinacei(), tessera.get(i).getNPezziFarinacei()};
+	                    				modell.addRow(rowdata);
+	                    		}
       			}
+      			
+      			
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziFrutta();
+      				
+      				try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPezziFrutta();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiFrutta(), tessera.get(i).getNPezziFrutta()};
+                    				modell.addRow(rowdata);
+                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Verdura")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziVerdura();
+      				
+      				try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPezziVerdura();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiVerdura(), tessera.get(i).getNPezziVerdura()};
+                    				modell.addRow(rowdata);
+                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziUova();
+      				
+
+      				try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPezziUova();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiUova(), tessera.get(i).getNPezziUova()};
+                    				modell.addRow(rowdata);
+                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziLatticini();
+      				
+      				try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPezziLatticini();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiLatticini(), tessera.get(i).getNPezziLatticini()};
+                    				modell.addRow(rowdata);
+                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Confezionati")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziConfezionati();
+      				
+      				try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPezziConfezionati();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiConfenzionati(), tessera.get(i).getNPezziConfenzionati()};
+                    				modell.addRow(rowdata);
+                    		}
       			}
       			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Farinacei")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziFarinacei();
+      				
+      				try {                                                  
+						tessera=TheController.getTesserapuntidao().SelectPezziFarinacei();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+					} 	catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+                    		for(int i = 0; i <tessera.size();  i++){
+                        
+                    				Object[] rowdata = new Object[]{tessera.get(i).getPuntiFarinacei(), tessera.get(i).getNPezziFarinacei()};
+                    				modell.addRow(rowdata);
+                    		}
       			}
       			
-      			for(int i = 0; i <cliente.size();  i++){
+      			for(int i = 0; i <cliente.size();  i++){                       //FETCH PER RIEMPIRE LA TABELLA CLIENTI
                     
 		        	 Object[] rowdata = new Object[]{cliente.get(i).getNome(),cliente.get(i).getCognome(),cliente.get(i).getCodiceTessera(), cliente.get(i).getCF()};
 		        	 model.addRow(rowdata);
