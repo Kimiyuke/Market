@@ -73,7 +73,7 @@ public class AcquistoTotaleDAO {
 	            pst.setInt(2, anno);
 	            
 	            ResultSet rs=pst.executeQuery();
-	            rs.next();
+	            
 	            System.out.println("ciao");
 	            System.out.println(mese);
 	            System.out.println(anno);
@@ -96,9 +96,8 @@ public class AcquistoTotaleDAO {
                         
                         
                          );
-                 System.out.println("ciao");
+               
                  acquisto.add(A);
-                 System.out.println("ciao");
                  
              }
 
@@ -112,7 +111,33 @@ public class AcquistoTotaleDAO {
       return acquisto;
 
   }
-		
+
+	public float getguadagnomensile(int mese, int anno) throws Exception {
+		float guadagno;
+		mese=mese+1; //NORMALIZZA IL NUMERO DEL MESE CORRISPONDENTE ALLA COMBOBOX
+		 try { 
+				
+	            Class.forName("org.postgresql.Driver");//load il driver            
+	            Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione           
+	            PreparedStatement pst= con.prepareStatement("Select SUM(prezzo_totale) from acquisto_totale  WHERE EXTRACT(MONTH FROM data_acquisto)=? AND EXTRACT(year FROM data_acquisto)=?");
+	            
+	            pst.setInt(1, mese);
+	            pst.setInt(2, anno);
+	            
+	            ResultSet rs=pst.executeQuery();
+	            rs.next();
+	              guadagno= rs.getFloat(1);
+	              System.out.print(guadagno);
+                
+          }
+		 catch (SQLException x) {
+	          System.out.println("Review acquisti: " +x);
+     return (Integer) null;
+           }
+		return guadagno;
+	}
+
+	
 		
 		
 		

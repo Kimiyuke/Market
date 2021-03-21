@@ -5,11 +5,18 @@ import DAOS.MagazzinoDAO;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -29,8 +36,8 @@ public class PanelMagazzinoRicerca extends JPanel {
 
 Controller TheController;
 private JTable tabella;
-private JComboBox Combobox;
-private JButton btncerca;
+private JComboBox comboBox;
+private JButton button;
 	 
 	public PanelMagazzinoRicerca(Controller c) {
 		TheController=c;
@@ -79,13 +86,36 @@ private JButton btncerca;
 	      tabella.getTableHeader().setBackground(new Color (116, 198, 157));
 	      tabella.setFont(new Font("Dialog", Font.ITALIC, 12));
 		
-		 Combobox = new JComboBox();
-		Combobox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Confezionati", "Latticini", "Farinacei", "Uova"}));
-		Combobox.setBounds(517, 21, 92, 38);
-		add(Combobox);
+		 comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Confezionati", "Latticini", "Farinacei", "Uova"}));
+		comboBox.setBounds(517, 21, 92, 38);
+		add(comboBox);
+		comboBox.setEditable(true);
+	      comboBox.setBackground(new Color(149, 213, 178));
+	      comboBox.setFont(new Font("Dialog", Font.ITALIC,13));
+	      
+	      comboBox.setBorder(BorderFactory.createEmptyBorder());
+	                                                                                       
+	      comboBox.setRenderer(new DefaultListCellRenderer(){          
+	          @Override 
+	          
+	          public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+	          {                JComponent result = (JComponent)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+	          if (isSelected) 
+	              setForeground(Color.orange);
+
+	              result.setOpaque(false);
+	              return result;
+	          }});
 		
-		 btncerca = new JButton("Cerca");
-		btncerca.addMouseListener(new MouseAdapter() {
+		 button = new JButton("Cerca");
+		 button.setFont(new Font("Dialog",Font.ITALIC,13));
+		 button.setBackground(new Color(149, 213, 178));//import java.awt.Color;
+		 button.setForeground(Color.BLACK);
+		 button.setFocusPainted(false);
+		 button.setBorderPainted(false);
+		 
+		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -97,22 +127,22 @@ private JButton btncerca;
 	      			}
 	      			
 	      			ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
-	      			if ((Combobox.getSelectedItem().toString().equals("Frutta")) ) {
+	      			if ((comboBox.getSelectedItem().toString().equals("Frutta")) ) {
 						magazzino= TheController.getMagazzinodao().SelectProdottiFrutta();
 	                }
-	      			else if ((Combobox.getSelectedItem().toString().equals("Farinacei")) ) {
+	      			else if ((comboBox.getSelectedItem().toString().equals("Farinacei")) ) {
 	                    magazzino= TheController.getMagazzinodao().SelectProdottiFarinacei();
 	                }
-	      			else if ((Combobox.getSelectedItem().toString().equals("Verdura")) ) {
+	      			else if ((comboBox.getSelectedItem().toString().equals("Verdura")) ) {
 	                    magazzino= TheController.getMagazzinodao().SelectProdottiVerdura();
 	                }
-	      			else if ((Combobox.getSelectedItem().toString().equals("Confezionati")) ) {
+	      			else if ((comboBox.getSelectedItem().toString().equals("Confezionati")) ) {
 	                    magazzino= TheController.getMagazzinodao().SelectProdottiConfezionati();
 	                }
-	      			else if ((Combobox.getSelectedItem().toString().equals("Latticini")) ) {
+	      			else if ((comboBox.getSelectedItem().toString().equals("Latticini")) ) {
 	                    magazzino= TheController.getMagazzinodao().SelectProdottiLatticini();
 	                }
-	      			else if ((Combobox.getSelectedItem().toString().equals("Uova")) ) {
+	      			else if ((comboBox.getSelectedItem().toString().equals("Uova")) ) {
 	                    magazzino= TheController.getMagazzinodao().SelectProdottiUova();
 	                }
 	      			
@@ -127,18 +157,18 @@ private JButton btncerca;
 		
 	});
 
-		btncerca.setBounds(517, 82, 89, 23);
-		add(btncerca);
+		button.setBounds(517, 83, 89, 23);
+		add(button);
 
 		
 	}
 	
 	public JComboBox getCombobox() {
-		return this.Combobox;
+		return this.comboBox;
 		
 	}
 	
 	public JButton getButton() {
-		return this.btncerca;
+		return this.button;
 	}
 }

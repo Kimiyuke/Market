@@ -8,6 +8,7 @@ import Panels.*;
 import java.awt.event.MouseAdapter;
 
 import DAOS.*;
+import Dialogs.AggiuntaClienteSuccesful;
 import Dialogs.AggiuntaProdottiSuccesful;
 public class Controller {
     //FRAMES
@@ -20,6 +21,7 @@ public class Controller {
      PanelAggiuntaAcquisto panelaggiuntaacquisto;
      PanelMagazzinoRicerca panelmagazzinoricerca;
      PanelReviewAcquisti panelacquisti;
+     PanelAggiuntaClienti panelaggiuntaclienti;
     
 //    //DAOS
 //   AcquistoDAO acquistodao;
@@ -38,7 +40,7 @@ public class Controller {
      
     //Dialogs
     AggiuntaProdottiSuccesful aggiuntaprodottisuccesful;
-    
+    AggiuntaClienteSuccesful aggiuntaclientesuccesful;
     
     
     
@@ -175,6 +177,15 @@ public FruttaDAO getFruttadao() {
 	
 	public void setnullcomponent() {
 		panelmagazzinoricerca.remove(panelmagazzinoricerca.getCombobox());
+	}
+
+	public void clientisuccesful() {
+		aggiuntaclientesuccesful= new AggiuntaClienteSuccesful(this);
+		aggiuntaclientesuccesful.setVisible(true);
+
+		aggiuntaclientesuccesful.setLocationRelativeTo(panelaggiuntaclienti);
+		
+		
 	}
 
 	

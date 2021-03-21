@@ -517,12 +517,35 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+        	  System.out.println("Select clienti per pezzi farinacei " +x);
      return null;
            }
    return cliente;
 
 }
+
+	public void Addcliente(String cf, String nome, String cognome, String codicetessera) throws Exception {
+		 try {
+             Class.forName("org.postgresql.Driver");//load il driver            
+             Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
+             PreparedStatement pst= con.prepareStatement("INSERT INTO CLIENTI VALUES(?,?,?,?)");
+             
+        		 pst.setString(1, nome);
+            	 pst.setString(2, cognome);
+                 pst.setString(3, codicetessera);
+                 pst.setString(3, cf);
+    
+                 pst.executeUpdate();
+            
+            
+          
+              }
+              catch (SQLException x) {
+          System.out.println("Inserimento nuovo cliente " +x);
+      
+               }
+		
+	}
 
 
 

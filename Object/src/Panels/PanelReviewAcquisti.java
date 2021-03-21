@@ -30,7 +30,6 @@ import javax.swing.JTextField;
 public class PanelReviewAcquisti extends JPanel {
 Controller TheController;
 private JTable tabella;
-private JTextField txtguadagno;
 	
 
 	public PanelReviewAcquisti(Controller c) {
@@ -104,19 +103,20 @@ private JTextField txtguadagno;
 	      JLabel lblguadagno = new JLabel("Guadagno Mensile:");
 	      lblguadagno.setBounds(329, 435, 192, 67);
 	      lblguadagno.setForeground(Color.WHITE);
-	      lblguadagno.setFont(new Font("Dialog", Font.BOLD, 20));
+	      lblguadagno.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
 	      add(lblguadagno);
 	      
-	      txtguadagno = new JTextField();
-	      txtguadagno.setBounds(543, 435, 101, 67);
+	      JLabel txtguadagno = new JLabel("");
+	      txtguadagno.setForeground(new Color(255, 255, 255));
+	      txtguadagno.setFont(new Font("Dialog", Font.BOLD, 20));
+	      txtguadagno.setBounds(519, 435, 113, 67);
 	      add(txtguadagno);
-	      txtguadagno.setColumns(10);
 	      lblguadagno.setVisible(false);
-			txtguadagno.setVisible(false);
 		
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				float guadagno;
 				
           DefaultTableModel model = (DefaultTableModel) tabella.getModel();
       			
@@ -127,11 +127,15 @@ private JTextField txtguadagno;
       			
       			ArrayList<AcquistoTotale> acquisto = new ArrayList<AcquistoTotale>();
 				try {
-					acquisto=TheController.getAcquistototaledao().AcquistiPerData(mese.getMonth(), anno.getYear());
+					acquisto=TheController.getAcquistototaledao().AcquistiPerData(mese.getMonth(), anno.getYear());//RIEMPIMENTO JTABLE DI TUTTI GLI ACQUISTI EFFETTUATI IN MESE E ANNO SCELTI DALLE RISPETTIVE COMBOBOX
 					
+					if(!acquisto.isEmpty()) { //SI EFFETTUA IL CALCOLO DEL GUADAGNO SOLAMENTE QUANDO CI SONO VALORI FETCHATI ALL'INTERNO DELL'ARAYLIST ACQUISTO
+						guadagno=TheController.getAcquistototaledao().getguadagnomensile(mese.getMonth(), anno.getYear());//RIPORTA NELLA JTEXT IL GUADAGNO MENSILE
+						txtguadagno.setText(String.valueOf(guadagno));  
 					
-					lblguadagno.setVisible(true);
-					txtguadagno.setVisible(true);
+						lblguadagno.setVisible(true);
+						txtguadagno.setVisible(true);
+					}
 				} catch (Exception e1) {
 					
 				}

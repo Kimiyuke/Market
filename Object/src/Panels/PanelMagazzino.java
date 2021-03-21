@@ -6,7 +6,11 @@ import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.Font;
 import java.awt.Image;
 
@@ -30,7 +34,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
@@ -62,9 +69,10 @@ public class PanelMagazzino extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelMagazzino(Controller c) {
-		TheController=c;
 		setBackground(new Color(45, 106, 79));
-      setSize(643,501);
+		TheController=c;
+		
+      setSize(591,501);
       setLayout(null);
       
      
@@ -82,16 +90,43 @@ public class PanelMagazzino extends JPanel {
       lblNewLabel.setBounds(10, 11, 206, 62);
       panel.add(lblNewLabel);
       
+      JLabel sfondo = new JLabel("");
+      sfondo.setBounds(0, 11, 642, 489);
+      panel.add(sfondo);
+      
+      Image background= new ImageIcon(this.getClass().getResource("/sfondo3.jpg")).getImage();
+      
+      
       JLabel lblNewLabel_1 = new JLabel("Seleziona categoria");
       lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 15));
-      lblNewLabel_1.setForeground(Color.WHITE);
+      lblNewLabel_1.setForeground(new Color(255, 255, 255));
       lblNewLabel_1.setBounds(216, 30, 164, 25);
       add(lblNewLabel_1);
       
       
       
-      //IF PER LE COMBOBOX
+      
+
       JComboBox comboBox = new JComboBox();
+      comboBox.setEditable(true);
+      comboBox.setBackground(new Color(149, 213, 178));
+      comboBox.setFont(new Font("Dialog", Font.ITALIC,13));
+      
+      comboBox.setBorder(BorderFactory.createEmptyBorder());
+                                                                                       
+      comboBox.setRenderer(new DefaultListCellRenderer(){          
+          @Override 
+          
+          public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+          {                JComponent result = (JComponent)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+          if (isSelected) 
+              setForeground(Color.orange);
+
+              result.setOpaque(false);
+              return result;
+          }});
+     
+      
       comboBox.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent arg0) {
       		if (comboBox.getSelectedItem().toString().equals("Frutta")){
@@ -198,12 +233,12 @@ public class PanelMagazzino extends JPanel {
       	}
       });
       comboBox.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Confezionati", "Latticini", "Uova"}));
-      comboBox.setBounds(367, 33, 68, 22);
+      comboBox.setBounds(367, 33, 97, 22);
       add(comboBox);
       
       JLabel lblidprodotto = new JLabel("Id Prodotto");
-      lblidprodotto.setForeground(Color.WHITE);
-      lblidprodotto.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lblidprodotto.setForeground(new Color(255, 255, 255));
+      lblidprodotto.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
       lblidprodotto.setBounds(10, 120, 63, 14);
       add(lblidprodotto);
       
@@ -213,8 +248,8 @@ public class PanelMagazzino extends JPanel {
       txtidprodotto.setColumns(10);
       
       JLabel lblnome = new JLabel("Nome");
-      lblnome.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblnome.setForeground(Color.WHITE);
+      lblnome.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      lblnome.setForeground(new Color(255, 255, 255));
       lblnome.setBounds(199, 120, 63, 14);
       add(lblnome);
       
@@ -224,8 +259,8 @@ public class PanelMagazzino extends JPanel {
       txtnome.setColumns(10);
       
       JLabel lblmarca = new JLabel("Marca");
-      lblmarca.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblmarca.setForeground(Color.WHITE);
+      lblmarca.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      lblmarca.setForeground(new Color(255, 255, 255));
       lblmarca.setBounds(393, 120, 63, 14);
       add(lblmarca);
       
@@ -235,14 +270,14 @@ public class PanelMagazzino extends JPanel {
       txtmarca.setColumns(10);
       
       JLabel lbldatadiscadenza = new JLabel("Data Di Scadenza");
-      lbldatadiscadenza.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lbldatadiscadenza.setForeground(Color.WHITE);
+      lbldatadiscadenza.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      lbldatadiscadenza.setForeground(new Color(255, 255, 255));
       lbldatadiscadenza.setBounds(3, 187, 93, 14);
       add(lbldatadiscadenza);
       
       JLabel lbldisponibilitatotale = new JLabel("Disponibilit\u00E0 totale");
-      lbldisponibilitatotale.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lbldisponibilitatotale.setForeground(Color.WHITE);
+      lbldisponibilitatotale.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      lbldisponibilitatotale.setForeground(new Color(255, 255, 255));
       lbldisponibilitatotale.setBounds(216, 187, 94, 14);
       add(lbldisponibilitatotale);
       
@@ -267,19 +302,19 @@ public class PanelMagazzino extends JPanel {
       
       lbl1= new JLabel("a");
       lbl1.setForeground(new Color(255, 255, 255));
-      lbl1.setFont(new Font("Dialog", Font.ITALIC, 12));
+      lbl1.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
       lbl1.setBounds(0, 251, 119, 14);
       add(lbl1);
       
       lbl2 = new JLabel(" a");
       lbl2.setForeground(new Color(255, 255, 255));
-      lbl2.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lbl2.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
       lbl2.setBounds(0, 335, 119, 17);
       add(lbl2);
       
       lbl3 = new JLabel("a");
       lbl3.setForeground(new Color(255, 255, 255));
-      lbl3.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lbl3.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
       lbl3.setBounds(0, 429, 119, 14);
       add(lbl3);
       
@@ -294,7 +329,7 @@ public class PanelMagazzino extends JPanel {
       txt3.setColumns(10);
       
       JPanel panel_1 = new JPanel();
-      panel_1.setBackground(new Color(27, 67, 50));
+      panel_1.setBackground(new Color(45, 106, 79));
       panel_1.addMouseListener(new MouseAdapter() {
       	@Override
       	public void mouseClicked(MouseEvent e) {
@@ -452,7 +487,7 @@ public class PanelMagazzino extends JPanel {
           	}
       }
       	});
-      panel_1.setBounds(566, 310, 67, 41);
+      panel_1.setBounds(529, 335, 67, 41);
       add(panel_1);
       panel_1.setLayout(null);
       
@@ -464,8 +499,8 @@ public class PanelMagazzino extends JPanel {
 		lblaggiungi.setIcon(new ImageIcon(iconn));
       
       JLabel lblprezzo = new JLabel("Prezzo");
-      lblprezzo.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblprezzo.setForeground(Color.WHITE);
+      lblprezzo.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 11));
+      lblprezzo.setForeground(new Color(255, 255, 255));
       lblprezzo.setBounds(434, 187, 46, 14);
       add(lblprezzo);
       
@@ -555,6 +590,7 @@ public class PanelMagazzino extends JPanel {
       data3.setColumns(10);
       data3.setBounds(302, 427, 86, 20);
       add(data3);
+      
       Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
       
       

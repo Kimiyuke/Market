@@ -9,7 +9,11 @@ import Controller.Controller;
 import DAOS.ClienteDAO;
 
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.Font;
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollPane;
@@ -31,7 +35,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel; 
+import javax.swing.JComponent;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer; 
 public class PanelClienti extends JPanel {
 	public static JTable tabella;
 	Controller TheController;
@@ -79,15 +86,49 @@ public class PanelClienti extends JPanel {
       	}
       });
       
-      JComboBox ComboBox2 = new JComboBox();
-      ComboBox2.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Confezionati", "Latticini", "Uova"}));
-      ComboBox2.setBounds(433, 61, 64, 22);
-      add(ComboBox2);
+      JComboBox comboBox2 = new JComboBox();
+      comboBox2.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Confezionati", "Latticini", "Uova"}));
+      comboBox2.setBounds(433, 61, 64, 22);
+      add(comboBox2);
+      comboBox2.setEditable(true);
+      comboBox2.setBackground(new Color(149, 213, 178));
+      comboBox2.setFont(new Font("Dialog", Font.ITALIC,13));
       
-      JComboBox ComboBox1 = new JComboBox();
-      ComboBox1.setModel(new DefaultComboBoxModel(new String[] {"Punti", "Pezzi"}));
-      ComboBox1.setBounds(433, 23, 64, 22);
-      add(ComboBox1);
+      comboBox2.setBorder(BorderFactory.createEmptyBorder());
+                                                                                       
+      comboBox2.setRenderer(new DefaultListCellRenderer(){          
+          @Override 
+          
+          public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+          {                JComponent result = (JComponent)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+          if (isSelected) 
+              setForeground(Color.orange);
+
+              result.setOpaque(false);
+              return result;
+          }});
+      
+      JComboBox comboBox = new JComboBox();
+      comboBox.setModel(new DefaultComboBoxModel(new String[] {"Punti", "Pezzi"}));
+      comboBox.setBounds(433, 23, 64, 22);
+      add(comboBox);
+      comboBox.setEditable(true);
+      comboBox.setBackground(new Color(149, 213, 178));
+      comboBox.setFont(new Font("Dialog", Font.ITALIC,13));
+      
+      comboBox.setBorder(BorderFactory.createEmptyBorder());
+                                                                                       
+      comboBox.setRenderer(new DefaultListCellRenderer(){          
+          @Override 
+          
+          public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+          {                JComponent result = (JComponent)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+          if (isSelected) 
+              setForeground(Color.orange);
+
+              result.setOpaque(false);
+              return result;
+          }});
       
       JScrollPane scrollPane = new JScrollPane();
       scrollPane.setBounds(0, 215, 504, 286);
@@ -118,7 +159,7 @@ public class PanelClienti extends JPanel {
       scrollPane.setViewportView(tabella);
       
       JScrollPane scrollPane_1 = new JScrollPane();
-      scrollPane_1.setBounds(518, 215, 125, 286);
+      scrollPane_1.setBounds(501, 215, 142, 286);
       add(scrollPane_1);
       
       tabellapunti = new JTable();
@@ -158,7 +199,7 @@ public class PanelClienti extends JPanel {
       			ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
       			ArrayList<Cliente> cliente = new ArrayList<Cliente>();
       			
-      			if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
+      			if ((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Frutta")))) {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
                 
                     try {                                                  
@@ -175,7 +216,7 @@ public class PanelClienti extends JPanel {
       			}
 
 
-      			else if ((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Verdura")))) {
+      			else if ((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Verdura")))) {
                     cliente= TheController.getClientidao().SelectClientiPerPuntiVerdura();
                     
                     try {                                                  
@@ -190,7 +231,7 @@ public class PanelClienti extends JPanel {
                     				modell.addRow(rowdata);
                     		}
                 }
-      			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Confezionati")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Confezionati")))) {
       				
 					cliente= TheController.getClientidao().SelectClientiPerPuntiConfezionati();
 					
@@ -206,7 +247,7 @@ public class PanelClienti extends JPanel {
 	                    				modell.addRow(rowdata);
 	                    		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Uova")))) {
       				
 					cliente= TheController.getClientidao().SelectClientiPerPuntiUova();
 					
@@ -222,7 +263,7 @@ public class PanelClienti extends JPanel {
 	                    				modell.addRow(rowdata);
 	                    		}
       			  }
-      			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPuntiLatticini();
       				
       				 try {                                                  
@@ -237,7 +278,7 @@ public class PanelClienti extends JPanel {
 	                    				modell.addRow(rowdata);
 	                    		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Punti")) && ((ComboBox2.getSelectedItem().toString().equals("Farinacei")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Farinacei")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPuntiFarinacei();
       				
       				 try {                                                  
@@ -254,7 +295,7 @@ public class PanelClienti extends JPanel {
       			}
       			
       			
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Frutta")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Frutta")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziFrutta();
       				
       				try {                                                  
@@ -269,7 +310,7 @@ public class PanelClienti extends JPanel {
                     				modell.addRow(rowdata);
                     		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Verdura")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Verdura")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziVerdura();
       				
       				try {                                                  
@@ -284,7 +325,7 @@ public class PanelClienti extends JPanel {
                     				modell.addRow(rowdata);
                     		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Uova")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Uova")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziUova();
       				
 
@@ -300,7 +341,7 @@ public class PanelClienti extends JPanel {
                     				modell.addRow(rowdata);
                     		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Latticini")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Latticini")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziLatticini();
       				
       				try {                                                  
@@ -315,7 +356,7 @@ public class PanelClienti extends JPanel {
                     				modell.addRow(rowdata);
                     		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Confezionati")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Confezionati")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziConfezionati();
       				
       				try {                                                  
@@ -330,7 +371,7 @@ public class PanelClienti extends JPanel {
                     				modell.addRow(rowdata);
                     		}
       			}
-      			else if((ComboBox1.getSelectedItem().toString().equals("Pezzi")) && ((ComboBox2.getSelectedItem().toString().equals("Farinacei")))) {
+      			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Farinacei")))) {
       				cliente= TheController.getClientidao().SelectClientiPerPezziFarinacei();
       				
       				try {                                                  

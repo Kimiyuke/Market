@@ -22,15 +22,16 @@ import Controller.Controller;
 import DAOS.FruttaDAO;
 
 public class PanelAggiuntaClienti extends JPanel {
-	private JTextField txtidprodotto;
+	private JTextField txtcf;
 	private JTextField txtnome;
-	private JTextField txtmarca;
+	private JTextField txtcognome;
     
     FruttaDAO FruttaDAO;
     PanelClienti panelclienti;
     PanelMagazzinoRicerca panelmagazzinoricerca;
 
 	Controller TheController;
+	private JTextField txtcodicetessera;
 	public PanelAggiuntaClienti(Controller c) {
 		TheController=c;
 		setBackground(new Color(45, 106, 79));
@@ -58,10 +59,10 @@ public class PanelAggiuntaClienti extends JPanel {
 	      lblidprodotto.setBounds(0, 120, 86, 14);
 	      add(lblidprodotto);
 	      
-	      txtidprodotto = new JTextField();
-	      txtidprodotto.setBounds(96, 118, 86, 20);
-	      add(txtidprodotto);
-	      txtidprodotto.setColumns(10);
+	      txtcf = new JTextField();
+	      txtcf.setBounds(96, 118, 86, 20);
+	      add(txtcf);
+	      txtcf.setColumns(10);
 	      
 	      JLabel lblnome = new JLabel("Nome");
 	      lblnome.setFont(new Font("Dialog", Font.ITALIC, 11));
@@ -80,12 +81,30 @@ public class PanelAggiuntaClienti extends JPanel {
 	      lblmarca.setBounds(393, 120, 63, 14);
 	      add(lblmarca);
 	      
-	      txtmarca = new JTextField();
-	      txtmarca.setBounds(459, 115, 86, 25);
-	      add(txtmarca);
-	      txtmarca.setColumns(10);
+	      txtcognome = new JTextField();
+	      txtcognome.setBounds(459, 115, 86, 25);
+	      add(txtcognome);
+	      txtcognome.setColumns(10);
 	      
 	      JPanel panel_1 = new JPanel();
+	      panel_1.addMouseListener(new MouseAdapter() {
+	      	@Override
+	      	public void mouseClicked(MouseEvent e) {
+	      		
+	      		try {
+					TheController.getClientidao().Addcliente(txtcf.getText().toString(),txtnome.getText().toString(),txtcognome.getText().toString(),txtcodicetessera.getText().toString());
+				    TheController.clientisuccesful();
+	      		} 
+	      		
+	      		catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
+	      		
+	      		
+	      	}
+	      	
+	      });
 	      panel_1.setBackground(new Color(45,106, 79));
 	      panel_1.setBounds(525, 151, 50, 63);
 	      add(panel_1);
@@ -96,6 +115,24 @@ public class PanelAggiuntaClienti extends JPanel {
 	      panel_1.add(icon);
 	      Image icons= new ImageIcon(this.getClass().getResource("/add.png")).getImage();
 			icon.setIcon(new ImageIcon(icons));
+			
+			JLabel lblCodiceTessera = new JLabel("Codice Tessera");
+			lblCodiceTessera.setForeground(Color.WHITE);
+			lblCodiceTessera.setFont(new Font("Dialog", Font.ITALIC, 11));
+			lblCodiceTessera.setBounds(257, 57, 86, 14);
+			add(lblCodiceTessera);
+			
+			txtcodicetessera = new JTextField();
+			txtcodicetessera.setColumns(10);
+			txtcodicetessera.setBounds(357, 55, 86, 20);
+			add(txtcodicetessera);
+			
+			JLabel lblhelp = new JLabel("?");
+			lblhelp.setToolTipText("Ricorda i primi  quattro caratteri sono lettere maiuscole e  i restanti quattro sono numeri");
+			lblhelp.setForeground(Color.WHITE);
+			lblhelp.setFont(new Font("Tahoma", Font.PLAIN, 19));
+			lblhelp.setBounds(341, 57, 23, 41);
+			add(lblhelp);
 	     
 	      
 	}

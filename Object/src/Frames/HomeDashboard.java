@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import Controller.Controller;
 import Panels.PanelAggiuntaAcquisto;
-
+import Panels.PanelAggiuntaClienti;
 import Panels.PanelClienti;
 import Panels.PanelMagazzino;
 import Panels.PanelMagazzinoRicerca;
@@ -51,6 +51,7 @@ public class HomeDashboard extends JFrame {
 	private PanelAggiuntaAcquisto panelaggiuntaacquisto;
 	private PanelMagazzinoRicerca panelmagazzinoricerca;
 	private PanelReviewAcquisti panelreviewacquisti;
+	private PanelAggiuntaClienti panelaggiuntaclienti;
 	 // Launch the application.
 	  
 	/*
@@ -200,15 +201,16 @@ public class HomeDashboard extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 207, 147);
-		panel.setBackground(new Color(27, 67, 50));
+		panel.setBackground(new Color(45, 106, 79));
 		panelMenu.add(panel);
+		panel.setOpaque(false);
 		panel.setLayout(null);
 		
 		JLabel lblicon = new JLabel("");
 		lblicon.setForeground(new Color(255, 255, 255));
-		lblicon.setBounds(42, 11, 165, 132);
+		lblicon.setBounds(32, 0, 165, 132);
 		panel.add(lblicon);
-		Image iconsss= new ImageIcon(this.getClass().getResource("/homeicon.png")).getImage();
+		Image iconsss= new ImageIcon(this.getClass().getResource("/markettt.png")).getImage();
 		lblicon.setIcon(new ImageIcon(iconsss));
 		
 		JPanel panelprodotti = new JPanel();                             //ACTION LISTENER PANEL PRODOTTI
@@ -220,6 +222,8 @@ public class HomeDashboard extends JFrame {
 				panelmagazzino.setVisible(false);
 				panelaggiuntaacquisto.setVisible(false);
 				panelclienti.setVisible(false);
+				panelaggiuntaclienti.setVisible(false);
+				
 				panelmagazzinoricerca.setVisible(true);
 				
 				
@@ -287,6 +291,7 @@ public class HomeDashboard extends JFrame {
 				panelaggiuntaacquisto.setVisible(false);
 				panelclienti.setVisible(false);
 				panelmagazzinoricerca.setVisible(false);
+				panelaggiuntaclienti.setVisible(false);
 				
 				panelreviewacquisti.setVisible(true);
 				
@@ -321,7 +326,14 @@ public class HomeDashboard extends JFrame {
 		Panelaggiuntaclienti.addMouseListener(new MouseAdapter() {        //ACTIONLISTENER PER IL PANELAGGIUNTACLIENTI
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				panelreviewacquisti.setVisible(false);
+				panelmagazzinoricerca.setVisible(false);
+				panelaggiuntaacquisto.setVisible(false);
+				panelclienti.setVisible(false);
+				panelmagazzino.setVisible(false);
                 
+				panelaggiuntaclienti.setVisible(true);
+				
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -355,6 +367,13 @@ public class HomeDashboard extends JFrame {
 		lblNewLabel_5.setBounds(59, 11, 148, 30);
 		Panelaggiuntaclienti.add(lblNewLabel_5);
 		
+		JLabel lblsfondo = new JLabel("New label");
+		lblsfondo.setBounds(0, 0, 227, 573);
+		panelMenu.add(lblsfondo);
+		
+		
+		Image background= new ImageIcon(this.getClass().getResource("/sfondo3.jpg")).getImage();
+		lblsfondo.setIcon(new ImageIcon(background));
 		
 		
 		
@@ -363,7 +382,7 @@ public class HomeDashboard extends JFrame {
 		
 		
 		 panelmagazzino = new PanelMagazzino(TheController);
-		panelmagazzino.setBounds(237, 11, 653, 501);
+		panelmagazzino.setBounds(237, 11, 643, 501);
 		contentPane.add(panelmagazzino);
 		panelmagazzino.setLayout(null);
 		
@@ -401,9 +420,77 @@ public class HomeDashboard extends JFrame {
 		 panelreviewacquisti = new PanelReviewAcquisti(TheController);
 		 panelreviewacquisti.setLocation(237, 11);
 		 panelreviewacquisti.setBounds(237, 11, 643, 501);
-			contentPane.add(panelreviewacquisti);
-			panelreviewacquisti.setLayout(null);
-			panelreviewacquisti.setVisible(false);
+		 contentPane.add(panelreviewacquisti);
+		 panelreviewacquisti.setLayout(null);
+		 panelreviewacquisti.setVisible(false);
+			
+
+		 	panelaggiuntaclienti = new PanelAggiuntaClienti(TheController);
+	 	    panelaggiuntaclienti.setLocation(237, 11);
+	 	    panelaggiuntaclienti.setBounds(237, 11, 643, 501);
+			contentPane.add(panelaggiuntaclienti);
+			panelaggiuntaclienti.setLayout(null);
+			panelaggiuntaclienti.setVisible(false);
+			
+			
+			
+			
+			
+			JLabel lblicon1 = new JLabel("");
+			lblicon1.setBounds(230, 513, 72, 71);
+			contentPane.add(lblicon1);
+			Image icon1= new ImageIcon(this.getClass().getResource("/kiwi.png")).getImage();
+			lblicon1.setIcon(new ImageIcon(icon1));
+			
+			JLabel lblicon1_1 = new JLabel("");
+			lblicon1_1.setBounds(314, 513, 72, 71);
+			contentPane.add(lblicon1_1);
+			Image icon2= new ImageIcon(this.getClass().getResource("/pizza.png")).getImage();
+			lblicon1_1.setIcon(new ImageIcon(icon2));
+			
+			JLabel lblicon1_2 = new JLabel("");
+			lblicon1_2.setBounds(396, 513, 72, 71);
+			contentPane.add(lblicon1_2);
+			Image icon3= new ImageIcon(this.getClass().getResource("/avocado.png")).getImage();
+			lblicon1_2.setIcon(new ImageIcon(icon3));
+			
+			
+			JLabel lblicon1_3 = new JLabel("");
+			lblicon1_3.setBounds(487, 513, 72, 71);
+			contentPane.add(lblicon1_3);
+			Image icon4= new ImageIcon(this.getClass().getResource("/bananas.png")).getImage();
+			lblicon1_3.setIcon(new ImageIcon(icon4));
+			
+			JLabel lblicon1_4 = new JLabel("");
+			lblicon1_4.setBounds(581, 513, 72, 71);
+			contentPane.add(lblicon1_4);
+			Image icon5= new ImageIcon(this.getClass().getResource("/milk.png")).getImage();
+			lblicon1_4.setIcon(new ImageIcon(icon5));
+			
+			JLabel lblicon1_5 = new JLabel("");
+			lblicon1_5.setBounds(663, 513, 72, 71);
+			contentPane.add(lblicon1_5);
+			Image icon6= new ImageIcon(this.getClass().getResource("/soda.png")).getImage();
+			lblicon1_5.setIcon(new ImageIcon(icon6));
+			
+			JLabel lblicon1_6 = new JLabel("");
+			lblicon1_6.setBounds(736, 513, 72, 71);
+			contentPane.add(lblicon1_6);
+			Image icon7= new ImageIcon(this.getClass().getResource("/hotdog.png")).getImage();
+			lblicon1_6.setIcon(new ImageIcon(icon7));
+			
+			JLabel lblicon1_7 = new JLabel("");
+			lblicon1_7.setBounds(818, 513, 72, 71);
+			Image icon8= new ImageIcon(this.getClass().getResource("/watermelon.png")).getImage();
+			lblicon1_7.setIcon(new ImageIcon(icon8));
+			contentPane.add(lblicon1_7);
+			
+			JLabel sfondo2 = new JLabel("New label");
+			sfondo2.setBounds(0, 0, 890, 595);
+			contentPane.add(sfondo2);
+			Image sfondodue= new ImageIcon(this.getClass().getResource("/sfondo3.jpg")).getImage();
+			sfondo2.setIcon(new ImageIcon(sfondodue));
+			
 
 		
 		
@@ -425,8 +512,8 @@ public class HomeDashboard extends JFrame {
 				panelmagazzino.getTxt3().setVisible(false);
 				
 				//pannelli
-			
-
+				
+				panelaggiuntaclienti.setVisible(false);
 				panelreviewacquisti.setVisible(false);
 				panelmagazzinoricerca.setVisible(false);
 				panelaggiuntaacquisto.setVisible(false);
@@ -458,7 +545,7 @@ public class HomeDashboard extends JFrame {
 		 panelClienti.addMouseListener(new MouseAdapter() {                   //action per il panel clienti
 				
 				public void mouseClicked(MouseEvent e) {
-					
+					panelaggiuntaclienti.setVisible(false);
 					panelreviewacquisti.setVisible(false);
 					panelmagazzino.setVisible(false);
 					panelaggiuntaacquisto.setVisible(false);
@@ -496,6 +583,7 @@ public class HomeDashboard extends JFrame {
 					panelmagazzino.setVisible(false);
 					panelclienti.setVisible(false);
 					panelmagazzinoricerca.setVisible(false);
+					panelaggiuntaclienti.setVisible(false);
 					
 					panelaggiuntaacquisto.setVisible(true);
 				}
