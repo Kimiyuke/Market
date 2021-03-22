@@ -44,7 +44,8 @@ public class PanelAggiuntaAcquisto extends JPanel {
     Controller TheController;
     private JTextField txtdata;
     private JTextField txtidacquisto;
-    
+    private JLabel lblcodicetessera;
+    private JLabel lblcheckidprodotto;
 	/**
 	 * Create the panel.
 	 */
@@ -176,6 +177,20 @@ public class PanelAggiuntaAcquisto extends JPanel {
       txtidacquisto.setBounds(356, 38, 86, 20);
       add(txtidacquisto);
       txtidacquisto.setColumns(10);
+      
+       lblcodicetessera = new JLabel("");
+       lblcodicetessera.setForeground(Color.RED);
+       lblcodicetessera.setFont(new Font("Dialog", Font.BOLD, 11));
+       lblcodicetessera.setHorizontalAlignment(SwingConstants.CENTER);
+      lblcodicetessera.setBounds(402, 145, 231, 14);
+      add(lblcodicetessera);
+      
+       lblcheckidprodotto = new JLabel("");
+      lblcheckidprodotto.setHorizontalAlignment(SwingConstants.CENTER);
+      lblcheckidprodotto.setForeground(Color.RED);
+      lblcheckidprodotto.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcheckidprodotto.setBounds(0, 145, 221, 14);
+      add(lblcheckidprodotto);
       //setting iniziale prezzo totale a falso
       lbltotale1.setVisible(false);
       paneltotale.setVisible(false);
@@ -190,8 +205,14 @@ public class PanelAggiuntaAcquisto extends JPanel {
       //FUNZIONE PER AGGIUNGERE UN ACQUISTO DI UN SINGOLO PRODOTTO
       btnaggiungiprodotto.addMouseListener(new MouseAdapter() {
         	
-        	public void mouseClicked(MouseEvent e) {
-        	if(cbx.isSelected()) { try {
+        
+
+			public void mouseClicked(MouseEvent e) {
+        	if(cbx.isSelected()) { try { //se è l'ultimo acquisto da selezionare allora si effettua funzione per terminare l'acquisto
+        		
+        		lblcodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
+    			lblcheckidprodotto.setVisible(false);
+    			
 				TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
 						txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()));
 				
@@ -221,13 +242,15 @@ public class PanelAggiuntaAcquisto extends JPanel {
         		
         	}
         	else {
-        		try {
+        		try {      //ALTRIMENTI SI AGGIUNGE L'ACQUISTO TRAMITE LA FUNZIONE CON VALORE BOOLEANO "FINE ACQUISTO" A FALSE
+        			lblcodicetessera.setVisible(false);
+        			lblcheckidprodotto.setVisible(false);
 					TheController.getAcquistodao().acquistosingolo(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
-							txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()));
-					
+							txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()), PanelAggiuntaAcquisto.this);
 					txtidprodotto.setText("");
 					txtquantita.setText("");
 					txtdata.setText("");
+					
 				
 					} 
         				catch (Exception e1) {
@@ -235,8 +258,27 @@ public class PanelAggiuntaAcquisto extends JPanel {
         						e1.printStackTrace();
         				}
         		
-        		}
-        }
-        	});
+        	}
+          }
+      });
 	}
+	 public JTextField gettxtcodicetessera() {
+	    	return  txtcodicetessera;
+	    }
+	 public JTextField gettxtidprodotto() {
+	    	return  txtidprodotto;
+	    }
+	 public JTextField gettxtdata() {
+	    	return  txtdata;
+	    }
+	 public JTextField gettxtquantita() {
+	    	return  txtquantita;
+	    }
+	 public JLabel getlblcodicetessera() {
+	    	return  lblcodicetessera;
+	    }
+	 
+	 public JLabel getlblcheckidprodotto() {
+	    	return  lblcheckidprodotto;
+	    }
 }

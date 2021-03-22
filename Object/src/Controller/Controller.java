@@ -5,7 +5,10 @@ import Frames.LogInFrame;
 
 import Panels.*;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
+
+import javax.swing.border.LineBorder;
 
 import DAOS.*;
 import Dialogs.AggiuntaClienteSuccesful;
@@ -89,6 +92,8 @@ public FruttaDAO getFruttadao() {
 
 
 
+
+
  
     
 
@@ -161,7 +166,7 @@ public FruttaDAO getFruttadao() {
 		
 	}
 
-	public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
+public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
 		
 		panelmagazzino.setVisible(false);
 		
@@ -185,6 +190,11 @@ public FruttaDAO getFruttadao() {
 
 		aggiuntaclientesuccesful.setLocationRelativeTo(panelaggiuntaclienti);
 		
+		
+	}
+
+	public void checkcodicetessera() {
+		panelaggiuntaacquisto.gettxtcodicetessera().setBorder(new LineBorder(Color.red,1));
 		
 	}
 

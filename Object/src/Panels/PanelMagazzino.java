@@ -65,6 +65,11 @@ public class PanelMagazzino extends JPanel {
     private JTextField data1;
     private JTextField data2;
     private JTextField data3;
+    private JLabel lblcnome;
+    private JLabel lblcmarca;
+    private JLabel lblcidprodotto;
+    private JLabel lblcdatadiscadenza;
+    
 	/**
 	 * Create the panel.
 	 */
@@ -336,9 +341,14 @@ public class PanelMagazzino extends JPanel {
       		
       		if(comboBox.getSelectedItem().toString().equals("Frutta")){
       			try {	
-					TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText()), 
+      				lblcnome.setVisible(false);             //LBL DI ERRORE A FALSO
+      				lblcmarca.setVisible(false);
+      				lblcidprodotto.setVisible(false);
+      				lblcdatadiscadenza.setVisible(false);
+      				
+					if(TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText()), 
 											datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
-											Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+											Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this)) {
 				 txtidprodotto.setText("");
 				 txtnome.setText("");
 				 txtmarca.setText("");
@@ -352,7 +362,7 @@ public class PanelMagazzino extends JPanel {
 				 data3.setText("");
 				 
 				 TheController.prodottisuccesful();
-				 
+					}
 				 
 				 
 				} catch (Exception e1) {
@@ -591,6 +601,30 @@ public class PanelMagazzino extends JPanel {
       data3.setBounds(302, 427, 86, 20);
       add(data3);
       
+      lblcnome = new JLabel("");
+      lblcnome.setForeground(Color.RED);
+      lblcnome.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcnome.setBounds(209, 140, 179, 14);
+      add(lblcnome);
+      
+      lblcmarca = new JLabel("");
+      lblcmarca.setForeground(Color.RED);
+      lblcmarca.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcmarca.setBounds(393, 145, 189, 14);
+      add(lblcmarca);
+      
+      lblcidprodotto = new JLabel("");
+      lblcidprodotto.setForeground(Color.RED);
+      lblcidprodotto.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcidprodotto.setBounds(0, 145, 206, 14);
+      add(lblcidprodotto);
+      
+      lblcdatadiscadenza = new JLabel("");
+      lblcdatadiscadenza.setForeground(Color.RED);
+      lblcdatadiscadenza.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcdatadiscadenza.setBounds(39, 211, 155, 14);
+      add(lblcdatadiscadenza);
+      
       Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
       
       
@@ -629,5 +663,18 @@ public class PanelMagazzino extends JPanel {
 	 	}
 	 public JLabel getLbl3() {
 	 		return lbl3;
+	 	}
+	 
+	 public JLabel getLblcnome() {
+	 		return lblcnome;
+	 	}
+	 public JLabel getLblcmarca() {
+	 		return lblcmarca;
+	 	}
+	 public JLabel getLblcidprodotto() {
+	 		return lblcidprodotto;
+	 	}
+	 public JLabel getLbldatadiscadenza() {
+	 		return lblcdatadiscadenza;
 	 	}
 }

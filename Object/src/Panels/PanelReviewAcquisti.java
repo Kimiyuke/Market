@@ -127,6 +127,8 @@ private JTable tabella;
       			
       			ArrayList<AcquistoTotale> acquisto = new ArrayList<AcquistoTotale>();
 				try {
+					lblguadagno.setVisible(false);  //Lbl e txt per il guadagno mensile si settano inizialmente a non visibile in caso non si trovino acquisti 
+					txtguadagno.setVisible(false);
 					acquisto=TheController.getAcquistototaledao().AcquistiPerData(mese.getMonth(), anno.getYear());//RIEMPIMENTO JTABLE DI TUTTI GLI ACQUISTI EFFETTUATI IN MESE E ANNO SCELTI DALLE RISPETTIVE COMBOBOX
 					
 					if(!acquisto.isEmpty()) { //SI EFFETTUA IL CALCOLO DEL GUADAGNO SOLAMENTE QUANDO CI SONO VALORI FETCHATI ALL'INTERNO DELL'ARAYLIST ACQUISTO

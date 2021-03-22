@@ -15,12 +15,12 @@ public class FruttaDAO {
 
 	
 
-	public static void InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
-			String idprodotto, int disponibilitatotale) throws Exception {
+	public static boolean InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
+			String idprodotto, int disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
 		 try {
-             Class.forName("org.postgresql.Driver");//load il driver            
-             Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
-             PreparedStatement pst= con.prepareStatement("INSERT INTO FRUTTA VALUES(?,?,?::real,?::date,?::date,?,?)");
+             	Class.forName("org.postgresql.Driver");//load il driver            
+             	Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
+             	PreparedStatement pst= con.prepareStatement("INSERT INTO FRUTTA VALUES(?,?,?::real,?::date,?::date,?,?)");
              
         		 pst.setString(1, nome);
             	 pst.setString(2, marca);
@@ -32,15 +32,34 @@ public class FruttaDAO {
                  ;
                  System.out.println(prezzo);
                  pst.executeUpdate();
-             System.out.println(prezzo);
+                 System.out.println(prezzo);
             
           
               }
-              catch (SQLException x) {
-          System.out.println("Inserimento frutta panel magazzinoooo: " +x);
-      
-               }
-		
+            catch (SQLException e) {
+            	System.out.println("Inserimento frutta panel magazzinoooo: " +e);
+            	String exc= e.getMessage();
+            	if( exc.contains("check_nome_lettere") ) {
+            		panelmagazzino.getLblcnome().setVisible(true);
+            		panelmagazzino.getLblcnome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
+            	}
+            	else if( exc.contains("check_marca_lettere") ) {
+            		panelmagazzino.getLblcmarca().setVisible(true);
+            		panelmagazzino.getLblcmarca().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER MARCA non accetta numeri
+            	}
+            	
+            	else if( exc.contains("constraint_data_di_scadenza") ) {
+            		panelmagazzino.getLbldatadiscadenza().setVisible(true);
+            		panelmagazzino.getLbldatadiscadenza().setText("attenzione, data precede la raccolta"); //CONSTRAINT PER DATA DI SCADANZA
+            	}
+            	
+            	else if( exc.contains("magazzino_pkey") ) {
+            		panelmagazzino.getLblcidprodotto().setVisible(true);
+            		panelmagazzino.getLblcidprodotto().setText("attenzione, prodotto gia' esistente"); //CONSTRAINT PER PK DI FRUTTA
+            	}
+    	       return false;
+             }
+		return true;
 	}
 
 
