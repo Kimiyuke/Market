@@ -14,8 +14,8 @@ import Panels.PanelMagazzino;
 
 public class ConfezionatiDAO {
 
-	public static void InsertConfezionati(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
-			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale) throws Throwable {
+	public static boolean InsertConfezionati(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Throwable {
 		try {
             Class.forName("org.postgresql.Driver");//         
             Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
@@ -35,10 +35,37 @@ public class ConfezionatiDAO {
 
 
              }
-             catch (SQLException x) {
-         System.out.println("Inserimento confezionati panel magazzinYoyo: " +x);
-
-              }
+		catch (SQLException e) {
+         	System.out.println("Inserimento verdura panel magazzino: " +e);
+         	String exc= e.getMessage();
+         	if( exc.contains("check_nome_lettere") ) {
+         		panelmagazzino.getLblcnome().setVisible(true);
+         		panelmagazzino.getLblcnome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
+         	}
+         	else if( exc.contains("check_marca_lettere") ) {
+         		panelmagazzino.getLblcmarca().setVisible(true);
+         		panelmagazzino.getLblcmarca().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER MARCA non accetta numeri
+         	}
+         	
+         	else if( exc.contains("constraint_data_di_scadenza") ) {
+         		panelmagazzino.getLbldatadiscadenza().setVisible(true);
+         		panelmagazzino.getLbldatadiscadenza().setText("attenzione, data precede la raccolta"); //CONSTRAINT PER DATA DI SCADANZA
+         	}
+         	
+         	else if( exc.contains("magazzino_pkey") ) {
+         		panelmagazzino.getLblcidprodotto().setVisible(true);
+         		panelmagazzino.getLblcidprodotto().setText("attenzione, prodotto gia' esistente"); //CONSTRAINT PER PK DI FRUTTA
+         	}
+         	
+         	else if( exc.contains("check_id_prodotto")) {
+         		panelmagazzino.getLblcidprodotto().setVisible(true);
+         		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
+         	}
+         	
+ 	       return false;
+          }
+		 
+		 return true;
 		
 	}
 		

@@ -18,6 +18,7 @@ public class FruttaDAO {
 	public static boolean InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
 			String idprodotto, int disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
 		 try {
+			 
              	Class.forName("org.postgresql.Driver");//load il driver            
              	Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
              	PreparedStatement pst= con.prepareStatement("INSERT INTO FRUTTA VALUES(?,?,?::real,?::date,?::date,?,?)");
@@ -57,6 +58,12 @@ public class FruttaDAO {
             		panelmagazzino.getLblcidprodotto().setVisible(true);
             		panelmagazzino.getLblcidprodotto().setText("attenzione, prodotto gia' esistente"); //CONSTRAINT PER PK DI FRUTTA
             	}
+            	
+            	else if( exc.contains("check_id_prodotto")) {
+             		panelmagazzino.getLblcidprodotto().setVisible(true);
+             		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
+             	}
+            	
     	       return false;
              }
 		return true;

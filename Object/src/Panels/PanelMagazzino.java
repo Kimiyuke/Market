@@ -69,6 +69,8 @@ public class PanelMagazzino extends JPanel {
     private JLabel lblcmarca;
     private JLabel lblcidprodotto;
     private JLabel lblcdatadiscadenza;
+    private JLabel lbldisp;
+    private JLabel lblPrezzo;
     
 	/**
 	 * Create the panel.
@@ -339,12 +341,32 @@ public class PanelMagazzino extends JPanel {
       	@Override
       	public void mouseClicked(MouseEvent e) {
       		
+      		lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
+				lblcmarca.setVisible(false);
+				lblcidprodotto.setVisible(false);
+				lblcdatadiscadenza.setVisible(false);
+				lbldisp.setVisible(false);
+				lblPrezzo.setVisible(false);
+				
+      		if ( ! txtdisponibilitatotale.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER DISPONIBILITA, SI VERIFICA CHE ESSO SIA UN NUMERO
+      			lbldisp.setVisible(true);
+      			lbldisp.setText("attenzione, inserire un numero"); 
+      			return;
+      		}
+      		
+      		if ( ! txtprezzo.getText().matches("([1-9]{1}[0-9]{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\-?\\$?([1-9]{1}\\d{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\(\\$?([1-9]{1}\\d{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))\\)\" ")) {    //CONTROLLO INPUT PER DISPONIBILITA, SI VERIFICA CHE ESSO SIA UN NUMERO
+      			lblPrezzo.setVisible(true);
+      			lblPrezzo.setText("attenzione, inserire un numero"); 
+      			return;
+      		}
+      		
+      		
       		if(comboBox.getSelectedItem().toString().equals("Frutta")){
-      			try {	
-      				lblcnome.setVisible(false);             //LBL DI ERRORE A FALSO
-      				lblcmarca.setVisible(false);
-      				lblcidprodotto.setVisible(false);
-      				lblcdatadiscadenza.setVisible(false);
+      			
+      			
+  				
+      			try {	 
+      				   //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
       				
 					if(TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText()), 
 											datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
@@ -371,10 +393,23 @@ public class PanelMagazzino extends JPanel {
 				}
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Verdura")) {
+      			
+      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
+  				lblcmarca.setVisible(false);
+  				lblcidprodotto.setVisible(false);
+  				lblcdatadiscadenza.setVisible(false);
+  				
       			try {
-					TheController.getVerduradao().InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+      				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
+      				
+      				
+      				
+      				
+					if(TheController.getVerduradao().InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
-							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this )) {
+						
+					
 					
 					 txtidprodotto.setText("");
 					 txtnome.setText("");
@@ -389,19 +424,31 @@ public class PanelMagazzino extends JPanel {
 					 data3.setText("");
 					 
 					 TheController.prodottisuccesful();
-					
+					}
+				
+      				
+      				
+      			
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();
 				}
       	}
       		else if(comboBox.getSelectedItem().toString().equals("Farinacei")) {
+      			
+      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
+  				lblcmarca.setVisible(false);
+  				lblcidprodotto.setVisible(false);
+  				lblcdatadiscadenza.setVisible(false);
+  				
       			try {
-					TheController.getFarinaceidao().InsertFarinacei(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+
+      				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
+					if(TheController.getFarinaceidao().InsertFarinacei(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
-							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this)) {
 					
-					txtidprodotto.setText("");
+					txtidprodotto.setText("");             //RESET CAMPI PER IL PROSSIMO INSERIMENTO
 					 txtnome.setText("");
 					 txtmarca.setText("");
 					 txtdisponibilitatotale.setText("");
@@ -414,6 +461,7 @@ public class PanelMagazzino extends JPanel {
 					 data3.setText("");
 					 
 					 TheController.prodottisuccesful();
+					}
 					
 				} catch (Exception e1) {
 					
@@ -421,10 +469,17 @@ public class PanelMagazzino extends JPanel {
 				}
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Confezionati")) {
+      			
+      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
+  				lblcmarca.setVisible(false);
+  				lblcidprodotto.setVisible(false);
+  				lblcdatadiscadenza.setVisible(false);
+
       			try {
-					TheController.getConfezionatidao().InsertConfezionati(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+      				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
+					if(TheController.getConfezionatidao().InsertConfezionati(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
-							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this)) {
 					txtidprodotto.setText("");
 					 txtnome.setText("");
 					 txtmarca.setText("");
@@ -438,7 +493,7 @@ public class PanelMagazzino extends JPanel {
 					 data3.setText("");
 					 
 					 TheController.prodottisuccesful();
-					 
+					}
 				}  catch (Throwable e1) {
 					
 					e1.printStackTrace();
@@ -446,10 +501,17 @@ public class PanelMagazzino extends JPanel {
       			
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Latticini")) {
+      			
+      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
+  				lblcmarca.setVisible(false);
+  				lblcidprodotto.setVisible(false);
+  				lblcdatadiscadenza.setVisible(false);
+  				
       			try {
-					TheController.getLatticinidao().InsertLatticini(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+      				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
+					if(TheController.getLatticinidao().InsertLatticini(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), data1.getText().toString(),   data2.getText().toString(),txtidprodotto.getText().toString(),
-							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()),PanelMagazzino.this)) {
 					txtidprodotto.setText("");
 					 txtnome.setText("");
 					 txtmarca.setText("");
@@ -463,17 +525,24 @@ public class PanelMagazzino extends JPanel {
 					 data3.setText("");
 					 
 					 TheController.prodottisuccesful();
-					 
+					}
 				}  catch (Throwable e1) {
 					
 					e1.printStackTrace();
 				}
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Uova")) {
+      			
+      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
+  				lblcmarca.setVisible(false);
+  				lblcidprodotto.setVisible(false);
+  				lblcdatadiscadenza.setVisible(false);
+  				
       			try {
-					TheController.getUovadao().InsertUova(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+      				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
+					if(TheController.getUovadao().InsertUova(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt3.getText().toString()), data1.getText().toString(),txt2.getText().toString(), txtidprodotto.getText().toString(),
-							Integer.valueOf(txtdisponibilitatotale.getText().toString()));
+							Integer.valueOf(txtdisponibilitatotale.getText().toString()),PanelMagazzino.this)) {
 					
 					txtidprodotto.setText("");
 					 txtnome.setText("");
@@ -488,7 +557,7 @@ public class PanelMagazzino extends JPanel {
 					 data3.setText("");
 					 
 					 TheController.prodottisuccesful();
-					 
+					}
 				}  catch (Exception e1) {
 					
 					e1.printStackTrace();
@@ -624,6 +693,18 @@ public class PanelMagazzino extends JPanel {
       lblcdatadiscadenza.setFont(new Font("Dialog", Font.BOLD, 11));
       lblcdatadiscadenza.setBounds(39, 211, 155, 14);
       add(lblcdatadiscadenza);
+      
+       lbldisp = new JLabel("");
+      lbldisp.setForeground(Color.RED);
+      lbldisp.setFont(new Font("Dialog", Font.BOLD, 11));
+      lbldisp.setBounds(216, 211, 206, 14);
+      add(lbldisp);
+      
+      lblPrezzo = new JLabel("");
+      lblPrezzo.setForeground(Color.RED);
+      lblPrezzo.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblPrezzo.setBounds(434, 211, 162, 14);
+      add(lblPrezzo);
       
       Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
       
