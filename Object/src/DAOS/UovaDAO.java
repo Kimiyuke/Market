@@ -40,7 +40,7 @@ public class UovaDAO {
          
              }
 		catch (SQLException e) {
-         	System.out.println("Inserimento verdura panel magazzino: " +e);
+         	System.out.println("Inserimento uova panel magazzino: " +e);
          	String exc= e.getMessage();
          	if( exc.contains("check_nome_lettere") ) {
          		panelmagazzino.getLblcnome().setVisible(true);

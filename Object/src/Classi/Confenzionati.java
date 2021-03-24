@@ -10,6 +10,7 @@ private Date DataDiScadenza;
 private String Ingriedenti;
 private int Peso;
 private int DisponibilitaTotale;
+private Date DataDiProduzione;
 public String getNome() {
 	return Nome;
 }

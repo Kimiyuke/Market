@@ -77,6 +77,7 @@ public class PanelMagazzino extends JPanel {
     private JLabel lblctxt1; 
     private JLabel lblctxt2; 
     private JLabel lblctxt3; 
+    private JLabel lblhelp;
     
 	/**
 	 * Create the panel.
@@ -256,7 +257,7 @@ public class PanelMagazzino extends JPanel {
       add(lblidprodotto);
       
       txtidprodotto = new JTextField();
-      txtidprodotto.setBounds(83, 117, 86, 20);
+      txtidprodotto.setBounds(102, 118, 86, 20);
       add(txtidprodotto);
       txtidprodotto.setColumns(10);
       
@@ -381,12 +382,18 @@ public class PanelMagazzino extends JPanel {
       		if(comboBox.getSelectedItem().toString().equals("Frutta")){       //INSERIMENTO FRUTTA
       			
       			
-      		//CONTROLLO REGEX DATA di raccolta
+      																	//CONTROLLO REGEX DATA di raccolta
   				if ( ! data1.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
   	      			lblcdata1.setVisible(true);
   	      			lblcdata1.setText("attenzione, inserire una data valida"); 
   	      			return;
   	      		}
+  				
+  				if ( ! txtidprodotto.getText().matches("[F][R][0-9][0-9][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+      				lblcidprodotto.setVisible(true);          				
+      				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
+          			return;
+          		}
   				
       			try {	 
       			//IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
@@ -422,6 +429,12 @@ public class PanelMagazzino extends JPanel {
   	      			lblcdata1.setText("attenzione, inserire una data valida"); 
   	      			return;
   	      		}
+  				
+  				if ( ! txtidprodotto.getText().matches("[V][E][0-9][0-9][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+      				lblcidprodotto.setVisible(true);          				
+      				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
+          			return;
+          		}
       			
       				try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
@@ -469,6 +482,12 @@ public class PanelMagazzino extends JPanel {
   	      			return;
   	      		}
   				
+  				if ( ! txtidprodotto.getText().matches("[F][A][0-9][0-9][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+      				lblcidprodotto.setVisible(true);          				
+      				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
+          			return;
+          		}
+  				
       			try {
 
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
@@ -511,6 +530,12 @@ public class PanelMagazzino extends JPanel {
   	      			return;
   	      		}
   				
+  				if ( ! txtidprodotto.getText().matches("[C][O][0-9][0-9][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+      				lblcidprodotto.setVisible(true);          				
+      				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
+          			return;
+          		}
+  				
       			try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
 					if(TheController.getConfezionatidao().InsertConfezionati(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
@@ -539,35 +564,49 @@ public class PanelMagazzino extends JPanel {
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Latticini")) {
       										//CONTROLLO REGEX DATA DI MUNGITURA
-      				if ( ! data3.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
-      					 lblcdata3.setVisible(true);
-      					 lblcdata3.setText("attenzione, inserire una data valida"); 
+      				if ( ! data1.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+      					 lblcdata1.setVisible(true);
+      					 lblcdata1.setText("attenzione, inserire una data valida"); 
       					 return;
       				}
       										//CONTROLLO REGEX DATA DI PRODUZIONE
       				if ( ! data2.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
-     					 lblcdata2.setVisible(true);
+     					 lblcdata2.setVisible(true);     					
      					 lblcdata2.setText("attenzione, inserire una data valida"); 
      					 return;
      				}
       				
-      				if ( ! txt3.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER PESO, SI VERIFICA CHE ESSO SIA UN NUMERO
+      				if ( ! txt3.getText().matches("[0-9]+")) {  //CONTROLLO INPUT PER PESO, SI VERIFICA CHE ESSO SIA UN NUMERO
           				lblctxt3.setVisible(true);
+          				System.out.println( txt3.getText());
           				lblctxt3.setText("attenzione, inserire un numero"); 
               			return;
               		}
+      				if ( ! txtidprodotto.getText().matches("[L][A][0-9][0-9][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+          				lblcidprodotto.setVisible(true);          				
+          				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
+              			return;
+              		}
+      				
+      				
+      				System.out.println( txtnome.getText());
+      				System.out.println( txtmarca.getText());
+      				System.out.println( txtprezzo.getText());
+      				System.out.println( txtdisponibilitatotale.getText());
+      				System.out.println( datachooser.getText());
+      				System.out.println( txtidprodotto.getText());
       				
       			try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
 					if(TheController.getLatticinidao().InsertLatticini(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
-							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), data1.getText().toString(),   data2.getText().toString(),txtidprodotto.getText().toString(),
+							datachooser.getText().toString() ,Integer.valueOf( txt3.getText().toString()), data1.getText().toString(),  data2.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()),PanelMagazzino.this)) {
 								txtidprodotto.setText("");
 								txtnome.setText("");
 								txtmarca.setText("");
 								txtdisponibilitatotale.setText("");
 								txtprezzo.setText("");
-								txt1.setText("");
+								txt3.setText("");
 								txt2.setText("");
 								datachooser.setText("");
 								data1.setText("");
@@ -731,74 +770,81 @@ public class PanelMagazzino extends JPanel {
       lblcnome = new JLabel("");
       lblcnome.setForeground(Color.RED);
       lblcnome.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcnome.setBounds(209, 140, 179, 14);
+      lblcnome.setBounds(209, 140, 205, 14);
       add(lblcnome);
       
       lblcmarca = new JLabel("");
       lblcmarca.setForeground(Color.RED);
       lblcmarca.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcmarca.setBounds(393, 145, 189, 14);
+      lblcmarca.setBounds(350, 145, 241, 14);
       add(lblcmarca);
       
       lblcidprodotto = new JLabel("");
       lblcidprodotto.setForeground(Color.RED);
       lblcidprodotto.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcidprodotto.setBounds(0, 145, 206, 14);
+      lblcidprodotto.setBounds(0, 145, 241, 14);
       add(lblcidprodotto);
       
       lblcdatadiscadenza = new JLabel("");
       lblcdatadiscadenza.setForeground(Color.RED);
       lblcdatadiscadenza.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcdatadiscadenza.setBounds(39, 211, 155, 14);
+      lblcdatadiscadenza.setBounds(0, 211, 194, 14);
       add(lblcdatadiscadenza);
       
        lbldisp = new JLabel("");
       lbldisp.setForeground(Color.RED);
       lbldisp.setFont(new Font("Dialog", Font.BOLD, 11));
-      lbldisp.setBounds(216, 211, 206, 14);
+      lbldisp.setBounds(216, 211, 225, 14);
       add(lbldisp);
       
       lblPrezzo = new JLabel("");
       lblPrezzo.setForeground(Color.RED);
       lblPrezzo.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblPrezzo.setBounds(434, 211, 162, 14);
+      lblPrezzo.setBounds(393, 211, 203, 14);
       add(lblPrezzo);
       
        lblcdata1 = new JLabel("");
       lblcdata1.setForeground(Color.RED);
       lblcdata1.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcdata1.setBounds(267, 280, 155, 14);
+      lblcdata1.setBounds(267, 280, 213, 14);
       add(lblcdata1);
       
       lblcdata2 = new JLabel("");
       lblcdata2.setForeground(Color.RED);
       lblcdata2.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcdata2.setBounds(267, 365, 155, 14);
+      lblcdata2.setBounds(267, 365, 230, 14);
       add(lblcdata2);
       
        lblcdata3 = new JLabel("");
       lblcdata3.setForeground(Color.RED);
       lblcdata3.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcdata3.setBounds(267, 447, 155, 14);
+      lblcdata3.setBounds(267, 447, 241, 14);
       add(lblcdata3);
       
        lblctxt1 = new JLabel("");
       lblctxt1.setForeground(Color.RED);
       lblctxt1.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblctxt1.setBounds(52, 280, 189, 14);
+      lblctxt1.setBounds(0, 280, 241, 14);
       add(lblctxt1);
       
        lblctxt2 = new JLabel("");
       lblctxt2.setForeground(Color.RED);
       lblctxt2.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblctxt2.setBounds(52, 362, 189, 14);
+      lblctxt2.setBounds(0, 362, 241, 14);
       add(lblctxt2);
       
       lblctxt3 = new JLabel("");
       lblctxt3.setForeground(Color.RED);
       lblctxt3.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblctxt3.setBounds(52, 454, 189, 14);
+      lblctxt3.setBounds(0, 454, 241, 14);
       add(lblctxt3);
+      
+      lblhelp = new JLabel("?");
+      lblhelp.setToolTipText("Ricorda i primi due caratteri, degli otto, variano a seconda della categoria:\r\nFrutta FR  Verdura VE  Confezionati CO  Latticini LA  Farinacei FA  Uova UO");
+      lblhelp.setForeground(Color.WHITE);
+      lblhelp.setFont(new Font("Tahoma", Font.PLAIN, 19));
+      lblhelp.setBounds(83, 114, 9, 25);
+      add(lblhelp);
       
       Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
       

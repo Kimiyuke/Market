@@ -36,11 +36,19 @@ public class LatticiniDAO {
                 pst.setInt(9, disponibilitatotale);
                 pst.executeUpdate();
             
-           
+           System.out.println(nome);
+           System.out.println(marca);
+           System.out.println(prezzo);
+           System.out.println(datadiscadenza);
+           System.out.println(peso);
+           System.out.println(datadimungitura);
+           System.out.println(datadiproduzione);
+           System.out.println(disponibilitatotale);
+           System.out.println(idprodotto);
          
              }
 		catch (SQLException e) {
-         	System.out.println("Inserimento verdura panel magazzino: " +e);
+         	System.out.println("Inserimento latticini panel magazzino: " +e);
          	String exc= e.getMessage();
          	if( exc.contains("check_nome_lettere") ) {
          		panelmagazzino.getLblcnome().setVisible(true);

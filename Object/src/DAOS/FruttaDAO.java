@@ -38,7 +38,7 @@ public class FruttaDAO {
           
               }
             catch (SQLException e) {
-            	System.out.println("Inserimento frutta panel magazzinoooo: " +e);
+            	
             	String exc= e.getMessage();
             	if( exc.contains("check_nome_lettere") ) {
             		panelmagazzino.getLblcnome().setVisible(true);

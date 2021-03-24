@@ -8,6 +8,8 @@ import net.proteanit.sql.DbUtils;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -28,6 +30,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
@@ -45,7 +48,10 @@ public class PanelAggiuntaAcquisto extends JPanel {
     private JTextField txtdata;
     private JTextField txtidacquisto;
     private JLabel lblcodicetessera;
-    private JLabel lblcheckidprodotto;
+    private JLabel lblcidprodotto;
+    private JLabel lblcdata;
+    private JLabel lblcquantita;
+    private JLabel lblcidacquisto;
 	/**
 	 * Create the panel.
 	 */
@@ -145,11 +151,6 @@ public class PanelAggiuntaAcquisto extends JPanel {
       lblpunti.setBounds(402, 355, 119, 32);
       add(lblpunti);
       
-      JButton btnaggiungiprodotto = new JButton("Aggiungi prodotto\r\n");
-      
-      btnaggiungiprodotto.setBounds(0, 254, 119, 22);
-      add(btnaggiungiprodotto);
-      
       JLabel lbldata = new JLabel("Data di acquisto\r\n");
       lbldata.setForeground(new Color(255, 255, 255));
       lbldata.setFont(new Font("Dialog", Font.ITALIC, 11));
@@ -164,7 +165,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
       txtdata.setColumns(10);
       
       JCheckBox cbx = new JCheckBox("Fine Acquisto?");
-      cbx.setBounds(524, 207, 109, 23);
+      cbx.setBounds(524, 206, 109, 23);
       add(cbx);
       
       JLabel lblidacquisto = new JLabel("Id Acquisto");
@@ -185,12 +186,157 @@ public class PanelAggiuntaAcquisto extends JPanel {
       lblcodicetessera.setBounds(402, 145, 231, 14);
       add(lblcodicetessera);
       
-       lblcheckidprodotto = new JLabel("");
-      lblcheckidprodotto.setHorizontalAlignment(SwingConstants.CENTER);
-      lblcheckidprodotto.setForeground(Color.RED);
-      lblcheckidprodotto.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcheckidprodotto.setBounds(0, 145, 221, 14);
-      add(lblcheckidprodotto);
+       lblcidprodotto = new JLabel("");
+      lblcidprodotto.setHorizontalAlignment(SwingConstants.CENTER);
+      lblcidprodotto.setForeground(Color.RED);
+      lblcidprodotto.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcidprodotto.setBounds(0, 145, 221, 14);
+      add(lblcidprodotto);
+      
+       lblcquantita = new JLabel("");
+      lblcquantita.setHorizontalAlignment(SwingConstants.CENTER);
+      lblcquantita.setForeground(Color.RED);
+      lblcquantita.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcquantita.setBounds(171, 147, 221, 14);
+      add(lblcquantita);
+      
+       lblcidacquisto = new JLabel("");
+      lblcidacquisto.setHorizontalAlignment(SwingConstants.CENTER);
+      lblcidacquisto.setForeground(Color.RED);
+      lblcidacquisto.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcidacquisto.setBounds(270, 64, 286, 14);
+      add(lblcidacquisto);
+      
+      JPanel panel_1 = new JPanel();
+      panel_1.addMouseListener(new MouseAdapter() {
+      	
+      	
+      	  public void mouseClicked(MouseEvent e) {
+      	if(cbx.isSelected()) { 
+      		
+      		lblcodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
+  			lblcidprodotto.setVisible(false);
+  			lblcidacquisto.setVisible(false);
+  			lblcquantita.setVisible(false);
+  			lblcdata.setVisible(false);
+      		
+  			if ( ! txtquantita.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER QUANTITA, SI VERIFICA CHE ESSO SIA UN NUMERO
+  				lblcquantita.setVisible(true);
+  				lblcquantita.setText("attenzione, inserire un numero"); 
+      			return;
+      		}
+  			                                                     // CONTROLLO INPUT DATA DI ACQUISTO
+  			if ( ! txtdata.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+      			lblcdata.setVisible(true);
+      			lblcdata.setText("attenzione, inserire una data valida"); 
+      			return;
+      		}
+    
+      		try { //se è l'ultimo acquisto da selezionare allora si effettua funzione per terminare l'acquisto
+      		
+				if(TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
+						txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()), PanelAggiuntaAcquisto.this)) {
+				
+				txtidprodotto.setText("");
+				txtquantita.setText("");
+				txtdata.setText("");
+				txtcodicetessera.setText("");
+				
+				lbltotale1.setVisible(true);
+      	      paneltotale.setVisible(true);
+      	      lbltotale.setVisible(true);
+      	      int prezzototale= TheController.getAcquistototaledao().getprezzototale(Integer.valueOf(txtidacquisto.getText().toString()));
+      	      lbltotale1.setText(String.valueOf(prezzototale));
+      	      
+      	      lblpunti1.setVisible(true);
+      	      panelpunti.setVisible(true);
+      	      lblpunti.setVisible(true);
+      	      int puntitotale=TheController.getAcquistototaledao().getpuntitotale(Integer.valueOf(txtidacquisto.getText().toString()));
+      	      lblpunti1.setText(String.valueOf(puntitotale));
+      	      
+				}
+				
+			}
+      			catch (Exception e1) {
+				
+      					e1.printStackTrace();
+      			}
+      		
+      		
+      	}
+      	else {
+      		
+      		lblcodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
+  			lblcidprodotto.setVisible(false);
+  			lblcidacquisto.setVisible(false);
+  			lblcquantita.setVisible(false);
+  			lblcdata.setVisible(false);
+      		
+  			if ( ! txtquantita.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER QUANTITA, SI VERIFICA CHE ESSO SIA UN NUMERO
+  				lblcquantita.setVisible(true);
+  				lblcquantita.setText("attenzione, inserire un numero"); 
+      			return;
+      		}
+  			
+  			if ( ! txtidacquisto.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER iD ACQUISTO, SI VERIFICA CHE ESSO SIA UN NUMERO
+  				lblcidacquisto.setVisible(true);
+  				lblcidacquisto.setText("attenzione, inserire un numero"); 
+      			return;
+      		}
+  			
+  			
+  			                                                     // CONTROLLO INPUT DATA DI ACQUISTO
+  			if ( ! txtdata.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+      			lblcdata.setVisible(true);
+      			lblcdata.setText("attenzione, inserire una data valida"); 
+      			return;
+      		}
+  			
+  			if ( ! txtidprodotto.getText().matches("[A-Z][A-Z][0-9][0-9][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+  				lblcidprodotto.setVisible(true);          				
+  				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
+      			return;
+      		}
+  			
+  			
+      		try {      //ALTRIMENTI SI AGGIUNGE L'ACQUISTO TRAMITE LA FUNZIONE CON VALORE BOOLEANO "FINE ACQUISTO" A FALSE
+      			
+					if(TheController.getAcquistodao().acquistosingolo(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
+							txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()), PanelAggiuntaAcquisto.this)) {
+					txtidprodotto.setText("");
+					txtquantita.setText("");
+					txtdata.setText("");
+					
+					}
+      		} 
+      				catch (Exception e1) {
+					
+      						e1.printStackTrace();
+      				}
+      		
+      	}
+        }
+    });
+      		
+      		
+  
+      panel_1.setLayout(null);
+      panel_1.setBackground(new Color(45, 106, 79));
+      panel_1.setBounds(471, 185, 50, 63);
+      add(panel_1);
+      
+      JLabel icon = new JLabel("");
+      icon.setBounds(10, 11, 46, 52);
+      panel_1.add(icon);
+      Image iconn= new ImageIcon(this.getClass().getResource("/add.png")).getImage();
+      icon.setIcon(new ImageIcon(iconn));
+      
+       lblcdata = new JLabel("");
+      lblcdata.setHorizontalAlignment(SwingConstants.CENTER);
+      lblcdata.setForeground(Color.RED);
+      lblcdata.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcdata.setBounds(0, 210, 221, 14);
+      add(lblcdata);
       //setting iniziale prezzo totale a falso
       lbltotale1.setVisible(false);
       paneltotale.setVisible(false);
@@ -203,64 +349,11 @@ public class PanelAggiuntaAcquisto extends JPanel {
       
       
       //FUNZIONE PER AGGIUNGERE UN ACQUISTO DI UN SINGOLO PRODOTTO
-      btnaggiungiprodotto.addMouseListener(new MouseAdapter() {
+     
         	
         
 
-			public void mouseClicked(MouseEvent e) {
-        	if(cbx.isSelected()) { try { //se è l'ultimo acquisto da selezionare allora si effettua funzione per terminare l'acquisto
-        		
-        		lblcodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
-    			lblcheckidprodotto.setVisible(false);
-    			
-				TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
-						txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()));
-				
-				txtidprodotto.setText("");
-				txtquantita.setText("");
-				txtdata.setText("");
-				txtcodicetessera.setText("");
-				
-				lbltotale1.setVisible(true);
-        	      paneltotale.setVisible(true);
-        	      lbltotale.setVisible(true);
-        	      int prezzototale= TheController.getAcquistototaledao().getprezzototale(Integer.valueOf(txtidacquisto.getText().toString()));
-        	      lbltotale1.setText(String.valueOf(prezzototale));
-        	      
-        	      lblpunti1.setVisible(true);
-        	      panelpunti.setVisible(true);
-        	      lblpunti.setVisible(true);
-        	      int puntitotale=TheController.getAcquistototaledao().getpuntitotale(Integer.valueOf(txtidacquisto.getText().toString()));
-        	      lblpunti1.setText(String.valueOf(puntitotale));
-				
-			}
-        			catch (Exception e1) {
-				
-        					e1.printStackTrace();
-        			}
-        		
-        		
-        	}
-        	else {
-        		try {      //ALTRIMENTI SI AGGIUNGE L'ACQUISTO TRAMITE LA FUNZIONE CON VALORE BOOLEANO "FINE ACQUISTO" A FALSE
-        			lblcodicetessera.setVisible(false);
-        			lblcheckidprodotto.setVisible(false);
-					TheController.getAcquistodao().acquistosingolo(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
-							txtcodicetessera.getText().toString(), txtdata.getText().toString(), Integer.valueOf(txtidacquisto.getText().toString()), PanelAggiuntaAcquisto.this);
-					txtidprodotto.setText("");
-					txtquantita.setText("");
-					txtdata.setText("");
-					
-				
-					} 
-        				catch (Exception e1) {
-					
-        						e1.printStackTrace();
-        				}
-        		
-        	}
-          }
-      });
+
 	}
 	 public JTextField gettxtcodicetessera() {
 	    	return  txtcodicetessera;
@@ -279,6 +372,10 @@ public class PanelAggiuntaAcquisto extends JPanel {
 	    }
 	 
 	 public JLabel getlblcheckidprodotto() {
-	    	return  lblcheckidprodotto;
+	    	return  lblcidprodotto;
+	    }
+	 
+	 public JLabel getlblcidacquisto() {
+	    	return  lblcidacquisto;
 	    }
 }

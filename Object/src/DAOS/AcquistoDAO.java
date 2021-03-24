@@ -23,7 +23,7 @@ public class AcquistoDAO {
 	
 	
 	
-public static void acquistosingolo(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto ) throws Exception {
+public static boolean acquistosingolo(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto ) throws Exception {
 //		int nid= nidcurrent(); //STORE IN NID IL MAX+1 
 		
 		
@@ -49,26 +49,38 @@ public static void acquistosingolo(String idprodotto, int quantita, String codic
               }
               catch (PSQLException e) {
             	  String exc= e.getMessage();
-            	  if( exc.contains("check_codice_tessera") ) {
+            	  if( exc.contains("check_codice_tessera_") ) {
             		  panelaggiuntaacquisto.getlblcodicetessera().setVisible(true);
-            		 panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE TESSERA
+            		  panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE TESSERA
             	  }
             	  else if( exc.contains("fk_tessera_punti") ) {
-            		  panelaggiuntaacquisto.getlblcodicetessera().setVisible(true);
-            		  	panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, tessera inesistente"); //CONSTRAINT PER TESSERA PUNTI
+            		  	panelaggiuntaacquisto.getlblcodicetessera().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, tessera inesistente"); //CONSTRAINT PER TESSERA PUNTI NON ESISTENTE
             	  }
-            	  else if( exc.contains("espressione_regolare_id_prodotto") ) {   //CONSTRAINT PER ID PRODOTTO + CONTROLLARE SE E POSSIBILE CAMBIARE IN FK CON NMAGAZZINO
+            	  else if( exc.contains("check_id_prodotto") ) {   //CONSTRAINT PER ID PRODOTTO 
             		  panelaggiuntaacquisto.getlblcheckidprodotto().setVisible(true);
             		  panelaggiuntaacquisto.getlblcheckidprodotto().setText("attenzione, codice prodotto errato");
             	  }
+            	    
+            	  else if( exc.contains("fk_id_prodotto") ) {
+            		  	panelaggiuntaacquisto.getlblcheckidprodotto().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcheckidprodotto().setText("attenzione, prodotto non esistente"); //CONSTRAINT PER ID PRODOTTO NON ESISTENTE
+            	  }
+            	  
+            	  else if( exc.contains("acquisto_pkey") ) {
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setText("attenzione, valore duplicato"); //CONSTRAINT PER PK ACQUISTO_PKEY IDACQUISTO DUPLICATO OPPURE INSERIMENTO DI UNO STESSO PRODOTTO GIA PRESENTE NELL'ID ACQUISTO CORRENTE
+            	  }
+            	  
             	  else System.out.println("Review acquisti: " +e);
               
+            	  return false;
  //           		  if( exc.contains("NumberFormatException") )
          //   			  System.out.println("numero");
             		  
 //            			panelaggiuntaacquisto.gettxtcodicetessera().setBorder(new LineBorder(Color.red,1)); TheController.checkcodicetessera();
                }
-		
+		return true;
 		
 	}
 //FUNZIONE CHE SI UTILIZZA PER INSERIMENTO AUTOMATICO DEL CODICE DI ACQUISTO COME SE FOSSE UN'ENUMERAZIONE
@@ -97,7 +109,7 @@ public static void acquistosingolo(String idprodotto, int quantita, String codic
 //		return  nid;
 //	}
 
-	public void acquistototale(String idprodotto, int quantita, String codicetessera, String data, int idacquisto) throws Exception {
+	public static boolean acquistototale(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto) throws Exception {
 //			int nid= nidcurrent();
 		 
 		 try {
@@ -119,12 +131,37 @@ public static void acquistosingolo(String idprodotto, int quantita, String codic
             
           
               }
-              catch (SQLException x) {
-          System.out.println("Inserimento acquisto panel aggiunta acquisto: " +x);
+              catch (PSQLException e) {
+            	  String exc= e.getMessage();
+            	  if( exc.contains("check_codice_tessera_") ) {
+            		  panelaggiuntaacquisto.getlblcodicetessera().setVisible(true);
+            		  panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE TESSERA
+            	  }
+            	  else if( exc.contains("fk_tessera_punti") ) {
+            		  	panelaggiuntaacquisto.getlblcodicetessera().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, tessera inesistente"); //CONSTRAINT PER TESSERA PUNTI NON ESISTENTE
+            	  }
+            	  else if( exc.contains("check_id_prodotto") ) {   //CONSTRAINT PER ID PRODOTTO 
+            		  panelaggiuntaacquisto.getlblcheckidprodotto().setVisible(true);
+            		  panelaggiuntaacquisto.getlblcheckidprodotto().setText("attenzione, codice prodotto errato");
+            	  }
+            	    
+            	  else if( exc.contains("fk_id_prodotto") ) {
+            		  	panelaggiuntaacquisto.getlblcodicetessera().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcodicetessera().setText("attenzione, prodotto non esistente"); //CONSTRAINT PER ID PRODOTTO NON ESISTENTE
+            	  }
+            	  
+            	  else if( exc.contains("acquisto_pkey") ) {
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setText("attenzione, valore duplicato"); //CONSTRAINT PER PK ACQUISTO_PKEY IDACQUISTO DUPLICATO OPPURE INSERIMENTO DI UNO STESSO PRODOTTO GIA PRESENTE NELL'ID ACQUISTO CORRENTE
+            	  }
+            	  
+            	  else System.out.println("Review acquisti: " +e);
       
+          			return false;
                }
 		
-		
+		return true;
 	}
 
 }
