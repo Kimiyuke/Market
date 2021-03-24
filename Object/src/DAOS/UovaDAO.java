@@ -66,6 +66,11 @@ public class UovaDAO {
          		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
          	}
          	
+         	else if( exc.contains("check_provenienza_lettere")) {
+         		panelmagazzino.getlblctxt2().setVisible(true);
+         		panelmagazzino.getlblctxt2().setText("attenzione, inserire solo lettere"); //CONSTRAINT PER IL CAMPO INGREDIENTI
+         	}
+         	
  	       return false;
           }
 		 

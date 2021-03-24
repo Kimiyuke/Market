@@ -71,6 +71,12 @@ public class PanelMagazzino extends JPanel {
     private JLabel lblcdatadiscadenza;
     private JLabel lbldisp;
     private JLabel lblPrezzo;
+    private JLabel lblcdata1;
+    private JLabel lblcdata2;
+    private JLabel lblcdata3;
+    private JLabel lblctxt1; 
+    private JLabel lblctxt2; 
+    private JLabel lblctxt3; 
     
 	/**
 	 * Create the panel.
@@ -347,28 +353,44 @@ public class PanelMagazzino extends JPanel {
 				lblcdatadiscadenza.setVisible(false);
 				lbldisp.setVisible(false);
 				lblPrezzo.setVisible(false);
+				lblcdata1.setVisible(false);
+				lblctxt1.setVisible(false);
+				lblctxt2.setVisible(false);
+				lblctxt3.setVisible(false);
+				lblcdata3.setVisible(false);
+				lblcdata2.setVisible(false);
 				
       		if ( ! txtdisponibilitatotale.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER DISPONIBILITA, SI VERIFICA CHE ESSO SIA UN NUMERO
       			lbldisp.setVisible(true);
       			lbldisp.setText("attenzione, inserire un numero"); 
       			return;
       		}
-      		
-      		if ( ! txtprezzo.getText().matches("([1-9]{1}[0-9]{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\-?\\$?([1-9]{1}\\d{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\(\\$?([1-9]{1}\\d{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))\\)\" ")) {    //CONTROLLO INPUT PER DISPONIBILITA, SI VERIFICA CHE ESSO SIA UN NUMERO
+      		                                                               //CONTROLLO INPUT PREZZO CHE SIA UN NUMERIC 5.2
+      		if ( ! txtprezzo.getText().matches("([1-9]{1}[0-9]{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\-?\\$?([1-9]{1}\\d{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\(\\$?([1-9]{1}\\d{0,2}(\\,\\d{3})*(\\.\\d{0,2})?|[1-9]{1}\\d{0,}(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))\\)\" ")) {   
       			lblPrezzo.setVisible(true);
       			lblPrezzo.setText("attenzione, inserire un numero"); 
       			return;
       		}
+      		                                              //CONTROLLO REGEX DATA di scadenza
+      		if ( ! datachooser.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+      			lblcdatadiscadenza.setVisible(true);
+      			lblcdatadiscadenza.setText("attenzione, inserire una data valida"); 
+      			return;
+      		}
       		
-      		
-      		if(comboBox.getSelectedItem().toString().equals("Frutta")){
+      		if(comboBox.getSelectedItem().toString().equals("Frutta")){       //INSERIMENTO FRUTTA
       			
       			
+      		//CONTROLLO REGEX DATA di raccolta
+  				if ( ! data1.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+  	      			lblcdata1.setVisible(true);
+  	      			lblcdata1.setText("attenzione, inserire una data valida"); 
+  	      			return;
+  	      		}
   				
       			try {	 
-      				   //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
-      				
-					if(TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText()), 
+      			//IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
+      				 if(TheController.getFruttadao().InsertFrutta(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText()), 
 											datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
 											Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this)) {
 				 txtidprodotto.setText("");
@@ -394,37 +416,35 @@ public class PanelMagazzino extends JPanel {
       		}
       		else if(comboBox.getSelectedItem().toString().equals("Verdura")) {
       			
-      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
-  				lblcmarca.setVisible(false);
-  				lblcidprodotto.setVisible(false);
-  				lblcdatadiscadenza.setVisible(false);
-  				
-      			try {
+      		//CONTROLLO REGEX DATA di raccolta
+  				if ( ! data1.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+  	      			lblcdata1.setVisible(true);
+  	      			lblcdata1.setText("attenzione, inserire una data valida"); 
+  	      			return;
+  	      		}
+      			
+      				try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
-      				
-      				
-      				
-      				
-					if(TheController.getVerduradao().InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
+      					if(TheController.getVerduradao().InsertVerdura(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() , data1.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this )) {
 						
 					
 					
-					 txtidprodotto.setText("");
-					 txtnome.setText("");
-					 txtmarca.setText("");
-					 txtdisponibilitatotale.setText("");
-					 txtprezzo.setText("");
-					 txt1.setText("");
-					 txt2.setText("");
-					 datachooser.setText("");
-					 data1.setText("");
-					 data2.setText("");
-					 data3.setText("");
+							txtidprodotto.setText("");
+							txtnome.setText("");
+							txtmarca.setText("");
+							txtdisponibilitatotale.setText("");
+							txtprezzo.setText("");
+							txt1.setText("");
+							txt2.setText("");
+							datachooser.setText("");
+							data1.setText("");
+							data2.setText("");
+							data3.setText("");
 					 
-					 TheController.prodottisuccesful();
-					}
+							TheController.prodottisuccesful();
+      					}
 				
       				
       				
@@ -436,10 +456,18 @@ public class PanelMagazzino extends JPanel {
       	}
       		else if(comboBox.getSelectedItem().toString().equals("Farinacei")) {
       			
-      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
-  				lblcmarca.setVisible(false);
-  				lblcidprodotto.setVisible(false);
-  				lblcdatadiscadenza.setVisible(false);
+      			if ( ! txt1.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER PESO, SI VERIFICA CHE ESSO SIA UN NUMERO
+      				lblctxt1.setVisible(true);
+      				lblctxt1.setText("attenzione, inserire un numero"); 
+          			return;
+          		}
+      			 
+      				//CONTROLLO REGEX DATA DI SCADENZA
+  				if ( ! data3.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+  	      			lblcdata3.setVisible(true);
+  	      			lblcdata3.setText("attenzione, inserire una data valida"); 
+  	      			return;
+  	      		}
   				
       			try {
 
@@ -448,19 +476,19 @@ public class PanelMagazzino extends JPanel {
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this)) {
 					
-					txtidprodotto.setText("");             //RESET CAMPI PER IL PROSSIMO INSERIMENTO
-					 txtnome.setText("");
-					 txtmarca.setText("");
-					 txtdisponibilitatotale.setText("");
-					 txtprezzo.setText("");
-					 txt1.setText("");
-					 txt2.setText("");
-					 datachooser.setText("");
-					 data1.setText("");
-					 data2.setText("");
-					 data3.setText("");
+							txtidprodotto.setText("");             //RESET CAMPI PER IL PROSSIMO INSERIMENTO
+							txtnome.setText("");
+							txtmarca.setText("");
+							txtdisponibilitatotale.setText("");
+							txtprezzo.setText("");
+							txt1.setText("");
+							txt2.setText("");
+							datachooser.setText("");
+							data1.setText("");
+							data2.setText("");
+							data3.setText("");
 					 
-					 TheController.prodottisuccesful();
+							TheController.prodottisuccesful();
 					}
 					
 				} catch (Exception e1) {
@@ -470,29 +498,38 @@ public class PanelMagazzino extends JPanel {
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Confezionati")) {
       			
-      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
-  				lblcmarca.setVisible(false);
-  				lblcidprodotto.setVisible(false);
-  				lblcdatadiscadenza.setVisible(false);
-
+      			if ( ! txt1.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER PESO, SI VERIFICA CHE ESSO SIA UN NUMERO
+      				lblctxt1.setVisible(true);
+      				lblctxt1.setText("attenzione, inserire un numero"); 
+          			return;
+          		}
+      			 
+      																	//CONTROLLO REGEX DATA DI SCADENZA
+  				if ( ! data3.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+  	      			lblcdata3.setVisible(true);
+  	      			lblcdata3.setText("attenzione, inserire una data valida"); 
+  	      			return;
+  	      		}
+  				
       			try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
 					if(TheController.getConfezionatidao().InsertConfezionati(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), txt2.getText().toString(),   data3.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()), PanelMagazzino.this)) {
-					txtidprodotto.setText("");
-					 txtnome.setText("");
-					 txtmarca.setText("");
-					 txtdisponibilitatotale.setText("");
-					 txtprezzo.setText("");
-					 txt1.setText("");
-					 txt2.setText("");
-					 datachooser.setText("");
-					 data1.setText("");
-					 data2.setText("");
-					 data3.setText("");
+						
+							txtidprodotto.setText("");
+							txtnome.setText("");
+							txtmarca.setText("");
+							txtdisponibilitatotale.setText("");
+							txtprezzo.setText("");
+							txt1.setText("");
+							txt2.setText("");
+							datachooser.setText("");
+							data1.setText("");
+							data2.setText("");
+							data3.setText("");
 					 
-					 TheController.prodottisuccesful();
+							TheController.prodottisuccesful();
 					}
 				}  catch (Throwable e1) {
 					
@@ -501,30 +538,43 @@ public class PanelMagazzino extends JPanel {
       			
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Latticini")) {
-      			
-      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
-  				lblcmarca.setVisible(false);
-  				lblcidprodotto.setVisible(false);
-  				lblcdatadiscadenza.setVisible(false);
-  				
+      										//CONTROLLO REGEX DATA DI MUNGITURA
+      				if ( ! data3.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+      					 lblcdata3.setVisible(true);
+      					 lblcdata3.setText("attenzione, inserire una data valida"); 
+      					 return;
+      				}
+      										//CONTROLLO REGEX DATA DI PRODUZIONE
+      				if ( ! data2.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+     					 lblcdata2.setVisible(true);
+     					 lblcdata2.setText("attenzione, inserire una data valida"); 
+     					 return;
+     				}
+      				
+      				if ( ! txt3.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER PESO, SI VERIFICA CHE ESSO SIA UN NUMERO
+          				lblctxt3.setVisible(true);
+          				lblctxt3.setText("attenzione, inserire un numero"); 
+              			return;
+              		}
+      				
       			try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
 					if(TheController.getLatticinidao().InsertLatticini(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt1.getText().toString()), data1.getText().toString(),   data2.getText().toString(),txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()),PanelMagazzino.this)) {
-					txtidprodotto.setText("");
-					 txtnome.setText("");
-					 txtmarca.setText("");
-					 txtdisponibilitatotale.setText("");
-					 txtprezzo.setText("");
-					 txt1.setText("");
-					 txt2.setText("");
-					 datachooser.setText("");
-					 data1.setText("");
-					 data2.setText("");
-					 data3.setText("");
+								txtidprodotto.setText("");
+								txtnome.setText("");
+								txtmarca.setText("");
+								txtdisponibilitatotale.setText("");
+								txtprezzo.setText("");
+								txt1.setText("");
+								txt2.setText("");
+								datachooser.setText("");
+								data1.setText("");
+								data2.setText("");
+								data3.setText("");
 					 
-					 TheController.prodottisuccesful();
+								TheController.prodottisuccesful();
 					}
 				}  catch (Throwable e1) {
 					
@@ -533,30 +583,38 @@ public class PanelMagazzino extends JPanel {
           	}
       		else if(comboBox.getSelectedItem().toString().equals("Uova")) {
       			
-      			lblcnome.setVisible(false);             //LBL DI ERRORI A FALSO
-  				lblcmarca.setVisible(false);
-  				lblcidprodotto.setVisible(false);
-  				lblcdatadiscadenza.setVisible(false);
-  				
+      			                                                      //CONTROLLO INPUT DATA  DI DEPOSIZIONE
+      			if ( ! data1.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
+					 lblcdata1.setVisible(true);
+					 lblcdata1.setText("attenzione, inserire una data valida"); 
+					 return;
+				}
+      			
+      			if ( ! txt3.getText().matches("[0-9]+")) {    //CONTROLLO INPUT PER QUANTITA, SI VERIFICA CHE ESSO SIA UN NUMERO
+      				lblctxt3.setVisible(true);
+      				lblctxt3.setText("attenzione, inserire un numero"); 
+          			return;
+          		}
+
       			try {
       				 //IF CHE CONTROLLA SE LA FUNZIONE RESTITUISCE TRUE(OSSIA SE L'INSERIMENTO è ANDATO A BUON FINE)
 					if(TheController.getUovadao().InsertUova(txtnome.getText().toString(),txtmarca.getText().toString(),Float.valueOf(txtprezzo.getText().toString()), 
 							datachooser.getText().toString() ,Integer.valueOf( txt3.getText().toString()), data1.getText().toString(),txt2.getText().toString(), txtidprodotto.getText().toString(),
 							Integer.valueOf(txtdisponibilitatotale.getText().toString()),PanelMagazzino.this)) {
 					
-					txtidprodotto.setText("");
-					 txtnome.setText("");
-					 txtmarca.setText("");
-					 txtdisponibilitatotale.setText("");
-					 txtprezzo.setText("");
-					 txt1.setText("");
-					 txt2.setText("");
-					 datachooser.setText("");
-					 data1.setText("");
-					 data2.setText("");
-					 data3.setText("");
+							txtidprodotto.setText("");
+							txtnome.setText("");
+							txtmarca.setText("");
+							txtdisponibilitatotale.setText("");
+							txtprezzo.setText("");
+							txt1.setText("");
+							txt2.setText("");
+							datachooser.setText("");
+							data1.setText("");
+							data2.setText("");
+							data3.setText("");
 					 
-					 TheController.prodottisuccesful();
+							TheController.prodottisuccesful();
 					}
 				}  catch (Exception e1) {
 					
@@ -706,6 +764,42 @@ public class PanelMagazzino extends JPanel {
       lblPrezzo.setBounds(434, 211, 162, 14);
       add(lblPrezzo);
       
+       lblcdata1 = new JLabel("");
+      lblcdata1.setForeground(Color.RED);
+      lblcdata1.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcdata1.setBounds(267, 280, 155, 14);
+      add(lblcdata1);
+      
+      lblcdata2 = new JLabel("");
+      lblcdata2.setForeground(Color.RED);
+      lblcdata2.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcdata2.setBounds(267, 365, 155, 14);
+      add(lblcdata2);
+      
+       lblcdata3 = new JLabel("");
+      lblcdata3.setForeground(Color.RED);
+      lblcdata3.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblcdata3.setBounds(267, 447, 155, 14);
+      add(lblcdata3);
+      
+       lblctxt1 = new JLabel("");
+      lblctxt1.setForeground(Color.RED);
+      lblctxt1.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblctxt1.setBounds(52, 280, 189, 14);
+      add(lblctxt1);
+      
+       lblctxt2 = new JLabel("");
+      lblctxt2.setForeground(Color.RED);
+      lblctxt2.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblctxt2.setBounds(52, 362, 189, 14);
+      add(lblctxt2);
+      
+      lblctxt3 = new JLabel("");
+      lblctxt3.setForeground(Color.RED);
+      lblctxt3.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblctxt3.setBounds(52, 454, 189, 14);
+      add(lblctxt3);
+      
       Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
       
       
@@ -757,5 +851,17 @@ public class PanelMagazzino extends JPanel {
 	 	}
 	 public JLabel getLbldatadiscadenza() {
 	 		return lblcdatadiscadenza;
+	 	}
+	 
+	 public JLabel getlblctxt1() {
+	 		return  lblctxt1;
+	 	}
+	 
+	 public JLabel getlblctxt2() {
+	 		return  lblctxt2;
+	 	}
+	 
+	 public JLabel getlblctxt3() {
+	 		return  lblctxt3;
 	 	}
 }

@@ -64,6 +64,11 @@ public class FarinaceiDAO {
          		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
          	}
          	
+         	else if( exc.contains("check_ingredienti_lettere")) {
+         		panelmagazzino.getlblctxt2().setVisible(true);
+         		panelmagazzino.getlblctxt2().setText("attenzione, solo lettere e virgole"); //CONSTRAINT PER L'ID PRODOTTO
+         	}
+         	
  	       return false;
           }
 		 
