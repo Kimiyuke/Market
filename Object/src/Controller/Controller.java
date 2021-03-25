@@ -11,6 +11,8 @@ import java.awt.event.MouseAdapter;
 import javax.swing.border.LineBorder;
 
 import DAOS.*;
+import Dialogs.AggiuntaAcquistoSingolo;
+import Dialogs.AggiuntaAcquistoTotale;
 import Dialogs.AggiuntaClienteSuccesful;
 import Dialogs.AggiuntaProdottiSuccesful;
 public class Controller {
@@ -44,7 +46,8 @@ public class Controller {
     //Dialogs
     AggiuntaProdottiSuccesful aggiuntaprodottisuccesful;
     AggiuntaClienteSuccesful aggiuntaclientesuccesful;
-    
+    AggiuntaAcquistoSingolo aggiuntaacquistosingolo;
+    AggiuntaAcquistoTotale aggiuntaacquistototale;
     
     
     public ClienteDAO getClientidao() {
@@ -89,6 +92,7 @@ public VerduraDAO getVerduradao() {
 public FruttaDAO getFruttadao() {
 	return new FruttaDAO();
 }
+
 
 
 
@@ -197,6 +201,27 @@ public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
 		panelaggiuntaacquisto.gettxtcodicetessera().setBorder(new LineBorder(Color.red,1));
 		
 	}
+
+	public void acquistosingolosuccesful() {
+		aggiuntaacquistosingolo= new AggiuntaAcquistoSingolo(this);
+		aggiuntaacquistosingolo.setVisible(true);
+
+		aggiuntaacquistosingolo.setLocationRelativeTo(panelaggiuntaacquisto);
+		
+	}
+
+	public void acquistototalesuccesful(int prezzototale, int puntitotale) {
+		aggiuntaacquistototale= new AggiuntaAcquistoTotale(Controller.this);
+		aggiuntaacquistototale.setVisible(true);
+		aggiuntaacquistototale.getlblpunti1().setText(String.valueOf(puntitotale));
+		aggiuntaacquistototale.getlbltotale1().setText(String.valueOf(prezzototale));
+		aggiuntaacquistototale.getlbleuro().setVisible(true);
+
+		aggiuntaacquistototale.setLocationRelativeTo(panelaggiuntaacquisto);
+		
+	}
+
+	
 
 	
  

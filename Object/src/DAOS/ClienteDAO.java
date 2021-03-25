@@ -1,6 +1,8 @@
 package DAOS;
 import java.sql.*;
 import java.util.ArrayList;
+
+import Panels.PanelAggiuntaClienti;
 import Panels.PanelClienti;
 import javax.swing.table.DefaultTableModel;
 
@@ -524,29 +526,55 @@ public class ClienteDAO {
 
 }
 
-	public void Addcliente(String cf, String nome, String cognome, String codicetessera) throws Exception {
+	public boolean Addcliente(String cf, String nome, String cognome, String codicetessera, PanelAggiuntaClienti panelaggiuntaclienti) throws Exception {
 		 try {
              Class.forName("org.postgresql.Driver");//load il driver            
              Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
-             PreparedStatement pst= con.prepareStatement("INSERT INTO CLIENTI VALUES(?,?,?,?)");
+             PreparedStatement pst= con.prepareStatement("INSERT INTO CLIENTE VALUES(?,?,?,?)");
              
         		 pst.setString(1, nome);
             	 pst.setString(2, cognome);
                  pst.setString(3, codicetessera);
-                 pst.setString(3, cf);
+                 pst.setString(4, cf);
     
                  pst.executeUpdate();
             
             
           
               }
-              catch (SQLException x) {
-          System.out.println("Inserimento nuovo cliente " +x);
-      
-               }
-		
+              catch (SQLException e) {
+            	  System.out.println("Select clienti per pezzi farinacei " +e);
+          
+          String exc= e.getMessage();
+          if( exc.contains("check_nome_lettere") ) {
+        	  panelaggiuntaclienti.getLblcnome().setVisible(true);
+        	  panelaggiuntaclienti.getLblcnome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
+       		}
+          
+          if( exc.contains("check_cognome_lettere") ) {
+        	  panelaggiuntaclienti.getLblcognome().setVisible(true);
+        	  panelaggiuntaclienti.getLblcognome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER COGNOME non accetta numeri
+       		}
+          
+          if( exc.contains("check_codice_tessera_") ) {
+        	  panelaggiuntaclienti.getLblcodicetessera().setVisible(true);
+        	  panelaggiuntaclienti.getLblcodicetessera().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE TESSERA. 4 LETTERE E 4 NUMERI
+          }
+          if( exc.contains("check_cf") ) {
+        	  panelaggiuntaclienti.getLblccf().setVisible(true);
+        	  panelaggiuntaclienti.getLblccf().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE FISCALE
+       		}
+          
+          if( exc.contains("cliente_pkey") ) {
+        	  panelaggiuntaclienti.getLblccf().setVisible(true);
+        	  panelaggiuntaclienti.getLblccf().setText("Cliente gia' registrato"); //CONSTRAINT PER CODICE FISCALE
+        	  panelaggiuntaclienti.getLblcodicetessera().setText("Cliente gia' registrato"); //CONSTRAINT PER CODICE FISCALE
+       		}
+      return false;
+          }
+               
+		return true;
 	}
-
-
-
+	
 }
+

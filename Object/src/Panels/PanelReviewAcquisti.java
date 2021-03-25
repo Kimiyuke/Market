@@ -111,6 +111,13 @@ private JTable tabella;
 	      txtguadagno.setFont(new Font("Dialog", Font.BOLD, 20));
 	      txtguadagno.setBounds(519, 435, 113, 67);
 	      add(txtguadagno);
+	      
+	      JLabel lbleuro = new JLabel("\u20AC");
+	      lbleuro.setForeground(new Color(255, 255, 255));
+	      lbleuro.setFont(new Font("Dialog", Font.BOLD, 20));
+	      lbleuro.setBounds(581, 435, 29, 67);
+	      add(lbleuro);
+	      lbleuro.setVisible(false);
 	      lblguadagno.setVisible(false);
 		
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -147,6 +154,7 @@ private JTable tabella;
 		        	 model.addRow(rowdata);
 			}
 				
+				lbleuro.setVisible(true);
 			}
 		});
 		

@@ -59,10 +59,7 @@ public class LatticiniDAO {
          		panelmagazzino.getLblcmarca().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER MARCA non accetta numeri
          	}
          	
-         	else if( exc.contains("constraint_data_di_scadenza") ) {
-         		panelmagazzino.getLbldatadiscadenza().setVisible(true);
-         		panelmagazzino.getLbldatadiscadenza().setText("attenzione, data precede la raccolta"); //CONSTRAINT PER DATA DI SCADANZA
-         	}
+         	
          	
          	else if( exc.contains("magazzino_pkey") ) {
          		panelmagazzino.getLblcidprodotto().setVisible(true);
@@ -72,6 +69,26 @@ public class LatticiniDAO {
          	else if( exc.contains("check_id_prodotto")) {
          		panelmagazzino.getLblcidprodotto().setVisible(true);
          		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
+         	}
+         	
+         	else if( exc.contains("constraint_data_di_scadenza")) {
+         		panelmagazzino.getLbldatadiscadenza().setVisible(true);
+         		panelmagazzino.getLbldatadiscadenza().setText("attenzione, data non coerente maggiore della data di mung"); //CONSTRAINT PER LA DATA DI SCADENZA MAGGIORE DELLA DATA DI MUNGITURA
+         	}
+         	
+         	else if( exc.contains("constraint_data_di_scadenza2")) {
+         		panelmagazzino.getLbldatadiscadenza().setVisible(true);
+         		panelmagazzino.getLbldatadiscadenza().setText("attenzione, data non coerente maggiore di produzione"); //CONSTRAINT PER LA DATA DI SCADENZA MAGGIORE DELLA DATA DI PRODUZIONE
+         	}
+         	
+         	else if( exc.contains("constraint_data_di_mungitura")) {
+         		panelmagazzino.getlblcdata1().setVisible(true);
+         		panelmagazzino.getlblcdata1().setText("attenzione, data non coerente minore produzione"); //CONSTRAINT PER LA DATA DI MUNGITURA MINORE DELLA DATA DI PRODUZIONE
+         	}
+         	
+         	else if( exc.contains("constraint_data_di_produzione")) {
+         		panelmagazzino.getlblcdata2().setVisible(true);
+         		panelmagazzino.getlblcdata2().setText("attenzione, data non coerente maggiore mungitura"); //CONSTRAINT PER LA DATA DI PRODUZIONE MAGGIORE DELLA DATA DI MUNGITURA
          	}
  	       return false;
           }

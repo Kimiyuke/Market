@@ -354,10 +354,10 @@ public class PanelMagazzino extends JPanel {
 				lblcdatadiscadenza.setVisible(false);
 				lbldisp.setVisible(false);
 				lblPrezzo.setVisible(false);
-				lblcdata1.setVisible(false);
 				lblctxt1.setVisible(false);
 				lblctxt2.setVisible(false);
 				lblctxt3.setVisible(false);
+				lblcdata1.setVisible(false);
 				lblcdata3.setVisible(false);
 				lblcdata2.setVisible(false);
 				
@@ -376,6 +376,18 @@ public class PanelMagazzino extends JPanel {
       		if ( ! datachooser.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {    
       			lblcdatadiscadenza.setVisible(true);
       			lblcdatadiscadenza.setText("attenzione, inserire una data valida"); 
+      			return;
+      		}
+      		
+      		if (  ! txtnome.getText().matches("[A-Za-z]+")) {    //CONTROLLO INPUT PER NOME, SI VERIFICA CHE CONTENGA SOLO LETTERE
+  				lblcnome.setVisible(true);
+  				lblcnome.setText("attenzione, accettate solo lettere"); 
+      			return;
+      		}
+  			
+  			if (  ! txtmarca.getText().matches("[A-Za-z]+")) {    //CONTROLLO INPUT PER MARCA, SI VERIFICA CHE CONTENGA SOLO LETTERE
+  				lblcmarca.setVisible(true);
+  				lblcmarca.setText("attenzione,accettate solo lettere"); 
       			return;
       		}
       		
@@ -897,6 +909,18 @@ public class PanelMagazzino extends JPanel {
 	 	}
 	 public JLabel getLbldatadiscadenza() {
 	 		return lblcdatadiscadenza;
+	 	}
+	 
+	 public JLabel getlblcdata1() {
+	 		return  lblcdata1;
+	 	}
+	 
+	 public JLabel getlblcdata2() {
+	 		return  lblcdata2;
+	 	}
+	 
+	 public JLabel getlblcdata3() {
+	 		return  lblcdata3;
 	 	}
 	 
 	 public JLabel getlblctxt1() {
