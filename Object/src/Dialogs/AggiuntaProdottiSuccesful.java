@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -22,33 +23,43 @@ public class AggiuntaProdottiSuccesful extends JDialog {
 
 	 Controller TheController;
 	public AggiuntaProdottiSuccesful(Controller c) {
-		getContentPane().setBackground(new Color(149, 213, 178));
-		TheController=c;
+		TheController= c;
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(27, 67, 50));
-		panel.setBounds(0, 64, 434, 124);
+		panel.setBounds(0, 75, 434, 119);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblAggiuntaClienteEffettuata = new JLabel("Aggiunta prodotto effettuata con successo");
-		lblAggiuntaClienteEffettuata.setForeground(Color.WHITE);
-		lblAggiuntaClienteEffettuata.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
-		lblAggiuntaClienteEffettuata.setBounds(57, 27, 339, 50);
-		panel.add(lblAggiuntaClienteEffettuata);
+		JLabel lblNewLabel = new JLabel("Prodotto aggiunto correttamente");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblNewLabel.setBounds(26, 31, 372, 61);
+		panel.add(lblNewLabel);
 		
-		JLabel lblicon = new JLabel("");
-		lblicon.setBounds(0, 27, 70, 50);
-		panel.add(lblicon);
-		Image icons= new ImageIcon(this.getClass().getResource("/mela.png")).getImage();
-		lblicon.setIcon(new ImageIcon(icons));
+		JLabel icon = new JLabel("");
+		icon.setBounds(-2, 41, 32, 41);
+		panel.add(icon);
+		Image icona= new ImageIcon(this.getClass().getResource("/mela.png")).getImage();
+		icon.setIcon(new ImageIcon(icona));
 		
-		JLabel lblicon1 = new JLabel("");
-		lblicon1.setBounds(398, 27, 36, 50);
-		panel.add(lblicon1);
-		lblicon1.setIcon(new ImageIcon(icons));
+		JLabel icona2 = new JLabel("");
+		icona2.setBounds(401, 41, 33, 41);
+		panel.add(icona2);
+		Image iconaa= new ImageIcon(this.getClass().getResource("/mela.png")).getImage();
+		icona2.setIcon(new ImageIcon(iconaa));
+		
+		Image sfondo1= new ImageIcon(this.getClass().getResource("/sfondo3.jpg")).getImage();
+		
+		JLabel sfondo = new JLabel("");
+		sfondo.setBounds(-34, -92, 511, 365);
+		getContentPane().add(sfondo);
+		sfondo.setIcon(new ImageIcon(sfondo1));
 		
 	         
 	}

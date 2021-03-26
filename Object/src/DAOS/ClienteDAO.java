@@ -543,32 +543,37 @@ public class ClienteDAO {
           
               }
               catch (SQLException e) {
-            	  System.out.println("Select clienti per pezzi farinacei " +e);
+            	 
           
           String exc= e.getMessage();
           if( exc.contains("check_nome_lettere") ) {
         	  panelaggiuntaclienti.getLblcnome().setVisible(true);
-        	  panelaggiuntaclienti.getLblcnome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
+        	  panelaggiuntaclienti.getLblcnome().setText("Attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
        		}
           
           if( exc.contains("check_cognome_lettere") ) {
         	  panelaggiuntaclienti.getLblcognome().setVisible(true);
-        	  panelaggiuntaclienti.getLblcognome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER COGNOME non accetta numeri
+        	  panelaggiuntaclienti.getLblcognome().setText("Attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER COGNOME non accetta numeri
        		}
           
           if( exc.contains("check_codice_tessera_") ) {
         	  panelaggiuntaclienti.getLblcodicetessera().setVisible(true);
-        	  panelaggiuntaclienti.getLblcodicetessera().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE TESSERA. 4 LETTERE E 4 NUMERI
+        	  panelaggiuntaclienti.getLblcodicetessera().setText("Attenzione, campo sbagliato"); //CONSTRAINT PER CODICE TESSERA. 4 LETTERE E 4 NUMERI
           }
           if( exc.contains("check_cf") ) {
         	  panelaggiuntaclienti.getLblccf().setVisible(true);
-        	  panelaggiuntaclienti.getLblccf().setText("attenzione, campo sbagliato"); //CONSTRAINT PER CODICE FISCALE
+        	  panelaggiuntaclienti.getLblccf().setText("Attenzione, campo sbagliato"); //CONSTRAINT PER CODICE FISCALE
        		}
           
           if( exc.contains("cliente_pkey") ) {
+        	  panelaggiuntaclienti.getLblccf().setVisible(true); 
+        	  panelaggiuntaclienti.getLblcodicetessera().setText("Tessera gia' registrata"); //CONSTRAINT PER CODICE FISCALE
+       		}
+          
+          if( exc.contains("cf_unico") ) {
         	  panelaggiuntaclienti.getLblccf().setVisible(true);
-        	  panelaggiuntaclienti.getLblccf().setText("Cliente gia' registrato"); //CONSTRAINT PER CODICE FISCALE
-        	  panelaggiuntaclienti.getLblcodicetessera().setText("Cliente gia' registrato"); //CONSTRAINT PER CODICE FISCALE
+        	  panelaggiuntaclienti.getLblccf().setText("Attenzione, Cliente gia' registrato"); //CONSTRAINT PER CODICE FISCALE
+        	  
        		}
       return false;
           }

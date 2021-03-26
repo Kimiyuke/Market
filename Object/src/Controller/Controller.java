@@ -221,6 +221,12 @@ public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
 		
 	}
 
+	public void logout(HomeDashboard home) {
+		home.setVisible(false);
+		Init();
+		
+	}
+
 	
 
 	

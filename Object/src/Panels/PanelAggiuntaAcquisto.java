@@ -224,6 +224,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
       			return;
       		}
     
+  			
       		try { 
       		
 				if(TheController.getAcquistodao().acquistototale(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
@@ -248,6 +249,8 @@ public class PanelAggiuntaAcquisto extends JPanel {
 				
 				}//fine if
 				
+				
+				
 			}
       			catch (Exception e1) {
 				
@@ -257,6 +260,8 @@ public class PanelAggiuntaAcquisto extends JPanel {
       		
       	}
       	else {        //ALTRIMENTI SE NON è STATA CHECKATA CBX SI TRATTA DI UN ACQUISTO SINGOLO PRODOTTO
+      		
+      		
       		
       		lblcodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
   			lblcidprodotto.setVisible(false);
@@ -298,6 +303,8 @@ public class PanelAggiuntaAcquisto extends JPanel {
       		}
   			
   			
+  			
+  			
       		try {      //ALTRIMENTI SI AGGIUNGE L'ACQUISTO TRAMITE LA FUNZIONE CON VALORE BOOLEANO "FINE ACQUISTO" A FALSE
       			
 					if(TheController.getAcquistodao().acquistosingolo(txtidprodotto.getText().toString(), Integer.valueOf(txtquantita.getText().toString()), 
@@ -310,6 +317,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
 					TheController.acquistosingolosuccesful(); //APRE J DIALOG PER ACQUISTO SINGOLO EFFETTUATO.
 					
 					}//fine if
+					txtdata.setEditable(false);
       		} 
       				catch (Exception e1) {
 					

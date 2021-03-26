@@ -124,11 +124,51 @@ public class PanelAggiuntaClienti extends JPanel {
 	      panel_1.addMouseListener(new MouseAdapter() {
 	      	@Override
 	      	public void mouseClicked(MouseEvent e) {
+
+				
+				
+				lblccodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
+	      		lblcognome.setVisible(false);  
+	      		lblcnome.setVisible(false); 
+	      		lblccf.setVisible(false);
+	      		                                                     //CONTROLLO SE QUALCHE INPUT E' NULLa
+	      		checknull(txtnome.getText(), lblcnome );  
+	      		checknull(txtcognome.getText(), lblcognome );
+	      		checknull(txtcf.getText(), lblccf );
+	      		checknull(txtcodicetessera.getText(), lblccodicetessera );
 	      		
 	      		
 	      		
-	      	}
-	      	
+	  			if (  ! txtnome.getText().matches("[A-Za-z]+[\\sA-Za-z]*")) {    //CONTROLLO INPUT PER NOME 
+	  				lblcnome.setVisible(true);
+	  				lblcnome.setText("attenzione, campo errato"); 
+	      			return;
+	      		}
+	  			
+	  			if (  ! txtcognome.getText().matches("[A-Za-z]+[\\sA-Za-z]*")) {    //CONTROLLO INPUT PER  COGNOME
+	  				lblcognome.setVisible(true);
+	  				lblcognome.setText("attenzione, campo errato"); 
+	      			return;
+	      		}
+	  			
+	  			System.out.println(1);
+	      		
+           
+	              try {
+	      			
+					if(TheController.getClientidao().Addcliente(txtcf.getText().toString(),txtnome.getText().toString(),txtcognome.getText().toString(),txtcodicetessera.getText().toString(), PanelAggiuntaClienti.this)) {
+						 
+					TheController.clientisuccesful();  //APRE J DIALOG PER L'AVVENUTA DI UN CLIENTE
+						
+					}//fine if
+	      		} 
+	      		
+	      		catch (Exception e1) {
+					
+					e1.printStackTrace();
+				}
+			}
+	      		
 	      });
 	      panel_1.setBackground(new Color(45,106, 79));
 	      panel_1.setBounds(525, 151, 50, 63);
@@ -159,55 +199,21 @@ public class PanelAggiuntaClienti extends JPanel {
 			lblhelp.setBounds(320, 57, 23, 33);
 			add(lblhelp);
 			
-			JButton btnNewButton = new JButton("New button");
-			btnNewButton.addMouseListener(new MouseAdapter() {
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					
-					
-					lblccodicetessera.setVisible(false);       //LABEL DI ERRORI SETTATE A FALSE
-		      		lblcognome.setVisible(false);  
-		      		lblcnome.setVisible(false); 
-		      		lblccf.setVisible(false);
-		      		
-		  			if (  ! txtnome.getText().matches("[A-Za-z]+")) {    //CONTROLLO INPUT PER NOME, SI VERIFICA CHE CONTENGA SOLO LETTERE
-		  				lblcnome.setVisible(true);
-		  				lblcnome.setText("attenzione, accettate solo lettere"); 
-		      			return;
-		      		}
-		  			
-		  			if (  ! txtcognome.getText().matches("[A-Za-z]+")) {    //CONTROLLO INPUT PER COGNOME, SI VERIFICA CHE CONTENGA SOLO LETTERE
-		  				lblcognome.setVisible(true);
-		  				lblcognome.setText("attenzione,accettate solo lettere"); 
-		      			return;
-		      		}
-		      		
-               
-		              try {
-		      			
-						if(TheController.getClientidao().Addcliente(txtcf.getText().toString(),txtnome.getText().toString(),txtcognome.getText().toString(),txtcodicetessera.getText().toString(), PanelAggiuntaClienti.this)) {
-							 
-						TheController.clientisuccesful();  //APRE J DIALOG PER L'AVVENUTA DI UN CLIENTE
-							
-						}//fine if
-		      		} 
-		      		
-		      		catch (Exception e1) {
-						
-						e1.printStackTrace();
-					}
-				}
-			});
-			btnNewButton.setBounds(390, 169, 89, 23);
-			add(btnNewButton);
-			
 			
 	     
 	      
 	}
 	
-	 public JLabel getLblcnome() {
+	 public void checknull(String text, JLabel lbl) {                        //FUNZIONE CHE CONTROLLA SE IL PARAMENTRO è NULLO
+		 if (   text.matches("")) {    
+				lbl.setVisible(true);
+				lbl.setText("*attenzione, campo obbligatorio"); 
+   			return;
+   		}
+		
+	}
+
+	public JLabel getLblcnome() {
 	 		return lblcnome;
 	 	}
 	 

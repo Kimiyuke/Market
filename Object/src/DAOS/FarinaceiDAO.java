@@ -42,31 +42,31 @@ public class FarinaceiDAO {
          	String exc= e.getMessage();
          	if( exc.contains("check_nome_lettere") ) {
          		panelmagazzino.getLblcnome().setVisible(true);
-         		panelmagazzino.getLblcnome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
+         		panelmagazzino.getLblcnome().setText("Attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
          	}
          	else if( exc.contains("check_marca_lettere") ) {
          		panelmagazzino.getLblcmarca().setVisible(true);
-         		panelmagazzino.getLblcmarca().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER MARCA non accetta numeri
+         		panelmagazzino.getLblcmarca().setText("Attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER MARCA non accetta numeri
          	}
          	
          	else if( exc.contains("constraint_data_di_scadenza") ) {
          		panelmagazzino.getLbldatadiscadenza().setVisible(true);
-         		panelmagazzino.getLbldatadiscadenza().setText("attenzione, data precede la raccolta"); //CONSTRAINT PER DATA DI SCADANZA
+         		panelmagazzino.getLbldatadiscadenza().setText("Attenzione, data precede la produzione"); //CONSTRAINT PER DATA DI SCADANZA
          	}
          	
          	else if( exc.contains("magazzino_pkey") ) {
          		panelmagazzino.getLblcidprodotto().setVisible(true);
-         		panelmagazzino.getLblcidprodotto().setText("attenzione, prodotto gia' esistente"); //CONSTRAINT PER PK DI FRUTTA
+         		panelmagazzino.getLblcidprodotto().setText("Attenzione, prodotto gia' esistente"); //CONSTRAINT PER PK DI FRUTTA
          	}
          	
          	else if( exc.contains("check_id_prodotto")) {
          		panelmagazzino.getLblcidprodotto().setVisible(true);
-         		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
+         		panelmagazzino.getLblcidprodotto().setText("Attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
          	}
          	
          	else if( exc.contains("check_ingredienti_lettere")) {
          		panelmagazzino.getlblctxt2().setVisible(true);
-         		panelmagazzino.getlblctxt2().setText("attenzione, solo lettere e virgole"); //CONSTRAINT PER L'ID PRODOTTO
+         		panelmagazzino.getlblctxt2().setText("Attenzione, solo lettere e virgole"); //CONSTRAINT PER L'ID PRODOTTO
          	}
          	
  	       return false;

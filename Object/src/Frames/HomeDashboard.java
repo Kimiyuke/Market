@@ -157,6 +157,11 @@ public class HomeDashboard extends JFrame {
 		iconacquisti.setIcon(new ImageIcon(iconn));
 		
 		JPanel panelLogout = new JPanel();
+		panelLogout.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		panelLogout.setBounds(10, 521, 207, 41);
 	
 		panelLogout.setBorder(new LineBorder(new Color(255, 0, 0)));
@@ -176,6 +181,8 @@ public class HomeDashboard extends JFrame {
 		lbllogout.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				TheController.logout(HomeDashboard.this);
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

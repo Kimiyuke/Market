@@ -60,6 +60,7 @@ public static boolean acquistosingolo(String idprodotto, int quantita, String co
             	  else if( exc.contains("check_id_prodotto") ) {   //CONSTRAINT PER ID PRODOTTO 
             		  panelaggiuntaacquisto.getlblcheckidprodotto().setVisible(true);
             		  panelaggiuntaacquisto.getlblcheckidprodotto().setText("attenzione, codice prodotto errato");
+            		  panelaggiuntaacquisto.getlblcheckidprodotto().setText("attenzione, codice prodotto errato");
             	  }
             	    
             	  else if( exc.contains("fk_id_prodotto") ) {

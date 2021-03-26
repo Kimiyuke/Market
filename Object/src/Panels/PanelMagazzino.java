@@ -379,15 +379,15 @@ public class PanelMagazzino extends JPanel {
       			return;
       		}
       		
-      		if (  ! txtnome.getText().matches("[A-Za-z]+")) {    //CONTROLLO INPUT PER NOME, SI VERIFICA CHE CONTENGA SOLO LETTERE
+      		if (  ! txtnome.getText().matches("[A-Za-z]+[\\sA-Za-z]*")) {    //CONTROLLO INPUT PER NOME, SI VERIFICA CHE CONTENGA SOLO LETTERE
   				lblcnome.setVisible(true);
-  				lblcnome.setText("attenzione, accettate solo lettere"); 
+  				lblcnome.setText("attenzione, campo errato"); 
       			return;
       		}
   			
-  			if (  ! txtmarca.getText().matches("[A-Za-z]+")) {    //CONTROLLO INPUT PER MARCA, SI VERIFICA CHE CONTENGA SOLO LETTERE
+  			if (  ! txtmarca.getText().matches("[A-Za-z]+[\\sA-Za-z]*")) {    //CONTROLLO INPUT PER MARCA, SI VERIFICA CHE CONTENGA SOLO LETTERE
   				lblcmarca.setVisible(true);
-  				lblcmarca.setText("attenzione,accettate solo lettere"); 
+  				lblcmarca.setText("attenzione, campo errato"); 
       			return;
       		}
       		

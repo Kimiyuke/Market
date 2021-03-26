@@ -117,13 +117,22 @@ private JTable tabella;
 	      lbleuro.setFont(new Font("Dialog", Font.BOLD, 20));
 	      lbleuro.setBounds(581, 435, 29, 67);
 	      add(lbleuro);
+	      
+	      JLabel lblerrore = new JLabel("\r\n");
+	      lblerrore.setFont(new Font("Dialog", Font.BOLD, 14));
+	      lblerrore.setForeground(Color.RED);
+	      lblerrore.setBounds(296, 92, 347, 23);
+	      add(lblerrore);
+	      
 	      lbleuro.setVisible(false);
 	      lblguadagno.setVisible(false);
 		
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				float guadagno;
+				float guadagno; //variabile in cui sara' memorizzato il guadagno totale
+				
+				lblerrore.setVisible(false);
 				
           DefaultTableModel model = (DefaultTableModel) tabella.getModel();
       			
@@ -144,7 +153,14 @@ private JTable tabella;
 					
 						lblguadagno.setVisible(true);
 						txtguadagno.setVisible(true);
+						lbleuro.setVisible(true);
 					}
+					else {
+						lblerrore.setVisible(true);
+						lblerrore.setText("Non sono stati trovati acquisti in questa data");
+					}
+					
+					
 				} catch (Exception e1) {
 					
 				}
@@ -154,7 +170,7 @@ private JTable tabella;
 		        	 model.addRow(rowdata);
 			}
 				
-				lbleuro.setVisible(true);
+				
 			}
 		});
 		

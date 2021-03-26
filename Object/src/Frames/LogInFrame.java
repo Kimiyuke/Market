@@ -158,7 +158,7 @@ public class LogInFrame extends JFrame {
 		 lblErrore = new JLabel("");
 		lblErrore.setForeground(new Color(255, 0, 0));
 		lblErrore.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblErrore.setBounds(130, 171, 273, 14);
+		lblErrore.setBounds(131, 196, 273, 14);
 		contentPane.add(lblErrore);
 		
 		JLabel lblicon = new JLabel("");
