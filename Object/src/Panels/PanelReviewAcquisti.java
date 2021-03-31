@@ -155,9 +155,10 @@ private JTable tabella;
 						txtguadagno.setVisible(true);
 						lbleuro.setVisible(true);
 					}
-					else {
+					else {            //SE NON CI SONO STATI ACQUISTI IN QUELLA DATA:
 						lblerrore.setVisible(true);
 						lblerrore.setText("Non sono stati trovati acquisti in questa data");
+						lbleuro.setVisible(false);
 					}
 					
 					

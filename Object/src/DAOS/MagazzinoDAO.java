@@ -16,7 +16,7 @@ import Panels.PanelMagazzino;
 
 public class MagazzinoDAO {
 
-	public static ArrayList<Magazzino> SelectProdottiFrutta() {
+	public  ArrayList<Magazzino> SelectProdottiFrutta() {
 		
 		ArrayList<Magazzino> magazzino = new ArrayList<Magazzino>();
         Magazzino m;

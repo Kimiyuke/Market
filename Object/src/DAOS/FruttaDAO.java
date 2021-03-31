@@ -15,7 +15,7 @@ public class FruttaDAO {
 
 	
 
-	public static boolean InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
+	public  boolean InsertFrutta(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
 			String idprodotto, int disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
 		 try {
 			 

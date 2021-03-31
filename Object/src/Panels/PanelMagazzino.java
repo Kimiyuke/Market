@@ -128,7 +128,7 @@ public class PanelMagazzino extends JPanel {
       
       comboBox.setBorder(BorderFactory.createEmptyBorder());
                                                                                        
-      comboBox.setRenderer(new DefaultListCellRenderer(){          
+      comboBox.setRenderer(new DefaultListCellRenderer(){                  //animazione per la combobox, setta ad arancione l'elemento dove si trova il cursore
           @Override 
           
           public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)

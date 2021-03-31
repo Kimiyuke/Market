@@ -16,7 +16,7 @@ public class LatticiniDAO {
 	
 
 
-	public static boolean InsertLatticini(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+	public  boolean InsertLatticini(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
 			String datadimungitura, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
 		try {
            

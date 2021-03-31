@@ -16,7 +16,7 @@ import Panels.PanelMagazzino;
 
 public class TesseraPuntiDAO {
 
-	public static 	ArrayList<TesseraPunti> SelectPuntiFrutta() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPuntiFrutta() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -66,7 +66,7 @@ public class TesseraPuntiDAO {
 		   return tessera;
 	}
 
-	public static 	ArrayList<TesseraPunti> SelectPuntiVerdura() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPuntiVerdura() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -116,7 +116,7 @@ public class TesseraPuntiDAO {
 		   return tessera;
 	}
 
-	public static 	ArrayList<TesseraPunti> SelectPuntiConfezionati() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPuntiConfezionati() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -167,7 +167,7 @@ public class TesseraPuntiDAO {
 	}
 	
 	
-	public static 	ArrayList<TesseraPunti> SelectPuntiLatticini() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPuntiLatticini() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -219,7 +219,7 @@ public class TesseraPuntiDAO {
 	
 	
 	
-	public static 	ArrayList<TesseraPunti> SelectPuntiUova() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPuntiUova() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -270,7 +270,7 @@ public class TesseraPuntiDAO {
 	}
 	
 	
-	public static 	ArrayList<TesseraPunti> SelectPuntiFarinacei() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPuntiFarinacei() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -321,7 +321,7 @@ public class TesseraPuntiDAO {
 	}
 
 
-	public static 	ArrayList<TesseraPunti> SelectPezziFrutta() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPezziFrutta() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -371,7 +371,7 @@ public class TesseraPuntiDAO {
 		   return tessera;
 	}
 
-	public static 	ArrayList<TesseraPunti> SelectPezziVerdura() throws Exception {
+	public  	ArrayList<TesseraPunti> SelectPezziVerdura() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 		TesseraPunti T;
 		
@@ -421,7 +421,7 @@ public class TesseraPuntiDAO {
 		   return tessera;
 	}
 
-public static 	ArrayList<TesseraPunti> SelectPezziConfezionati() throws Exception {
+public  	ArrayList<TesseraPunti> SelectPezziConfezionati() throws Exception {
 	ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 	TesseraPunti T;
 	
@@ -521,7 +521,7 @@ public static 	ArrayList<TesseraPunti> SelectPezziLatticini() throws Exception {
 	   return tessera;
 }
 
-public static 	ArrayList<TesseraPunti> SelectPezziUova() throws Exception {
+public  	ArrayList<TesseraPunti> SelectPezziUova() throws Exception {
 	ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 	TesseraPunti T;
 	
@@ -571,7 +571,7 @@ public static 	ArrayList<TesseraPunti> SelectPezziUova() throws Exception {
 	   return tessera;
 }
 
-public static 	ArrayList<TesseraPunti> SelectPezziFarinacei() throws Exception {
+public  	ArrayList<TesseraPunti> SelectPezziFarinacei() throws Exception {
 	ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 	TesseraPunti T;
 	

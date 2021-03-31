@@ -16,7 +16,7 @@ public class FarinaceiDAO {
 
 	
 
-	public static boolean InsertFarinacei(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+	public  boolean InsertFarinacei(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
 			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
 		try {
             Class.forName("org.postgresql.Driver");//         

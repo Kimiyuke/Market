@@ -52,6 +52,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
     private JLabel lblcdata;
     private JLabel lblcquantita;
     private JLabel lblcidacquisto;
+    private  JLabel lblerrore;
 	/**
 	 * Create the panel.
 	 */
@@ -180,14 +181,14 @@ public class PanelAggiuntaAcquisto extends JPanel {
       lblcquantita.setHorizontalAlignment(SwingConstants.CENTER);
       lblcquantita.setForeground(Color.RED);
       lblcquantita.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcquantita.setBounds(171, 147, 221, 14);
+      lblcquantita.setBounds(156, 147, 293, 14);
       add(lblcquantita);
       
        lblcidacquisto = new JLabel("");
       lblcidacquisto.setHorizontalAlignment(SwingConstants.CENTER);
       lblcidacquisto.setForeground(Color.RED);
       lblcidacquisto.setFont(new Font("Dialog", Font.BOLD, 11));
-      lblcidacquisto.setBounds(270, 64, 286, 14);
+      lblcidacquisto.setBounds(216, 64, 386, 14);
       add(lblcidacquisto);
       
       JPanel panel_1 = new JPanel();
@@ -223,6 +224,14 @@ public class PanelAggiuntaAcquisto extends JPanel {
   				lblcidprodotto.setText("attenzione, i caratteri devono essere 8"); 
       			return;
       		}
+  			
+  			if ( ! txtcodicetessera.getText().matches("[A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9]")) {  //CONTROLLO INPUT PER ID PRODOTTO
+  				lblcodicetessera.setVisible(true);          				
+  				lblcodicetessera.setText("attenzione, campo sbagliato"); 
+      			return;
+      		}
+  			
+  			
     
   			
       		try { 
@@ -248,6 +257,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
 				txtidacquisto.setText("");
 				
 				}//fine if
+				txtdata.setEditable(true);
 				
 				
 				
@@ -317,7 +327,7 @@ public class PanelAggiuntaAcquisto extends JPanel {
 					TheController.acquistosingolosuccesful(); //APRE J DIALOG PER ACQUISTO SINGOLO EFFETTUATO.
 					
 					}//fine if
-					txtdata.setEditable(false);
+					txtdata.setEditable(false);  //non permette di cambiare data al fine di preservare la coerenza degli acquisti 
       		} 
       				catch (Exception e1) {
 					
@@ -349,6 +359,13 @@ public class PanelAggiuntaAcquisto extends JPanel {
       lblcdata.setBounds(0, 210, 221, 14);
       add(lblcdata);
       
+       lblerrore = new JLabel("");
+      lblerrore.setHorizontalAlignment(SwingConstants.CENTER);
+      lblerrore.setForeground(Color.RED);
+      lblerrore.setFont(new Font("Dialog", Font.BOLD, 11));
+      lblerrore.setBounds(114, 260, 417, 14);
+      add(lblerrore);
+      
       
       //FUNZIONE PER AGGIUNGERE UN ACQUISTO DI UN SINGOLO PRODOTTO
      
@@ -379,5 +396,13 @@ public class PanelAggiuntaAcquisto extends JPanel {
 	 
 	 public JLabel getlblcidacquisto() {
 	    	return  lblcidacquisto;
+	    }
+	 
+	 public JLabel getlblcquantita() {
+	    	return  lblcquantita;
+	    }
+	 
+	 public JLabel getlblerrore() {
+	    	return  lblerrore;
 	    }
 }

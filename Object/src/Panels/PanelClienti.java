@@ -200,10 +200,9 @@ public class PanelClienti extends JPanel {
       			ArrayList<Cliente> cliente = new ArrayList<Cliente>();
       			
       			if ((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Frutta")))) {
-                    cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta();
-                
+                    cliente= TheController.getClientidao().SelectClientiPerPuntiFrutta(); //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO PIU PUNTI DELLA CATEGORIA SCELTA
                     try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPuntiFrutta();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPuntiFrutta();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA FRUTTA
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -217,10 +216,9 @@ public class PanelClienti extends JPanel {
 
 
       			else if ((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Verdura")))) {
-                    cliente= TheController.getClientidao().SelectClientiPerPuntiVerdura();
-                    
+                    cliente= TheController.getClientidao().SelectClientiPerPuntiVerdura(); //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO PIU PUNTI DELLA CATEGORIA SCELTA
                     try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPuntiVerdura();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPuntiVerdura();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA VERDURA
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -233,10 +231,9 @@ public class PanelClienti extends JPanel {
                 }
       			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Confezionati")))) {
       				
-					cliente= TheController.getClientidao().SelectClientiPerPuntiConfezionati();
-					
+					cliente= TheController.getClientidao().SelectClientiPerPuntiConfezionati();//METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO PIU PUNTI DELLA CATEGORIA SCELTA
 					 try {                                                  
-							tessera=TheController.getTesserapuntidao().SelectPuntiConfezionati();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+							tessera=TheController.getTesserapuntidao().SelectPuntiConfezionati();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA CONFEZIONATI
 						} 	catch (Exception e1) {
 							
 								e1.printStackTrace();
@@ -249,10 +246,9 @@ public class PanelClienti extends JPanel {
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Uova")))) {
       				
-					cliente= TheController.getClientidao().SelectClientiPerPuntiUova();
-					
+					cliente= TheController.getClientidao().SelectClientiPerPuntiUova();//METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO PIU PUNTI DELLA CATEGORIA SCELTA
 					 try {                                                  
-							tessera=TheController.getTesserapuntidao().SelectPuntiUova();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+							tessera=TheController.getTesserapuntidao().SelectPuntiUova();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA UOVA
 						} 	catch (Exception e1) {
 							
 								e1.printStackTrace();
@@ -264,10 +260,9 @@ public class PanelClienti extends JPanel {
 	                    		}
       			  }
       			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Latticini")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPuntiLatticini();
-      				
+      				cliente= TheController.getClientidao().SelectClientiPerPuntiLatticini(); //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO PIU PUNTI DELLA CATEGORIA SCELTA
       				 try {                                                  
-							tessera=TheController.getTesserapuntidao().SelectPuntiLatticini();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+							tessera=TheController.getTesserapuntidao().SelectPuntiLatticini();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA LATTICINI
 						} 	catch (Exception e1) {
 							
 								e1.printStackTrace();
@@ -279,10 +274,10 @@ public class PanelClienti extends JPanel {
 	                    		}
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Punti")) && ((comboBox2.getSelectedItem().toString().equals("Farinacei")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPuntiFarinacei();
+      				cliente= TheController.getClientidao().SelectClientiPerPuntiFarinacei();   //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO PIU PUNTI DELLA CATEGORIA SCELTA
       				
       				 try {                                                  
-							tessera=TheController.getTesserapuntidao().SelectPuntiFarinacei();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+							tessera=TheController.getTesserapuntidao().SelectPuntiFarinacei();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA FARINACEI
 						} 	catch (Exception e1) {
 							
 								e1.printStackTrace();
@@ -296,10 +291,10 @@ public class PanelClienti extends JPanel {
       			
       			
       			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Frutta")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziFrutta();
+      				cliente= TheController.getClientidao().SelectClientiPerPezziFrutta();    //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO COMPRATO PIU PEZZI DELLA CATEGORIA SCELTA
       				
       				try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPezziFrutta();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPezziFrutta();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA FRUTTA
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -311,10 +306,10 @@ public class PanelClienti extends JPanel {
                     		}
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Verdura")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziVerdura();
+      				cliente= TheController.getClientidao().SelectClientiPerPezziVerdura();     //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO COMPRATO PIU PEZZI DELLA CATEGORIA SCELTA
       				
       				try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPezziVerdura();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPezziVerdura();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA VERDURA
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -326,11 +321,11 @@ public class PanelClienti extends JPanel {
                     		}
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Uova")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziUova();
+      				cliente= TheController.getClientidao().SelectClientiPerPezziUova();        //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO COMPRATO PIU PEZZI DELLA CATEGORIA SCELTA
       				
 
       				try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPezziUova();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPezziUova();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA UOVA
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -342,10 +337,10 @@ public class PanelClienti extends JPanel {
                     		}
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Latticini")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziLatticini();
+      				cliente= TheController.getClientidao().SelectClientiPerPezziLatticini();        //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO COMPRATO PIU PEZZI DELLA CATEGORIA SCELTA
       				
       				try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPezziLatticini();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPezziLatticini();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA LATTICINI
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -357,10 +352,10 @@ public class PanelClienti extends JPanel {
                     		}
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Confezionati")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziConfezionati();
+      				cliente= TheController.getClientidao().SelectClientiPerPezziConfezionati();        //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO COMPRATO PIU PEZZI DELLA CATEGORIA SCELTA
       				
       				try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPezziConfezionati();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPezziConfezionati();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA CONFEZIONATI 
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();
@@ -372,10 +367,10 @@ public class PanelClienti extends JPanel {
                     		}
       			}
       			else if((comboBox.getSelectedItem().toString().equals("Pezzi")) && ((comboBox2.getSelectedItem().toString().equals("Farinacei")))) {
-      				cliente= TheController.getClientidao().SelectClientiPerPezziFarinacei();
+      				cliente= TheController.getClientidao().SelectClientiPerPezziFarinacei();      //METODO PER RIEMPIRE LA PRIMA TABELLA MOSTRANDO IN MODO DECRESCENTE I CLIENTI CHE HANNO COMPRATO PIU PEZZI DELLA CATEGORIA SCELTA
       				
       				try {                                                  
-						tessera=TheController.getTesserapuntidao().SelectPezziFarinacei();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI
+						tessera=TheController.getTesserapuntidao().SelectPezziFarinacei();        //METODO PER RIEMPIRE LA SECONDA TABELLA PER MOSTRARE PUNTI E N_PEZZI PER LA CATEGORIA FARINACEI
 					} 	catch (Exception e1) {
 						
 							e1.printStackTrace();

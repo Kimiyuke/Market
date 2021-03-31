@@ -16,7 +16,7 @@ import Panels.PanelMagazzino;
 
 public class AcquistoTotaleDAO {
 
-	public static int getprezzototale(Integer idacquisto) throws Exception {
+	public  int getprezzototale(Integer idacquisto) throws Exception {
      
 		int prezzo=0;
 		 try {
@@ -38,7 +38,7 @@ public class AcquistoTotaleDAO {
 		return prezzo;
 	}
 
-	public static int getpuntitotale(Integer idacquisto) throws Exception {
+	public  int getpuntitotale(Integer idacquisto) throws Exception {
 		int punti=0;
 		 try {
            Class.forName("org.postgresql.Driver");//load il driver            

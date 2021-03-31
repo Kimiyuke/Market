@@ -23,6 +23,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 public class LogInFrame extends JFrame {
 
@@ -156,9 +157,10 @@ public class LogInFrame extends JFrame {
 		panel_2.add(lblNewLabel);
 		
 		 lblErrore = new JLabel("");
+		 lblErrore.setHorizontalAlignment(SwingConstants.CENTER);
 		lblErrore.setForeground(new Color(255, 0, 0));
-		lblErrore.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblErrore.setBounds(131, 196, 273, 14);
+		lblErrore.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblErrore.setBounds(59, 187, 383, 18);
 		contentPane.add(lblErrore);
 		
 		JLabel lblicon = new JLabel("");

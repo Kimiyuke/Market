@@ -14,7 +14,7 @@ import Panels.PanelMagazzino;
 
 public class ConfezionatiDAO {
 
-	public static boolean InsertConfezionati(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+	public  boolean InsertConfezionati(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
 			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Throwable {
 		try {
             Class.forName("org.postgresql.Driver");//         

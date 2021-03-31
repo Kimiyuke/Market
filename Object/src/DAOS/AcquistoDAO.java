@@ -23,7 +23,7 @@ public class AcquistoDAO {
 	
 	
 	
-public static boolean acquistosingolo(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto ) throws Exception {
+public  boolean acquistosingolo(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto ) throws Exception {
 //		int nid= nidcurrent(); //STORE IN NID IL MAX+1 
 		
 		
@@ -72,6 +72,23 @@ public static boolean acquistosingolo(String idprodotto, int quantita, String co
             		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
             		  	panelaggiuntaacquisto.getlblcidacquisto().setText("attenzione, valore duplicato"); //CONSTRAINT PER PK ACQUISTO_PKEY IDACQUISTO DUPLICATO OPPURE INSERIMENTO DI UNO STESSO PRODOTTO GIA PRESENTE NELL'ID ACQUISTO CORRENTE
             	  }
+            	  
+            	  else if( e.getSQLState().equals("77777") ) {
+          		  	panelaggiuntaacquisto.getlblcquantita().setVisible(true);
+          		  	panelaggiuntaacquisto.getlblcquantita().setText("Attenzione, la quantita' inserita supera la disponibilita'"); // SQL STATE DETERMINATO DAL TRIGGER NONAPPENA SI INSERISCE UN ACQUISTO CON QUANTITA CHE ECCEDE LA DISPONIBILITA TOTALE
+          	  }
+            	  
+            	  else if( e.getSQLState().equals("P0001") ) {
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setText("Attenzione, l'acquisto è completo impossibile aggiungere altri prodotti"); //ERRORE SQL STATE DETERMINATO DA QUANDO SI PROVA AD AGGIUNGERE ALTRI PRODOTTI AD UN ID ACQUISTO CHE è STATO TERMINIATO
+            	  }
+            	  
+            	  else if( e.getSQLState().equals("66666") ) {
+          		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
+          		  	panelaggiuntaacquisto.getlblcidacquisto().setText("Attenzione, l'acquisto è completo impossibile aggiungere altri prodotti"); //ERRORE SQL STATE DETERMINATO DA QUANDO SI PROVA AD AGGIUNGERE ALTRI PRODOTTI AD UN ID ACQUISTO CHE è STATO TERMINIATO
+          	  }
+            	  
+            	  
             	  
             	  else System.out.println("Review acquisti: " +e);
               
@@ -157,6 +174,20 @@ public static boolean acquistosingolo(String idprodotto, int quantita, String co
             		  	panelaggiuntaacquisto.getlblcidacquisto().setText("attenzione, valore duplicato"); //CONSTRAINT PER PK ACQUISTO_PKEY IDACQUISTO DUPLICATO OPPURE INSERIMENTO DI UNO STESSO PRODOTTO GIA PRESENTE NELL'ID ACQUISTO CORRENTE
             	  }
             	  
+            	  else if( e.getSQLState().equals("77777") ) {
+            		  	panelaggiuntaacquisto.getlblcquantita().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcquantita().setText("Attenzione, la quantita' inserita supera la disponibilita'"); // SQL STATE DETERMINATO DAL TRIGGER NONAPPENA SI INSERISCE UN ACQUISTO CON QUANTITA CHE ECCEDE LA DISPONIBILITA TOTALE
+            	  }
+              	  
+              	  else if( e.getSQLState().equals("P0001") ) {
+              		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
+              		  	panelaggiuntaacquisto.getlblcidacquisto().setText("Attenzione, l'acquisto è completo impossibile aggiungere altri prodotti"); //ERRORE SQL STATE DETERMINATO DA QUANDO SI PROVA AD AGGIUNGERE ALTRI PRODOTTI AD UN ID ACQUISTO CHE è STATO TERMINIATO
+              	  }
+              	  
+              	  else if( e.getSQLState().equals("66666") ) {
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setVisible(true);
+            		  	panelaggiuntaacquisto.getlblcidacquisto().setText("Attenzione, l'acquisto è completo impossibile aggiungere altri prodotti"); //ERRORE SQL STATE DETERMINATO DA QUANDO SI PROVA AD AGGIUNGERE ALTRI PRODOTTI AD UN ID ACQUISTO CHE è STATO TERMINIATO
+            	  }
             	  else System.out.println("Review acquisti: " +e);
       
           			return false;
