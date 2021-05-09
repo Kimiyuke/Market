@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,33 +12,33 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
 
-public class FarinaceiDAO {
+public class ConfezionatiDAOImpl {
 
-	
-
-	public  boolean InsertFarinacei(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
-			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
+	public  boolean InsertConfezionati(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Throwable {
 		try {
             Class.forName("org.postgresql.Driver");//         
             Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
-            PreparedStatement pst= con.prepareStatement("INSERT INTO FARINACEI VALUES(?,?,?::real,?::date,?,?,?::date,?,?)");
+            PreparedStatement pst= con.prepareStatement("INSERT INTO CONFEZIONATI VALUES(?,?,?::real,?,?::date,?,?,?,?::date)");
 
        		 pst.setString(1, nome);
            	 pst.setString(2, marca);
                 pst.setFloat(3, prezzo);
-                pst.setString(4, datadiscadenza);
-                pst.setInt(5, peso);
+                pst.setString(4, idprodotto);
+                pst.setString(5, datadiscadenza);
                 pst.setString(6, ingredienti);
-                pst.setString(7, datadiproduzione);
-                pst.setString(8, idprodotto);
-                pst.setInt(9, disponibilitatotale);
+                pst.setInt(7, peso);
+                pst.setInt(8, disponibilitatotale);
+                pst.setString(9, datadiproduzione);
+                
+               
                 pst.executeUpdate();
 
 
 
              }
 		catch (SQLException e) {
-         	System.out.println("Inserimento verdura panel magazzino: " +e);
+         	
          	String exc= e.getMessage();
          	if( exc.contains("check_nome_lettere") ) {
          		panelmagazzino.getLblcnome().setVisible(true);
@@ -66,7 +66,7 @@ public class FarinaceiDAO {
          	
          	else if( exc.contains("check_ingredienti_lettere")) {
          		panelmagazzino.getlblctxt2().setVisible(true);
-         		panelmagazzino.getlblctxt2().setText("Attenzione, solo lettere e virgole"); //CONSTRAINT PER L'ID PRODOTTO
+         		panelmagazzino.getlblctxt2().setText("Attenzione, solo lettere e virgole"); //CONSTRAINT PER IL CAMPO INGREDIENTI
          	}
          	
  	       return false;
@@ -75,5 +75,8 @@ public class FarinaceiDAO {
 		 return true;
 		
 	}
+		
+	}
+	
 
-}
+

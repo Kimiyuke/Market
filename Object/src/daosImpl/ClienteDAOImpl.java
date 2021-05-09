@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -8,20 +8,20 @@ import javax.swing.table.DefaultTableModel;
 
 import Classi.Cliente;
 
-public class ClienteDAO {
+public class ClienteDAOImpl {
 
     public  ArrayList<Cliente> SelectClientiPerPuntiFrutta() {
          ArrayList<Cliente> cliente = new ArrayList<Cliente>();
              Cliente C;
         
         try {
-        	  System.out.println("connession1");
+        	 
               Class.forName("org.postgresql.Driver");//load il driver
-              System.out.println("connession1");
+              
               Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-              System.out.println("connession2");
+              
               Statement st= con.createStatement();//creo object di statement 
-              System.out.println("connession3");
+              
               ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                       + " FROM CLIENTE,TESSERA_PUNTI \n"
                       + "WHERE\n"
@@ -29,7 +29,7 @@ public class ClienteDAO {
                       + "ORDER BY PUNTI_FRUTTA\n"
                       + " DESC");
 
-              System.out.println("connession");
+              
 
 
 
@@ -47,7 +47,7 @@ public class ClienteDAO {
 
                }
                catch (Exception x) {
-           System.out.println("XaaX");
+           System.out.println("Connesione cliente");
           return null;
                 }
         return cliente;
@@ -60,11 +60,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+        
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+        
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+        
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -72,7 +72,7 @@ public class ClienteDAO {
                  + "ORDER BY PUNTI_VERDURA\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -90,7 +90,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -103,11 +103,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+        
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -115,7 +115,7 @@ public class ClienteDAO {
                  + "ORDER BY PUNTI_CONFEZIONATI\n"
                  + " DESC");
 
-         System.out.println("connession");
+        
 
 
 
@@ -133,7 +133,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -145,11 +145,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+        
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -157,7 +157,7 @@ public class ClienteDAO {
                  + "ORDER BY PUNTI_UOVA\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -175,7 +175,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -188,11 +188,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -200,7 +200,7 @@ public class ClienteDAO {
                  + "ORDER BY PUNTI_LATTICINI\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -218,7 +218,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -231,11 +231,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+        
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -243,7 +243,7 @@ public class ClienteDAO {
                  + "ORDER BY PUNTI_FRUTTA\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -261,7 +261,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -274,11 +274,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -286,7 +286,7 @@ public class ClienteDAO {
                  + "ORDER BY N_PEZZI_FRUTTA\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -304,7 +304,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -316,11 +316,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -328,7 +328,7 @@ public class ClienteDAO {
                  + "ORDER BY N_PEZZI_VERDURA\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -346,7 +346,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -359,11 +359,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -371,7 +371,7 @@ public class ClienteDAO {
                  + "ORDER BY N_PEZZI_UOVA\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -389,7 +389,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -402,11 +402,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -414,7 +414,7 @@ public class ClienteDAO {
                  + "ORDER BY N_PEZZI_LATTICINI\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -432,7 +432,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -445,11 +445,11 @@ public class ClienteDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CLIENTE.NOME,CLIENTE.COGNOME,CLIENTE.CODICE_TESSERA,CLIENTE.CF\n"
                  + " FROM CLIENTE,TESSERA_PUNTI \n"
                  + "WHERE\n"
@@ -457,7 +457,7 @@ public class ClienteDAO {
                  + "ORDER BY N_PEZZI_CONFEZIONATI\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 
@@ -475,7 +475,7 @@ public class ClienteDAO {
 
           }
           catch (Exception x) {
-      System.out.println("XaaX");
+      System.out.println("Connesione cliente");
      return null;
            }
    return cliente;
@@ -501,7 +501,7 @@ public class ClienteDAO {
                  + "ORDER BY N_PEZZI_FARINACEI\n"
                  + " DESC");
 
-         System.out.println("connession");
+         
 
 
 

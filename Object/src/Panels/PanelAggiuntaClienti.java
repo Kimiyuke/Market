@@ -19,7 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
 import Controller.Controller;
-import DAOS.FruttaDAO;
+import daosImpl.FruttaDAOImpl;
+
 import javax.swing.JButton;
 
 public class PanelAggiuntaClienti extends JPanel {
@@ -27,7 +28,7 @@ public class PanelAggiuntaClienti extends JPanel {
 	private JTextField txtnome;
 	private JTextField txtcognome;
     
-    FruttaDAO FruttaDAO;
+    FruttaDAOImpl FruttaDAO;
     PanelClienti panelclienti;
     PanelMagazzinoRicerca panelmagazzinoricerca;
 

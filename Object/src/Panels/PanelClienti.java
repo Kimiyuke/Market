@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import Classi.*;
 import net.proteanit.sql.DbUtils;
 import Controller.Controller;
-import DAOS.ClienteDAO;
+import daosImpl.ClienteDAOImpl;
 
 import java.awt.Color;
 import java.awt.Component;

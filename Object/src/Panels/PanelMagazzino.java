@@ -21,7 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Controller.Controller;
-import DAOS.FruttaDAO;
+import daosImpl.FruttaDAOImpl;
 import net.proteanit.sql.DbUtils;
 import net.proteanit.sql.*;
 import java.sql.*;
@@ -58,7 +58,7 @@ public class PanelMagazzino extends JPanel {
 	private JLabel lbl2;
 	private JLabel lbl3;
     Controller TheController;
-    FruttaDAO FruttaDAO;
+    FruttaDAOImpl FruttaDAO;
     PanelClienti panelclienti;
     PanelMagazzinoRicerca panelmagazzinoricerca;
     private JTextField datachooser;

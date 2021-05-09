@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import Classi.Cliente;
 import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
-public class FruttaDAO {
+public class FruttaDAOImpl {
 
 	
 
@@ -31,9 +31,9 @@ public class FruttaDAO {
                  pst.setString(6, idprodotto);
                  pst.setInt(7, disponibilitatotale)
                  ;
-                 System.out.println(prezzo);
+                 
                  pst.executeUpdate();
-                 System.out.println(prezzo);
+                 
             
           
               }

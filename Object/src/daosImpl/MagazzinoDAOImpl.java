@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
 
-public class MagazzinoDAO {
+public class MagazzinoDAOImpl {
 
 	public  ArrayList<Magazzino> SelectProdottiFrutta() {
 		
@@ -23,14 +23,14 @@ public class MagazzinoDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+        
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT MAGAZZINO.ID_PRODOTTO, MAGAZZINO.DISPONIBILITA_TOTALE, MAGAZZINO.NOME, MAGAZZINO.MARCA, MAGAZZINO.PREZZO FROM MAGAZZINO NATURAL JOIN FRUTTA");
 
-         System.out.println("connession");
+         
 
 
 
@@ -45,7 +45,7 @@ public class MagazzinoDAO {
               magazzino.add(m);
           }
 
-          System.out.println("connession3");
+          
 
           }
           catch (Exception x) {
@@ -62,14 +62,14 @@ public class MagazzinoDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+        
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT MAGAZZINO.ID_PRODOTTO, MAGAZZINO.DISPONIBILITA_TOTALE, MAGAZZINO.NOME, MAGAZZINO.MARCA, MAGAZZINO.PREZZO FROM MAGAZZINO NATURAL JOIN FARINACEI");
 
-         System.out.println("connession");
+         
 
 
 
@@ -84,7 +84,7 @@ public class MagazzinoDAO {
               magazzino.add(m);
           }
 
-          System.out.println("connession3");
+          
 
           }
           catch (Exception x) {
@@ -101,14 +101,14 @@ public class MagazzinoDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT MAGAZZINO.ID_PRODOTTO, MAGAZZINO.DISPONIBILITA_TOTALE, MAGAZZINO.NOME, MAGAZZINO.MARCA, MAGAZZINO.PREZZO FROM MAGAZZINO NATURAL JOIN VERDURA");
 
-         System.out.println("connession");
+         
 
 
 
@@ -123,7 +123,7 @@ public class MagazzinoDAO {
               magazzino.add(m);
           }
 
-          System.out.println("connession3");
+          
 
           }
           catch (Exception x) {
@@ -140,14 +140,14 @@ public class MagazzinoDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT CONFEZIONATI.ID_PRODOTTO, CONFEZIONATI.DISPONIBILITA_TOTALE, CONFEZIONATI.NOME, CONFEZIONATI.MARCA, CONFEZIONATI.PREZZO FROM CONFEZIONATI");
 
-         System.out.println("connession");
+         
 
 
 
@@ -162,7 +162,7 @@ public class MagazzinoDAO {
               magazzino.add(m);
           }
 
-          System.out.println("connession3");
+          
 
           }
           catch (Exception x) {
@@ -179,14 +179,14 @@ public class MagazzinoDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+         
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
+         
          ResultSet rs= st.executeQuery("SELECT MAGAZZINO.ID_PRODOTTO, MAGAZZINO.DISPONIBILITA_TOTALE, MAGAZZINO.NOME, MAGAZZINO.MARCA, MAGAZZINO.PREZZO FROM MAGAZZINO NATURAL JOIN LATTICINI");
 
-         System.out.println("connession");
+         
 
 
 
@@ -201,7 +201,7 @@ public class MagazzinoDAO {
               magazzino.add(m);
           }
 
-          System.out.println("connession3");
+          
 
           }
           catch (Exception x) {
@@ -218,14 +218,13 @@ public class MagazzinoDAO {
    
    try {
          Class.forName("org.postgresql.Driver");//load il driver
-         System.out.println("connession1");
+         
          Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-         System.out.println("connession2");
+        
          Statement st= con.createStatement();//creo object di statement 
-         System.out.println("connession3");
          ResultSet rs= st.executeQuery("SELECT MAGAZZINO.ID_PRODOTTO, MAGAZZINO.DISPONIBILITA_TOTALE, MAGAZZINO.NOME, MAGAZZINO.MARCA, MAGAZZINO.PREZZO FROM MAGAZZINO NATURAL JOIN UOVA");
 
-         System.out.println("connession");
+         
 
 
 
@@ -240,7 +239,7 @@ public class MagazzinoDAO {
               magazzino.add(m);
           }
 
-          System.out.println("connession3");
+        
 
           }
           catch (Exception x) {

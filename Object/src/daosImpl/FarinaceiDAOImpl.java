@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,26 +12,26 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
 
-public class ConfezionatiDAO {
+public class FarinaceiDAOImpl {
 
-	public  boolean InsertConfezionati(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
-			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Throwable {
+	
+
+	public  boolean InsertFarinacei(String nome, String marca, Float prezzo, String datadiscadenza, Integer peso,
+			String ingredienti, String datadiproduzione, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
 		try {
             Class.forName("org.postgresql.Driver");//         
             Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
-            PreparedStatement pst= con.prepareStatement("INSERT INTO CONFEZIONATI VALUES(?,?,?::real,?,?::date,?,?,?,?::date)");
+            PreparedStatement pst= con.prepareStatement("INSERT INTO FARINACEI VALUES(?,?,?::real,?::date,?,?,?::date,?,?)");
 
        		 pst.setString(1, nome);
            	 pst.setString(2, marca);
                 pst.setFloat(3, prezzo);
-                pst.setString(4, idprodotto);
-                pst.setString(5, datadiscadenza);
+                pst.setString(4, datadiscadenza);
+                pst.setInt(5, peso);
                 pst.setString(6, ingredienti);
-                pst.setInt(7, peso);
-                pst.setInt(8, disponibilitatotale);
-                pst.setString(9, datadiproduzione);
-                
-               
+                pst.setString(7, datadiproduzione);
+                pst.setString(8, idprodotto);
+                pst.setInt(9, disponibilitatotale);
                 pst.executeUpdate();
 
 
@@ -66,8 +66,9 @@ public class ConfezionatiDAO {
          	
          	else if( exc.contains("check_ingredienti_lettere")) {
          		panelmagazzino.getlblctxt2().setVisible(true);
-         		panelmagazzino.getlblctxt2().setText("Attenzione, solo lettere e virgole"); //CONSTRAINT PER IL CAMPO INGREDIENTI
+         		panelmagazzino.getlblctxt2().setText("Attenzione, solo lettere e virgole"); //CONSTRAINT PER L'ID PRODOTTO
          	}
+         	System.out.println("Inserimento verdura panel magazzino: " +e);
          	
  	       return false;
           }
@@ -75,8 +76,5 @@ public class ConfezionatiDAO {
 		 return true;
 		
 	}
-		
-	}
-	
 
-
+}

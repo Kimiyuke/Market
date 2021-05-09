@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
 
-public class LatticiniDAO {
+public class LatticiniDAOImpl {
 	
 
 
@@ -36,20 +36,13 @@ public class LatticiniDAO {
                 pst.setInt(9, disponibilitatotale);
                 pst.executeUpdate();
             
-           System.out.println(nome);
-           System.out.println(marca);
-           System.out.println(prezzo);
-           System.out.println(datadiscadenza);
-           System.out.println(peso);
-           System.out.println(datadimungitura);
-           System.out.println(datadiproduzione);
-           System.out.println(disponibilitatotale);
-           System.out.println(idprodotto);
+          
          
              }
 		catch (SQLException e) {
-         	System.out.println("Inserimento latticini panel magazzino: " +e);
+         	
          	String exc= e.getMessage();
+         	System.out.println("Inserimento latticini panel magazzino: " +e);
          	if( exc.contains("check_nome_lettere") ) {
          		panelmagazzino.getLblcnome().setVisible(true);
          		panelmagazzino.getLblcnome().setText("attenzione, campo sbagliato, inserire solo lettere"); //CONSTRAINT PER NOME non accetta numeri
@@ -90,6 +83,8 @@ public class LatticiniDAO {
          		panelmagazzino.getlblcdata2().setVisible(true);
          		panelmagazzino.getlblcdata2().setText("attenzione, data non coerente maggiore mungitura"); //CONSTRAINT PER LA DATA DI PRODUZIONE MAGGIORE DELLA DATA DI MUNGITURA
          	}
+         	
+         	
  	       return false;
           }
 		 

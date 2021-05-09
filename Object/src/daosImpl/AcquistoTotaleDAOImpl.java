@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
 
-public class AcquistoTotaleDAO {
+public class AcquistoTotaleDAOImpl {
 
 	public  int getprezzototale(Integer idacquisto) throws Exception {
      
@@ -74,9 +74,7 @@ public class AcquistoTotaleDAO {
 	            
 	            ResultSet rs=pst.executeQuery();
 	            
-	            System.out.println("ciao");
-	            System.out.println(mese);
-	            System.out.println(anno);
+	            
 			 while (rs.next()) {//FETCHA RISULTATO IN ARRAYLIST CREANDO UN CLIENTE PER OGNI ISTANZA TROVATA
                  A= new AcquistoTotale(
                 		 rs.getInt("n_id"),
@@ -127,7 +125,7 @@ public class AcquistoTotaleDAO {
 	            ResultSet rs=pst.executeQuery();
 	            rs.next();
 	              guadagno= rs.getFloat(1);
-	              System.out.print(guadagno);
+	              
                 
           }
 		 catch (SQLException x) {

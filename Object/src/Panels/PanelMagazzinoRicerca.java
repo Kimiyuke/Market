@@ -1,7 +1,7 @@
 package Panels;
 
 import Controller.Controller;
-import DAOS.MagazzinoDAO;
+import daosImpl.MagazzinoDAOImpl;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;

@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,33 +11,36 @@ import Classi.Cliente;
 import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
-public class VerduraDAO {
+
+
+public class UovaDAOImpl {
 
 	
 
-	public  boolean InsertVerdura(String nome, String marca, float prezzo, String datadiscadenza, String datadiraccolta,
-			String idprodotto, int disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
-		 try {
-             Class.forName("org.postgresql.Driver");//         
-             Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
-             PreparedStatement pst= con.prepareStatement("INSERT INTO VERDURA VALUES(?,?,?::real,?::date,?::date,?,?)");
 
-        		 pst.setString(1, nome);
-            	 pst.setString(2, marca);
-                 pst.setFloat(3, prezzo);
-                 pst.setString(4, datadiscadenza);
-                 pst.setString(5, datadiraccolta);
-                 pst.setString(6, idprodotto);
-                 pst.setInt(7, disponibilitatotale);
-                 pst.executeUpdate();
-
-
-
-              }
-		 catch (SQLException e) {
-			
-			
-         	System.out.println("Inserimento verdura panel magazzino: " +e);
+	public  boolean InsertUova(String nome, String marca, Float prezzo, String datadiscadenza, Integer quantita,
+			String datadideposizione, String provenienzaallevamento, String idprodotto, Integer disponibilitatotale, PanelMagazzino panelmagazzino) throws Exception {
+		try {
+            Class.forName("org.postgresql.Driver");//load il driver            
+            Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione          
+            PreparedStatement pst= con.prepareStatement("INSERT INTO UOVA VALUES(?,?,?::real,?::date,?,?::date,?,?,?)");
+            
+       		 pst.setString(1, nome);
+           	 pst.setString(2, marca);
+                pst.setFloat(3, prezzo);
+                pst.setString(4, datadiscadenza);
+                pst.setInt(5, quantita);
+                pst.setString(6, datadideposizione);
+                pst.setString(7, provenienzaallevamento);
+                pst.setString(8, idprodotto);
+                pst.setInt(9, disponibilitatotale);
+                pst.executeUpdate();
+            
+           
+         
+             }
+		catch (SQLException e) {
+         	System.out.println("Inserimento uova panel magazzino: " +e);
          	String exc= e.getMessage();
          	if( exc.contains("check_nome_lettere") ) {
          		panelmagazzino.getLblcnome().setVisible(true);
@@ -63,17 +66,16 @@ public class VerduraDAO {
          		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //CONSTRAINT PER L'ID PRODOTTO
          	}
          	
-         	
+         	else if( exc.contains("check_provenienza_lettere")) {
+         		panelmagazzino.getlblctxt2().setVisible(true);
+         		panelmagazzino.getlblctxt2().setText("attenzione, inserire solo lettere"); //CONSTRAINT PER IL CAMPO INGREDIENTI
+         	}
          	
  	       return false;
           }
-		 catch (NumberFormatException e) {
-				panelmagazzino.getLblcidprodotto().setVisible(true);
-         		panelmagazzino.getLblcidprodotto().setText("attenzione, ID non valido"); //inserimento errato 
-           return false;
-			}
 		 
 		 return true;
 		
 	}
 }
+

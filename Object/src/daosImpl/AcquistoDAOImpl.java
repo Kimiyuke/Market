@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +19,7 @@ import Panels.PanelMagazzino;
 
 
 
-public class AcquistoDAO {
+public class AcquistoDAOImpl {
 	
 	
 	
@@ -93,42 +93,14 @@ public  boolean acquistosingolo(String idprodotto, int quantita, String codicete
             	  else System.out.println("Review acquisti: " +e);
               
             	  return false;
- //           		  if( exc.contains("NumberFormatException") )
-         //   			  System.out.println("numero");
-            		  
-//            			panelaggiuntaacquisto.gettxtcodicetessera().setBorder(new LineBorder(Color.red,1)); TheController.checkcodicetessera();
+
                }
 		return true;
 		
 	}
-//FUNZIONE CHE SI UTILIZZA PER INSERIMENTO AUTOMATICO DEL CODICE DI ACQUISTO COME SE FOSSE UN'ENUMERAZIONE
-//	public static int nidcurrent() throws Exception {
-//		int nid = 0;
-//		
-//		try {
-//			Class.forName("org.postgresql.Driver");//load il driver
-//			
-//			Connection con=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Market","postgres","admin"); //connessione
-//			
-//			Statement st= con.createStatement();//creo object di statement 
-//			ResultSet rs = null;
-//			
-//			rs = st.executeQuery("SELECT MAX(n_id)+1 FROM ACQUISTO ");
-//			 rs.next();
-//			 nid = rs.getInt(1);
-//		} catch (SQLException e) {
-//			
-//			e.printStackTrace();
-//		}
-//
-//		
-//		
-//		
-//		return  nid;
-//	}
 
-	public static boolean acquistototale(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto) throws Exception {
-//			int nid= nidcurrent();
+	public  boolean acquistototale(String idprodotto, int quantita, String codicetessera, String data, int idacquisto, PanelAggiuntaAcquisto panelaggiuntaacquisto) throws Exception {
+
 		 
 		 try {
              Class.forName("org.postgresql.Driver");//load il driver            
@@ -141,7 +113,6 @@ public  boolean acquistosingolo(String idprodotto, int quantita, String codicete
                  pst.setInt(2, quantita);
                  pst.setString(3, idprodotto);
                  pst.setString(4, data);
-//                 pst.setInt(5, nid);
                  pst.setInt(5, idacquisto);
                  
                  pst.executeUpdate();

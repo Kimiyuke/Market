@@ -1,4 +1,4 @@
-package DAOS;
+package daosImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import Panels.PanelAggiuntaAcquisto;
 import Panels.PanelMagazzino;
 
 
-public class TesseraPuntiDAO {
+public class TesseraPuntiDAOImpl {
 
 	public  	ArrayList<TesseraPunti> SelectPuntiFrutta() throws Exception {
 		ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
@@ -31,7 +31,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY PUNTI_FRUTTA DESC");
 
-		         System.out.println("connession");
+		         
 
 
 
@@ -81,7 +81,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY PUNTI_VERDURA DESC");
 
-		         System.out.println("connession");
+		         
 
 
 
@@ -131,7 +131,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY PUNTI_CONFEZIONATI DESC");
 
-		         System.out.println("connession");
+		        
 
 
 
@@ -182,7 +182,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY PUNTI_Latticini DESC");
 
-		         System.out.println("connession");
+		         
 
 
 
@@ -234,7 +234,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY PUNTI_UOVA DESC");
 
-		         System.out.println("connession");
+		         
 
 
 
@@ -285,8 +285,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY PUNTI_Farinacei DESC");
 
-		         System.out.println("connession");
-
+		         
 
 
 		          while (rs.next()) {//FETCHA RISULTATO IN ARRAYLIST CREANDO UN CLIENTE PER OGNI ISTANZA TROVATA
@@ -336,7 +335,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY N_PEZZI_FRUTTA DESC");
 
-		         System.out.println("connession");
+		         
 
 
 
@@ -386,7 +385,7 @@ public class TesseraPuntiDAO {
 		         
 		         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY N_PEZZI_VERDURA DESC");
 
-		         System.out.println("connession");
+		         
 
 
 
@@ -436,7 +435,7 @@ public  	ArrayList<TesseraPunti> SelectPezziConfezionati() throws Exception {
 	         
 	         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY N_PEZZI_CONFEZIONATI DESC");
 
-	         System.out.println("connession");
+	        
 
 
 
@@ -486,7 +485,7 @@ public static 	ArrayList<TesseraPunti> SelectPezziLatticini() throws Exception {
 	         
 	         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY N_PEZZI_Latticini DESC");
 
-	         System.out.println("connession");
+	         
 
 
 
@@ -536,7 +535,7 @@ public  	ArrayList<TesseraPunti> SelectPezziUova() throws Exception {
 	         
 	         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY N_Pezzi_UOVA DESC");
 
-	         System.out.println("connession");
+	         
 
 
 
@@ -586,7 +585,7 @@ public  	ArrayList<TesseraPunti> SelectPezziFarinacei() throws Exception {
 	         
 	         ResultSet rs= st.executeQuery("SELECT * FROM TESSERA_PUNTI ORDER BY N_Pezzi_Farinacei DESC");
 
-	         System.out.println("connession");
+	        
 
 
 

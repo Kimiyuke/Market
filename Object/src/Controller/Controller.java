@@ -4,13 +4,13 @@ import Frames.HomeDashboard;
 import Frames.LogInFrame;
 
 import Panels.*;
+import daosImpl.*;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.border.LineBorder;
 
-import DAOS.*;
 import Dialogs.AggiuntaAcquistoSingolo;
 import Dialogs.AggiuntaAcquistoTotale;
 import Dialogs.AggiuntaClienteSuccesful;
@@ -28,18 +28,6 @@ public class Controller {
      PanelReviewAcquisti panelacquisti;
      PanelAggiuntaClienti panelaggiuntaclienti;
     
-//    //DAOS
-//   AcquistoDAO acquistodao;
-//    ConfezionatiDAO confenzionatidao;
-//    FarinaceiDAO farinaceidao;
-//    LatticiniDAO latticinidao;
-//    MagazzinoDAO magazzinodao;
-//    TesseraPuntiDAO tesserapuntidao;
-//    UovaDAO uovadao;
-//    FruttaDAO fruttadao;
-//    VerduraDAO verduradao;
-//    ClienteDAO clientidao;
-//     AcquistoTotaleDAO acquistototaledao;
      
      
      
@@ -50,47 +38,47 @@ public class Controller {
     AggiuntaAcquistoTotale aggiuntaacquistototale;
     
     
-    public ClienteDAO getClientidao() {
-        return new ClienteDAO();
+    public ClienteDAOImpl getClientidao() {
+        return new ClienteDAOImpl();
     }
   
-   public AcquistoTotaleDAO getAcquistototaledao() {
-	return new AcquistoTotaleDAO();
+   public AcquistoTotaleDAOImpl getAcquistototaledao() {
+	return new AcquistoTotaleDAOImpl();
 }
 
-public AcquistoDAO getAcquistodao() {
-	return new AcquistoDAO();
+public AcquistoDAOImpl getAcquistodao() {
+	return new AcquistoDAOImpl();
 }
 
-public ConfezionatiDAO getConfezionatidao() {
-	return new ConfezionatiDAO();
+public ConfezionatiDAOImpl getConfezionatidao() {
+	return new ConfezionatiDAOImpl();
 }
 
-public FarinaceiDAO getFarinaceidao() {
-	return new FarinaceiDAO();
+public FarinaceiDAOImpl getFarinaceidao() {
+	return new FarinaceiDAOImpl();
 }
 
-public LatticiniDAO getLatticinidao() {
-	return new LatticiniDAO();
+public LatticiniDAOImpl getLatticinidao() {
+	return new LatticiniDAOImpl();
 }
 
-public  MagazzinoDAO getMagazzinodao() {
-	return new MagazzinoDAO();
+public  MagazzinoDAOImpl getMagazzinodao() {
+	return new MagazzinoDAOImpl();
 }
 
-public TesseraPuntiDAO getTesserapuntidao() {
-	return new TesseraPuntiDAO();
+public TesseraPuntiDAOImpl getTesserapuntidao() {
+	return new TesseraPuntiDAOImpl();
 }
 
-public UovaDAO getUovadao() {
-	return new UovaDAO();
+public UovaDAOImpl getUovadao() {
+	return new UovaDAOImpl();
 }
 
-public VerduraDAO getVerduradao() {
-	return new VerduraDAO();
+public VerduraDAOImpl getVerduradao() {
+	return new VerduraDAOImpl();
 }
-public FruttaDAO getFruttadao() {
-	return new FruttaDAO();
+public FruttaDAOImpl getFruttadao() {
+	return new FruttaDAOImpl();
 }
 
 
