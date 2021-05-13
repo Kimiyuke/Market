@@ -4,14 +4,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
-
 import Classi.AcquistoTotale;
-import Classi.Cliente;
-import Panels.PanelAggiuntaAcquisto;
-import Panels.PanelMagazzino;
 
 
 public class AcquistoTotaleDAOImpl {

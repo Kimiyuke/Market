@@ -1,13 +1,11 @@
 package Controller;
 import Frames.HomeDashboard;
-
 import Frames.LogInFrame;
 
 import Panels.*;
 import daosImpl.*;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
 
 import javax.swing.border.LineBorder;
 
@@ -82,18 +80,10 @@ public FruttaDAOImpl getFruttadao() {
 }
 
 
-
-
-
-
- 
-    
-
     public static void main(String[] args) {
         Controller c=Controller.getInstance();
        
-        
-
+       
     }
   
     
@@ -114,6 +104,7 @@ public FruttaDAOImpl getFruttadao() {
 
     
     }
+    
     //singleton
     public static Controller getInstance( ) {
 
@@ -125,10 +116,6 @@ public FruttaDAOImpl getFruttadao() {
         return Instance;
     }
     public void Controllo_Credenziali(String username, String password) {
-
-    	
-
-
 
         if(username.equals(" a") && password.equals("la") ) {
             LogInFrame.setVisible(false);

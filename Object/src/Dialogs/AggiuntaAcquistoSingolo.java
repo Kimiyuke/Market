@@ -1,17 +1,11 @@
 package Dialogs;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import Controller.Controller;
 
-import java.awt.Dialog.ModalityType;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;

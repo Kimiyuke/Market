@@ -1,22 +1,16 @@
 package Dialogs;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import Controller.Controller;
 
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 
 public class AggiuntaAcquistoTotale extends JDialog {
 private JLabel lblpunti1;

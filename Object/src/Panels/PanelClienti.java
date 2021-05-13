@@ -4,9 +4,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Classi.*;
-import net.proteanit.sql.DbUtils;
 import Controller.Controller;
-import daosImpl.ClienteDAOImpl;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -21,19 +19,9 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import java.util.*;
-import net.proteanit.sql.DbUtils;
-import net.proteanit.sql.*;
-import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.BorderFactory;
@@ -43,6 +31,14 @@ public class PanelClienti extends JPanel {
 	public static JTable tabella;
 	Controller TheController;
 	public static JTable tabellapunti;
+	
+	private JLabel lblRicerca;
+	private JLabel lblMetodoRicerca;
+	private JLabel lblcategoria;
+	private JButton btncerca;
+	private JComboBox comboBox2;
+	private JComboBox comboBox;
+	
 	
 	/**
 	 * Create the panel.
@@ -61,32 +57,33 @@ public class PanelClienti extends JPanel {
       add(panel);
       panel.setLayout(null);
       
-      JLabel lblNewLabel = new JLabel("Ricerca Clienti");
-      lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
-      lblNewLabel.setForeground(new Color(255, 255, 255));
-      lblNewLabel.setBounds(25, 11, 152, 62);
-      panel.add(lblNewLabel);
+       lblRicerca = new JLabel("Ricerca Clienti");
+      lblRicerca.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 20));
+      lblRicerca.setForeground(new Color(255, 255, 255));
+      lblRicerca.setBounds(25, 11, 152, 62);
+      panel.add(lblRicerca);
       
-      JLabel lblNewLabel_1 = new JLabel("Selezionare metodo di ricerca");
-      lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 11));
-      lblNewLabel_1.setForeground(new Color(255, 255, 255));
-      lblNewLabel_1.setBounds(251, 22, 193, 23);
-      add(lblNewLabel_1);
+       lblMetodoRicerca = new JLabel("Selezionare metodo di ricerca");
+      lblMetodoRicerca.setFont(new Font("Dialog", Font.ITALIC, 11));
+      lblMetodoRicerca.setForeground(new Color(255, 255, 255));
+      lblMetodoRicerca.setBounds(251, 22, 193, 23);
+      add(lblMetodoRicerca);
       
-      JLabel lblcategoria = new JLabel("Selezionare categoria richiesta");
+      
+       lblcategoria = new JLabel("Selezionare categoria richiesta");
       lblcategoria.setForeground(new Color(255, 255, 255));
       lblcategoria.setFont(new Font("Dialog", Font.ITALIC, 11));
       lblcategoria.setBounds(251, 64, 215, 14);
       add(lblcategoria);
       
-      JButton btncerca = new JButton("Cerca");
+       btncerca = new JButton("Cerca");
       btncerca.setBackground(new Color(240, 240, 240));
       btncerca.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent arg0) {
       	}
       });
       
-      JComboBox comboBox2 = new JComboBox();
+       comboBox2 = new JComboBox();
       comboBox2.setModel(new DefaultComboBoxModel(new String[] {"Frutta", "Verdura", "Farinacei", "Confezionati", "Latticini", "Uova"}));
       comboBox2.setBounds(433, 61, 64, 22);
       add(comboBox2);
@@ -108,7 +105,7 @@ public class PanelClienti extends JPanel {
               return result;
           }});
       
-      JComboBox comboBox = new JComboBox();
+       comboBox = new JComboBox();
       comboBox.setModel(new DefaultComboBoxModel(new String[] {"Punti", "Pezzi"}));
       comboBox.setBounds(433, 23, 64, 22);
       add(comboBox);
@@ -191,7 +188,7 @@ public class PanelClienti extends JPanel {
       			}
       			
       			int rowCountt = modell.getRowCount(); //Cancella righe per la tabella dei punti
-      			for (int i = rowCount - 1; i >= 0; i--) {
+      			for (int i = rowCountt - 1; i >= 0; i--) {
       			    modell.removeRow(i);
       			}
       			

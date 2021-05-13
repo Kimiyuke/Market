@@ -3,9 +3,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import Panels.PanelAggiuntaClienti;
-import Panels.PanelClienti;
-import javax.swing.table.DefaultTableModel;
-
 import Classi.Cliente;
 
 public class ClienteDAOImpl {

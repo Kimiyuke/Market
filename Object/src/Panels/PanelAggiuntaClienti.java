@@ -3,16 +3,10 @@ package Panels;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -20,8 +14,6 @@ import javax.swing.border.MatteBorder;
 
 import Controller.Controller;
 import daosImpl.FruttaDAOImpl;
-
-import javax.swing.JButton;
 
 public class PanelAggiuntaClienti extends JPanel {
 	private JTextField txtcf;

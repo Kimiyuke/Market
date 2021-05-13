@@ -8,12 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-import java.util.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
-import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JYearChooser;
 
 import Classi.*;
@@ -26,7 +21,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 public class PanelReviewAcquisti extends JPanel {
 Controller TheController;
 private JTable tabella;

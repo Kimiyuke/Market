@@ -1,44 +1,20 @@
 package Panels;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import net.proteanit.sql.DbUtils;
-
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.border.MatteBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Controller.Controller;
-import net.proteanit.sql.DbUtils;
-import net.proteanit.sql.*;
-import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JEditorPane;
 import javax.swing.JTextField;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JTabbedPane;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import javax.swing.JTextArea;
-import javax.swing.JToolBar;
 import javax.swing.SwingConstants; 
 public class PanelAggiuntaAcquisto extends JPanel {
 	private JTextField txtidprodotto;

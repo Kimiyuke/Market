@@ -1,14 +1,9 @@
 package Dialogs;
 import Panels.PanelMagazzino;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;

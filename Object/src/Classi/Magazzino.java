@@ -1,6 +1,4 @@
 package Classi;
-
-import java.util.Date;
 public class Magazzino {
 private String IdProdotto;
 private int DisponibilitaTotale;

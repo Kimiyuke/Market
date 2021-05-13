@@ -12,9 +12,7 @@ public class Frutta {
 	private String IdProdotto;
 	private int DisponibilitaTotale;
 	
-public Frutta() {
-	
-}
+
 public String getNome() {
 	return Nome;
 }
@@ -40,41 +38,8 @@ public int getDisponibilitaTotale()
 {
 	return DisponibilitaTotale;
 }
-public void setNome() {
-	this.Nome=Nome;
-}
-public void setMarca() {
-	this.Marca=Marca;
-	
-}
-public void setPrezzo()
-{
-	
-	this.Prezzo=Prezzo;
-}
 
 
-public void setData_di_scadenza()
-{
-	this.DataDiScadenza=DataDiScadenza;
-	
-}
-
-public void setData_di_raccolta()
-
-{
-	this.DataDiRaccolta=DataDiRaccolta;
-}
-
-public void setId_prodotto()
-{
-	this.IdProdotto=IdProdotto;
-}
-
-public void setDisponibilita_totale()
-{
-	this.DisponibilitaTotale=DisponibilitaTotale;
-}
 public Frutta(String nome, String marca, float prezzo, Date dataDiScadenza,Date dataDiRaccolta,
 		String idProdotto, int disponibilitaTotale) {
 	super();

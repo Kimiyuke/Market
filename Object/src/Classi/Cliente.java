@@ -1,6 +1,4 @@
 package Classi;
-
-import java.util.Date;
 public class Cliente {
 	private String Nome;
 	 String Cognome;

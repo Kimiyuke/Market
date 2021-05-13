@@ -1,7 +1,6 @@
 package Panels;
 
 import Controller.Controller;
-import daosImpl.MagazzinoDAOImpl;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -11,16 +10,12 @@ import javax.swing.JComponent;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.ImageIcon;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;

@@ -1,10 +1,5 @@
 package Panels;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import net.proteanit.sql.DbUtils;
-
 import java.awt.Color;
 import java.awt.Component;
 
@@ -15,34 +10,20 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.border.MatteBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Controller.Controller;
 import daosImpl.FruttaDAOImpl;
-import net.proteanit.sql.DbUtils;
-import net.proteanit.sql.*;
-import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
-import javax.swing.JEditorPane;
 import javax.swing.JTextField;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JSpinner;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent; 
 public class PanelMagazzino extends JPanel {
@@ -858,7 +839,7 @@ public class PanelMagazzino extends JPanel {
       lblhelp.setBounds(83, 114, 9, 25);
       add(lblhelp);
       
-      Image iconz= new ImageIcon(this.getClass().getResource("/ricerca.png")).getImage();
+      
       
       
       

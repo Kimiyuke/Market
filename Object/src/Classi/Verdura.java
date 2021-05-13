@@ -40,43 +40,8 @@ public int getDisponibilita_totale()
 {
 	return DisponibilitaTotale;
 }
-public void setNome() {
-	this.Nome=Nome;
-}
-public void setMarca() {
-	this.Marca=Marca;
-	
-}
-public void setPrezzo()
-{
-	
-	this.Prezzo=Prezzo;
-}
 
 
-public void setData_di_scadenza()
-{
-	this.DataDiScadenza=DataDiScadenza;
-	
-}
-
-	
-
-public void setData_di_raccolta()
-
-{
-	this.DataDiRaccolta=DataDiRaccolta;
-}
-
-public void setId_prodotto()
-{
-	this.IdProdotto=IdProdotto;
-}
-
-public void setDisponibilita_totale()
-{
-	this.DisponibilitaTotale=DisponibilitaTotale;
-}
 public Verdura(String nome, String marca, float prezzo, Date dataDiScadenza,  Date dataDiRaccolta,
 		String id_prodotto, int disponibilita_totale) {
 	super();

@@ -1,6 +1,5 @@
 package Frames;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 
 import Controller.Controller;
 import Panels.PanelAggiuntaAcquisto;
@@ -12,19 +11,11 @@ import Panels.PanelReviewAcquisti;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.border.LineBorder;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -32,13 +23,7 @@ import java.awt.Font;
 import javax.swing.border.MatteBorder;
 
 
-import net.proteanit.sql.DbUtils;
-
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTable;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
