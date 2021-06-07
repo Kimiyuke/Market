@@ -172,10 +172,10 @@ public void gotomagazzinoricerca(PanelMagazzino panelmagazzino) {
 		
 	}
 
-	public void checkcodicetessera() {
-		panelaggiuntaacquisto.gettxtcodicetessera().setBorder(new LineBorder(Color.red,1));
+//	public void checkcodicetessera() {
+	//	panelaggiuntaacquisto.gettxtcodicetessera().setBorder(new LineBorder(Color.red,1));
 		
-	}
+//	}	
 
 	public void acquistosingolosuccesful() {
 		aggiuntaacquistosingolo= new AggiuntaAcquistoSingolo(this);

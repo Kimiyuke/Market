@@ -30,8 +30,8 @@ import java.awt.event.FocusEvent;
 public class HomeDashboard extends JFrame {
 
 	private JPanel contentPane;
-	  Controller TheController;
-	 PanelMagazzino panelmagazzino;
+	  private Controller TheController;
+	private PanelMagazzino panelmagazzino;
 	private PanelClienti panelclienti;
 	private PanelAggiuntaAcquisto panelaggiuntaacquisto;
 	private PanelMagazzinoRicerca panelmagazzinoricerca;

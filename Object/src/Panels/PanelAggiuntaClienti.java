@@ -20,9 +20,6 @@ public class PanelAggiuntaClienti extends JPanel {
 	private JTextField txtnome;
 	private JTextField txtcognome;
     
-    FruttaDAOImpl FruttaDAO;
-    PanelClienti panelclienti;
-    PanelMagazzinoRicerca panelmagazzinoricerca;
 
 	Controller TheController;
 	private JTextField txtcodicetessera;
@@ -124,7 +121,7 @@ public class PanelAggiuntaClienti extends JPanel {
 	      		lblcognome.setVisible(false);  
 	      		lblcnome.setVisible(false); 
 	      		lblccf.setVisible(false);
-	      		                                                     //CONTROLLO SE QUALCHE INPUT E' NULLa
+	      		                                                     //CONTROLLO SE QUALCHE INPUT E' NULL
 	      		checknull(txtnome.getText(), lblcnome );  
 	      		checknull(txtcognome.getText(), lblcognome );
 	      		checknull(txtcf.getText(), lblccf );
@@ -143,15 +140,13 @@ public class PanelAggiuntaClienti extends JPanel {
 	  				lblcognome.setText("attenzione, campo errato"); 
 	      			return;
 	      		}
-	  			
-	  			System.out.println(1);
-	      		
+	  				      		
            
 	              try {
 	      			
 					if(TheController.getClientidao().Addcliente(txtcf.getText().toString(),txtnome.getText().toString(),txtcognome.getText().toString(),txtcodicetessera.getText().toString(), PanelAggiuntaClienti.this)) {
 						 
-					TheController.clientisuccesful();  //APRE J DIALOG PER L'AVVENUTA DI UN CLIENTE
+					TheController.clientisuccesful();  //APRE J DIALOG PER L'AVVENUTA AGGIUNTA DI UN CLIENTE
 						
 					}//fine if
 	      		} 

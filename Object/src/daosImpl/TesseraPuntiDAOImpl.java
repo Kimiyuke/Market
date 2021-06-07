@@ -464,7 +464,7 @@ public  	ArrayList<TesseraPunti> SelectPezziConfezionati() throws Exception {
 	   return tessera;
 }
 
-public static 	ArrayList<TesseraPunti> SelectPezziLatticini() throws Exception {
+public  	ArrayList<TesseraPunti> SelectPezziLatticini() throws Exception {
 	ArrayList<TesseraPunti> tessera = new ArrayList<TesseraPunti>();
 	TesseraPunti T;
 	

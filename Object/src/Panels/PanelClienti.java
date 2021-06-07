@@ -28,9 +28,9 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer; 
 public class PanelClienti extends JPanel {
-	public static JTable tabella;
+	private  JTable tabella;
 	Controller TheController;
-	public static JTable tabellapunti;
+	private  JTable tabellapunti;
 	
 	private JLabel lblRicerca;
 	private JLabel lblMetodoRicerca;

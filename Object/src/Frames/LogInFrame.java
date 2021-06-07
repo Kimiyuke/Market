@@ -112,11 +112,12 @@ public class LogInFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER)
                 {
-    TheController.Controllo_Credenziali(TextUsername.getText().toString(),pwdPassword.getText().toString() );
+                		TheController.Controllo_Credenziali(TextUsername.getText().toString(),pwdPassword.getText().toString() );
                 }
 
         }
         });
+		
 		TextUsername.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
